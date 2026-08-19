@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | Aura Space</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+    
+      <script src="tailwind.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
+                    colors: {
+                        brand: {
+                            primary: '#1E1A17',
+                            secondary: '#3D352E',
+                            muted: '#7A6E64',
+                            border: '#E5D9D0',
+                            accent: '#C89B8B',
+                            'accent-dark': '#B08474',
+                            'accent-light': '#F2E3DB',
+                            bg: '#FCF8F5',
+                            'bg-soft': '#F8F0EB',
+                        },
+                        custom: {
+                            clay: '#C89B8B',
+                            'clay-light': '#F2E3DB',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+        p { font-weight: 400; }
+        p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
+        .font-extrabold { font-weight: 800 !important; }
+        
+        .bg-brand-accent { background-color: #C89B8B; }
+        .text-brand-accent { color: #C89B8B; }
+        .border-brand-accent { border-color: #C89B8B; }
+        .bg-brand-accent-light { background-color: #F2E3DB; }
+        .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
+        .bg-brand-bg-soft { background-color: #F8F0EB; }
+        
+        body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
+        .dark body { background-color: #1A1614; color: #EDE6E0; }
+        .dark .text-brand-primary { color: #EDE6E0; }
+        .dark .text-brand-secondary { color: #CEC3BA; }
+        .dark .text-brand-muted { color: #9E8F84; }
+        .dark .bg-brand-bg-soft { background-color: #2A2420; }
+        .dark .border-brand-border { border-color: #3D352E; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
+        
+        .card-design {
+            background: #FFFFFF;
+            border-radius: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid #E5D9D0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .dark .card-design { background: #2A2420; border-color: #3D352E; }
+        .card-design:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
+            border-color: #C89B8B;
+        }
+        
+        .btn-primary-design {
+            background-color: #1E1A17;
+            color: #FCF8F5;
+            font-weight: 600;
+            border-radius: 60px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .btn-primary-design:hover {
+            background-color: #3D352E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(200,155,139,0.3);
+            color: #FCF8F5;
+        }
+        .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
+        .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
+        
+        .btn-outline-design {
+            border: 1.5px solid #1E1A17;
+            color: #1E1A17;
+            background: transparent;
+            border-radius: 60px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
+        .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
+        .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: #FFFFFF;
+            border-right: 1px solid #E5D9D0;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        .dark .sidebar { background: #1A1614; border-right-color: #3D352E; }
+        
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
+        }
+        .sidebar-overlay.open { display: block; }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.5rem;
+            margin: 0.25rem 0.75rem;
+            border-radius: 12px;
+            color: #1E1A17;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .dark .sidebar-item { color: #EDE6E0; }
+        .sidebar-item:hover { background: #F2E3DB; color: #1E1A17; }
+        .dark .sidebar-item:hover { background: #2A2420; color: #EDE6E0; }
+        .sidebar-item.active { background: #C89B8B; color: #1E1A17; }
+        .dark .sidebar-item.active { background: #C89B8B; color: #1E1A17; }
+        .sidebar-item i { width: 24px; font-size: 1.1rem; }
+        
+        .main-content {
+            margin-left: 280px;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+        @media (max-width: 768px) {
+            .main-content { margin-left: 0; padding-top: 70px; }
+        }
+        
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: #FFFFFF;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5D9D0;
+            z-index: 50;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .dark .mobile-header { background: #1A1614; border-bottom-color: #3D352E; }
+        @media (max-width: 768px) { .mobile-header { display: flex; } }
+        
+        .top-header {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #E5D9D0;
+        }
+        .dark .top-header { background: #2A2420; border-color: #3D352E; }
+        
+        .stat-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 1.2rem;
+            border: 1px solid #E5D9D0;
+            transition: all 0.3s;
+        }
+        .dark .stat-card { background: #2A2420; border-color: #3D352E; }
+        .stat-card:hover { transform: translateY(-3px); border-color: #C89B8B; }
+        
+        .toggle-btn {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: #F8F0EB;
+            color: #1E1A17;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .dark .toggle-btn { background: #3D352E; color: #EDE6E0; }
+        .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .status-active { background: #E3F2FD; color: #1E4A76; }
+        .status-pending { background: #FFF3E0; color: #EF6C00; }
+        .status-completed { background: #E8F5E9; color: #2E7D32; }
+        .status-review { background: #F3E5F5; color: #6A1B9A; }
+        .status-urgent { background: #FFEBEE; color: #C62828; }
+        .dark .status-active { background: #01579B; color: #81D4FA; }
+        .dark .status-pending { background: #E65100; color: #FFCC80; }
+        .dark .status-completed { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-review { background: #4A148C; color: #CE93D8; }
+        .dark .status-urgent { background: #B71C1C; color: #EF9A9A; }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+            border: 1.5px solid #E5D9D0;
+            background: #FCF8F5;
+            transition: all 0.3s;
+            color: #1E1A17;
+        }
+        .dark .form-input { background: #2A2420; border-color: #3D352E; color: #EDE6E0; }
+        .form-input:focus { outline: none; border-color: #C89B8B; box-shadow: 0 0 0 4px rgba(200,155,139,0.15); }
+        .form-label { display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.4rem; color: #3D352E; }
+        .dark .form-label { color: #CEC3BA; }
+        
+        .page-content.hidden { display: none; }
+        
+        .client-card {
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .client-card:hover { transform: translateY(-2px); border-color: #C89B8B; }
+        
+        .mood-board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+        .mood-item {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid #E5D9D0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: #7A6E64;
+            transition: all 0.3s;
+        }
+        .dark .mood-item { border-color: #3D352E; color: #9E8F84; }
+        .mood-item:hover { border-color: #C89B8B; }
+        
+        /* RTL support */
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+            border-right: none;
+            border-left: 1px solid #E5D9D0;
+        }
+        .dark[dir="rtl"] .sidebar { border-left-color: #3D352E; }
+        @media (max-width: 768px) {
+            [dir="rtl"] .sidebar { transform: translateX(100%); }
+            [dir="rtl"] .sidebar.open { transform: translateX(0); }
+        }
+        [dir="rtl"] .main-content {
+            margin-left: 0;
+            margin-right: 280px;
+        }
+        @media (max-width: 768px) {
+            [dir="rtl"] .main-content { margin-right: 0; }
+        }
+        [dir="rtl"] .top-header .border-l {
+            border-left-width: 0 !important;
+            border-right-width: 1px !important;
+            padding-left: 0 !important;
+            padding-right: 1rem !important;
+        }
+        .dark[dir="rtl"] .top-header .border-l { border-right-color: #3D352E; }
+        [dir="rtl"] .timeline-item {
+            padding-left: 0;
+            padding-right: 2rem;
+            border-left: none;
+            border-right: 2px solid #E5D9D0;
+        }
+        .dark[dir="rtl"] .timeline-item { border-right-color: #3D352E; }
+        [dir="rtl"] .timeline-item::before {
+            left: auto;
+            right: -6px;
+        }
+        [dir="rtl"] .sidebar-item i {
+            margin-right: 0;
+            margin-left: 0.75rem;
+        }
+        [dir="rtl"] .text-left { text-align: right !important; }
+        [dir="rtl"] .text-right { text-align: left !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="flex items-center gap-3">
+            <button id="menuToggle" class="toggle-btn"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <svg class="w-8 h-8 text-[#C89B8B]" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+                    <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="text-lg font-display font-extrabold text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+            </a>
+        </div>
+        <div class="flex gap-2">
+            <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+            <button id="rtl-toggle-mobile" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-5 border-b border-[#E5D9D0] dark:border-[#3D352E]">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <svg class="w-10 h-10 text-[#C89B8B]" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+                    <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <span class="text-xl font-display font-extrabold text-[#1E1A17] dark:text-white tracking-tight">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+                    <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Admin Portal</p>
+                </div>
+            </a>
+        </div>
+        <nav class="py-4">
+            <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div>
+            <div class="sidebar-item" data-page="clients"><i class="fas fa-users"></i><span>Clients</span></div>
+            <div class="sidebar-item" data-page="briefs"><i class="fas fa-pencil-ruler"></i><span>Design Briefs</span></div>
+            <div class="sidebar-item" data-page="moodboards"><i class="fas fa-images"></i><span>Mood Boards</span></div>
+            <div class="sidebar-item" data-page="projects"><i class="fas fa-project-diagram"></i><span>Projects</span></div>
+            <div class="sidebar-item" data-page="messages"><i class="fas fa-comments"></i><span>Messages</span></div>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-[#E5D9D0] dark:border-[#3D352E]">
+            <a href="login.html" class="flex items-center justify-center gap-2 w-full p-2.5 rounded-xl bg-[#F2E3DB]/50 hover:bg-[#C89B8B] transition font-semibold text-sm text-[#1E1A17]">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-header flex justify-between items-center flex-wrap gap-3">
+            <div>
+                <h1 class="text-2xl font-display font-bold" id="page-title">Dashboard</h1>
+                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]" id="page-subtitle">Welcome back, Elena</p>
+            </div>
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-white dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] flex items-center justify-center text-[#1E1A17] dark:text-white hover:bg-[#F2E3DB] dark:hover:bg-[#3D352E] transition shadow-sm">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-white dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] flex items-center justify-center text-[#1E1A17] dark:text-white hover:bg-[#F2E3DB] dark:hover:bg-[#3D352E] transition shadow-sm font-bold text-base">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <div class="flex items-center gap-3 border-l border-[#E5D9D0] dark:border-[#3D352E] pl-4">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[#C89B8B] shadow-sm shrink-0">
+                        <img src="/assests/elena_voss.jpg" alt="Elena Voss" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="text-left hidden lg:block">
+                        <p class="text-sm font-bold text-[#1E1A17] dark:text-white leading-tight">Elena Voss</p>
+                        <p class="text-[10px] text-[#7A6E64] dark:text-[#9E8F84]">Design Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DASHBOARD ========== -->
+        <div id="page-dashboard" class="page-content">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="stat-card">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Active Projects</p>
+                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">8</p>
+                        </div>
+                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-project-diagram text-[#C89B8B]"></i></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Pending Briefs</p>
+                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">3</p>
+                        </div>
+                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-clock text-[#C89B8B]"></i></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Awaiting Review</p>
+                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">5</p>
+                        </div>
+                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-comment-dots text-[#C89B8B]"></i></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Completed</p>
+                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">12</p>
+                        </div>
+                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-check-circle text-[#C89B8B]"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="stat-card">
+                    <h3 class="font-display font-bold text-lg mb-3">Recent Activity</h3>
+                    <div class="space-y-3">
+                        <div class="flex gap-3 pb-2 border-b border-[#E5D9D0] dark:border-[#3D352E]">
+                            <i class="fas fa-upload text-[#C89B8B] mt-1"></i>
+                            <div><p class="text-sm font-medium">Sarah J. submitted design brief</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Today, 10:30 AM</p></div>
+                        </div>
+                        <div class="flex gap-3 pb-2 border-b border-[#E5D9D0] dark:border-[#3D352E]">
+                            <i class="fas fa-check text-[#C89B8B] mt-1"></i>
+                            <div><p class="text-sm font-medium">Michael R. approved mood board</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 4:15 PM</p></div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-comment text-[#C89B8B] mt-1"></i>
+                            <div><p class="text-sm font-medium">New message from Jessica D.</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 2:00 PM</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3 class="font-display font-bold text-lg mb-3">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button data-nav="briefs" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
+                            <i class="fas fa-pencil-ruler text-[#C89B8B]"></i><span>Review Design Briefs</span>
+                        </button>
+                        <button data-nav="moodboards" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
+                            <i class="fas fa-images text-[#C89B8B]"></i><span>Create Mood Board</span>
+                        </button>
+                        <button data-nav="clients" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
+                            <i class="fas fa-users text-[#C89B8B]"></i><span>View All Clients</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== CLIENTS ========== -->
+        <div id="page-clients" class="page-content hidden">
+            <div class="card-design p-6">
+                <h3 class="font-display font-bold text-2xl mb-4">Clients</h3>
+                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Manage and view all your client projects.</p>
+                <div class="space-y-3">
+                    <div class="client-card card-design p-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="/assests/sarah_johnson.jpg" alt="Sarah Johnson" class="w-10 h-10 rounded-full object-cover" />
+                            <div>
+                                <p class="font-bold">Sarah Johnson</p>
+                                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Living Room Redesign</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 flex-nowrap">
+                            <span class="status-badge status-active whitespace-nowrap">Active</span>
+                            <span class="text-sm text-[#7A6E64] whitespace-nowrap">65% Complete</span>
+                            <button class="text-sm font-semibold text-[#C89B8B] hover:text-[#B08474] whitespace-nowrap">View →</button>
+                        </div>
+                    </div>
+                    <div class="client-card card-design p-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="/assests/Guide3.jpg" alt="Michael R." class="w-10 h-10 rounded-full object-cover" />
+                            <div>
+                                <p class="font-bold">Michael R.</p>
+                                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">SoHo Loft</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 flex-nowrap">
+                            <span class="status-badge status-completed whitespace-nowrap">Completed</span>
+                            <span class="text-sm text-[#7A6E64] whitespace-nowrap">100% Complete</span>
+                            <button class="text-sm font-semibold text-[#C89B8B] hover:text-[#B08474] whitespace-nowrap">View →</button>
+                        </div>
+                    </div>
+                    <div class="client-card card-design p-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <img src="/assests/Guide2.jpg" alt="Jessica D." class="w-10 h-10 rounded-full object-cover" />
+                            <div>
+                                <p class="font-bold">Jessica D.</p>
+                                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Park Avenue Residence</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 flex-nowrap">
+                            <span class="status-badge status-review whitespace-nowrap">In Review</span>
+                            <span class="text-sm text-[#7A6E64] whitespace-nowrap">40% Complete</span>
+                            <button class="text-sm font-semibold text-[#C89B8B] hover:text-[#B08474] whitespace-nowrap">View →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DESIGN BRIEFS ========== -->
+        <div id="page-briefs" class="page-content hidden">
+            <div class="card-design p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-display font-bold text-2xl">Design Briefs</h3>
+                    <span class="text-sm text-[#7A6E64]">3 pending review</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="assignment-card p-4">
+                        <div class="flex flex-wrap justify-between items-start gap-3">
+                            <div>
+                                <p class="font-bold">Sarah Johnson - Living Room</p>
+                                <div class="flex flex-wrap gap-3 mt-2 text-sm text-[#7A6E64] dark:text-[#9E8F84]">
+                                    <span><i class="fas fa-palette text-[#C89B8B]"></i> Style: Modern Minimalist</span>
+                                    <span><i class="fas fa-circle text-[#C89B8B]"></i> Colors: Warm Neutrals</span>
+                                    <span><i class="fas fa-dollar-sign text-[#C89B8B]"></i> Budget: $25,000 - $50,000</span>
+                                </div>
+                            </div>
+                            <span class="status-badge status-pending">Pending Review</span>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1.5 text-sm">Review Brief</button>
+                            <button class="btn-outline-design px-4 py-1.5 text-sm">Assign Designer</button>
+                        </div>
+                    </div>
+                    <div class="assignment-card p-4">
+                        <div class="flex flex-wrap justify-between items-start gap-3">
+                            <div>
+                                <p class="font-bold">Jessica D. - Park Avenue Residence</p>
+                                <div class="flex flex-wrap gap-3 mt-2 text-sm text-[#7A6E64] dark:text-[#9E8F84]">
+                                    <span><i class="fas fa-palette text-[#C89B8B]"></i> Style: Traditional Classic</span>
+                                    <span><i class="fas fa-circle text-[#C89B8B]"></i> Colors: Earth Tones</span>
+                                    <span><i class="fas fa-dollar-sign text-[#C89B8B]"></i> Budget: $50,000 - $100,000</span>
+                                </div>
+                            </div>
+                            <span class="status-badge status-active">In Progress</span>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1.5 text-sm">Review Brief</button>
+                            <button class="btn-outline-design px-4 py-1.5 text-sm">View Files</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== MOOD BOARDS ========== -->
+        <div id="page-moodboards" class="page-content hidden">
+            <div class="card-design p-6">
+                <h3 class="font-display font-bold text-2xl mb-4">Mood Boards</h3>
+                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Create and manage mood boards for your clients.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card-design p-4">
+                        <div class="mood-board-grid">
+                            <div class="mood-item" style="background:#F5E6D3;">Warm</div>
+                            <div class="mood-item" style="background:#E8D5C4;">Neutral</div>
+                            <div class="mood-item" style="background:#D4B8A7;">Texture</div>
+                            <div class="mood-item" style="background:#C89B8B;">Accent</div>
+                        </div>
+                        <div class="mt-3">
+                            <p class="font-bold">Sarah Johnson - Living Room</p>
+                            <div class="flex items-center gap-3 mt-1">
+                                <span class="status-badge status-review">In Review</span>
+                                <span class="text-xs text-[#7A6E64]">Awaiting client feedback</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1.5 text-sm">Edit Board</button>
+                            <button class="btn-outline-design px-4 py-1.5 text-sm">Request Feedback</button>
+                        </div>
+                    </div>
+                    <div class="card-design p-4">
+                        <div class="mood-board-grid">
+                            <div class="mood-item" style="background:#E8D5C4;">Cream</div>
+                            <div class="mood-item" style="background:#D4B8A7;">Stone</div>
+                            <div class="mood-item" style="background:#C89B8B;">Clay</div>
+                            <div class="mood-item" style="background:#F5E6D3;">Light</div>
+                        </div>
+                        <div class="mt-3">
+                            <p class="font-bold">Michael R. - SoHo Loft</p>
+                            <div class="flex items-center gap-3 mt-1">
+                                <span class="status-badge status-completed">Approved</span>
+                                <span class="text-xs text-[#7A6E64]">Client approved</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1.5 text-sm">Edit Board</button>
+                            <button class="btn-outline-design px-4 py-1.5 text-sm">View Comments</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="btn-primary-design px-6 py-2 inline-flex items-center gap-2"><i class="fas fa-plus"></i> New Mood Board</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PROJECTS ========== -->
+        <div id="page-projects" class="page-content hidden">
+            <div class="card-design p-6">
+                <h3 class="font-display font-bold text-2xl mb-4">All Projects</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-[#E5D9D0] dark:border-[#3D352E]">
+                                <th class="text-left py-2 px-3 font-semibold">Client</th>
+                                <th class="text-left py-2 px-3 font-semibold">Project</th>
+                                <th class="text-left py-2 px-3 font-semibold">Status</th>
+                                <th class="text-left py-2 px-3 font-semibold">Progress</th>
+                                <th class="text-left py-2 px-3 font-semibold">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-[#E5D9D0] dark:border-[#3D352E]">
+                                <td class="py-2 px-3 font-medium">Sarah Johnson</td>
+                                <td class="py-2 px-3">Living Room Redesign</td>
+                                <td class="py-2 px-3"><span class="status-badge status-active">Active</span></td>
+                                <td class="py-2 px-3">
+                                    <div class="flex items-center gap-2">
+                                        <div class="progress-bar w-20"><div class="progress-fill" style="width:65%"></div></div>
+                                        <span class="text-xs">65%</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-3"><button class="text-[#C89B8B] hover:underline text-sm">View</button></td>
+                            </tr>
+                            <tr class="border-b border-[#E5D9D0] dark:border-[#3D352E]">
+                                <td class="py-2 px-3 font-medium">Michael R.</td>
+                                <td class="py-2 px-3">SoHo Loft</td>
+                                <td class="py-2 px-3"><span class="status-badge status-completed">Completed</span></td>
+                                <td class="py-2 px-3">
+                                    <div class="flex items-center gap-2">
+                                        <div class="progress-bar w-20"><div class="progress-fill" style="width:100%"></div></div>
+                                        <span class="text-xs">100%</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-3"><button class="text-[#C89B8B] hover:underline text-sm">View</button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-3 font-medium">Jessica D.</td>
+                                <td class="py-2 px-3">Park Avenue Residence</td>
+                                <td class="py-2 px-3"><span class="status-badge status-review">In Review</span></td>
+                                <td class="py-2 px-3">
+                                    <div class="flex items-center gap-2">
+                                        <div class="progress-bar w-20"><div class="progress-fill" style="width:40%"></div></div>
+                                        <span class="text-xs">40%</span>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-3"><button class="text-[#C89B8B] hover:underline text-sm">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== MESSAGES ========== -->
+        <div id="page-messages" class="page-content hidden">
+            <div class="card-design p-6">
+                <h3 class="font-display font-bold text-2xl mb-4">Messages</h3>
+                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Communicate with your clients.</p>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Sarah Johnson <span class="text-xs font-normal text-[#7A6E64] dark:text-[#9E8F84]">Client</span></p>
+                                <p class="text-sm mt-1">I've uploaded photos and submitted the design brief. Looking forward to seeing your concept!</p>
+                            </div>
+                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Today, 11:00 AM</span>
+                        </div>
+                        <div class="mt-2 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1 text-sm">Reply</button>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-[#FFFFFF] dark:bg-[#1A1614] rounded-xl border border-[#E5D9D0] dark:border-[#3D352E]">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Elena Voss <span class="text-xs font-normal text-[#7A6E64] dark:text-[#9E8F84]">You</span></p>
+                                <p class="text-sm mt-1">Great! I'll start working on the mood board and share it with you for feedback.</p>
+                            </div>
+                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 6:30 PM</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Jessica D. <span class="text-xs font-normal text-[#7A6E64] dark:text-[#9E8F84]">Client</span></p>
+                                <p class="text-sm mt-1">I love the direction of the mood board! Can we explore more terracotta accents?</p>
+                            </div>
+                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 2:00 PM</span>
+                        </div>
+                        <div class="mt-2 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1 text-sm">Reply</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <label class="form-label">Send a Message</label>
+                    <div class="flex gap-3">
+                        <input type="text" class="form-input flex-1" placeholder="Type your message..." />
+                        <button class="btn-primary-design px-6 py-2"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
+            function setRTL(isRTL) {
+                if (isRTL) {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    localStorage.setItem('dir', 'rtl');
+                } else {
+                    document.documentElement.setAttribute('dir', 'ltr');
+                    localStorage.setItem('dir', 'ltr');
+                }
+            }
+            const savedDir = localStorage.getItem('dir');
+            setRTL(savedDir === 'rtl');
+            if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+            if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            function setTheme(isDark) {
+                if (isDark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+                [themeToggle, themeToggleMobile].forEach(btn => {
+                    if (btn) {
+                        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            const savedTheme = localStorage.getItem('theme');
+            setTheme(savedTheme === 'dark');
+            if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+            // Mobile Sidebar
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+            function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+            if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+            window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
+
+            // Navigation
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const pages = document.querySelectorAll('.page-content');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const titles = {
+                dashboard: { title: 'Dashboard', subtitle: 'Welcome back, Elena' },
+                clients: { title: 'Clients', subtitle: 'Manage your client projects' },
+                briefs: { title: 'Design Briefs', subtitle: 'Review client submissions' },
+                moodboards: { title: 'Mood Boards', subtitle: 'Create and manage mood boards' },
+                projects: { title: 'Projects', subtitle: 'Track all project progress' },
+                messages: { title: 'Messages', subtitle: 'Communicate with clients' }
+            };
+            function navigateTo(page) {
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
+                pages.forEach(p => p.classList.add('hidden'));
+                document.getElementById(`page-${page}`)?.classList.remove('hidden');
+                if (titles[page]) { pageTitle.textContent = titles[page].title; pageSubtitle.textContent = titles[page].subtitle; }
+                closeSidebar();
+            }
+            sidebarItems.forEach(item => { item.addEventListener('click', () => { navigateTo(item.getAttribute('data-page')); }); });
+            document.querySelectorAll('[data-nav]').forEach(btn => { btn.addEventListener('click', () => { navigateTo(btn.getAttribute('data-nav')); }); });
+        });
+    </script>
+</body>
+</html>

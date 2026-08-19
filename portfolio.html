@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio &middot; Aura Space</title>
+  <!-- Custom Favicon (Aura Space geometric circle) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <!-- Tailwind CSS via CDN -->
+    <script src="tailwind.js"></script>
+
+  <!-- Custom Tailwind Configuration (warm, refined palette) -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
+          colors: {
+            brand: {
+              primary: '#1E1A17',
+              secondary: '#3D352E',
+              muted: '#7A6E64',
+              border: '#E5D9D0',
+              accent: '#C89B8B',
+              'accent-dark': '#B08474',
+              'accent-light': '#F2E3DB',
+              bg: '#FCF8F5',
+              'bg-soft': '#F8F0EB',
+            },
+            custom: {
+              clay: '#C89B8B',
+              'clay-light': '#F2E3DB',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+          },
+          keyframes: {
+            floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+            slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+          },
+          backgroundImage: {
+            'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts (serif + sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* consistency overrides */
+    h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+    p { font-weight: 400; }
+    p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
+    .font-extrabold { font-weight: 800 !important; }
+    /* brand color mappings */
+    .bg-brand-accent { background-color: #C89B8B; }
+    .text-brand-accent { color: #C89B8B; }
+    .border-brand-accent { border-color: #C89B8B; }
+    .bg-brand-accent-light { background-color: #F2E3DB; }
+    .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
+    .bg-brand-bg-soft { background-color: #F8F0EB; }
+    body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
+    .dark body { background-color: #1A1614; color: #EDE6E0; }
+    .dark .text-brand-primary { color: #EDE6E0; }
+    .dark .text-brand-secondary { color: #CEC3BA; }
+    .dark .text-brand-muted { color: #9E8F84; }
+    .dark .bg-brand-bg-soft { background-color: #2A2420; }
+    .dark .border-brand-border { border-color: #3D352E; }
+    /* scroll */
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
+    /* cards & buttons */
+    .card-design {
+      background: #FFFFFF;
+      border-radius: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid #E5D9D0;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+    .dark .card-design { background: #2A2420; border-color: #3D352E; }
+    .card-design:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
+      border-color: #C89B8B;
+    }
+    .btn-primary-design {
+      background-color: #1E1A17;
+      color: #FCF8F5;
+      font-weight: 600;
+      border-radius: 60px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .btn-primary-design:hover {
+      background-color: #3D352E;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(200,155,139,0.3);
+      color: #FCF8F5;
+    }
+    .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
+    .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
+    .btn-outline-design {
+      border: 1.5px solid #1E1A17;
+      color: #1E1A17;
+      background: transparent;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
+    .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
+    .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
+    /* navigation (same structure) */
+    .nav-link { position: relative; font-weight: 500; color: #1E1A17; transition: color 0.3s; }
+    .dark .nav-link { color: #EDE6E0; }
+    .nav-link:hover { color: #C89B8B; }
+    .nav-link.active { color: #C89B8B !important; }
+    .dropdown-item.active { background-color: #F8F0EB; color: #C89B8B !important; font-weight: 600; }
+    .dark .dropdown-item.active { background-color: #2E2420; color: #C89B8B !important; }
+    .dropdown-design { position: relative; }
+    .dropdown-design-menu {
+      position: absolute; top: 100%; left: 0; min-width: 200px; background: #FFFFFF;
+      border-radius: 18px; padding: 0.5rem 0; box-shadow: 0 18px 32px rgba(0,0,0,0.06);
+      opacity: 0; visibility: hidden; transform: translateY(12px); transition: all 0.25s ease;
+      z-index: 1000; border: 1px solid #E5D9D0;
+    }
+    .dark .dropdown-design-menu { background: #2A2420; border-color: #3D352E; }
+    .dropdown-design:hover .dropdown-design-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-item {
+      display: flex; align-items: center; padding: 0.6rem 1.4rem; transition: all 0.2s;
+      color: #1E1A17;
+    }
+    .dark .dropdown-item { color: #EDE6E0; }
+    .dropdown-item:hover { background-color: #F8F0EB; color: #1E1A17; padding-left: 1.7rem; }
+    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+    .mobile-menu-design {
+      background: #FFFFFF; max-height: 0; overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 0 24px 24px;
+    }
+    .dark .mobile-menu-design { background: #2A2420; }
+    .mobile-menu-design.open { max-height: 80vh; overflow-y: auto; scrollbar-width: none; }
+    .mobile-menu-design.open::-webkit-scrollbar { display: none; }
+    .social-icon-design {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background-color: #F8F0EB; color: #1E1A17; transition: all 0.3s;
+    }
+    .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; transform: translateY(-3px); }
+    .dark .social-icon-design { background-color: #2A2420; color: #EDE6E0; }
+    .dark .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; }
+    /* project card */
+    .project-card .project-img { transition: transform 0.5s ease; }
+    .project-card:hover .project-img { transform: scale(1.03); }
+    .testimonial-card-design {
+      background: #FFFFFF; border-radius: 28px; padding: 1.8rem;
+      border-left: 5px solid #C89B8B; box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .dark .testimonial-card-design { background: #2A2420; }
+    .rtl-support[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+    [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+    [dir="rtl"] .dropdown-design-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+    [dir="rtl"] .testimonial-card-design { border-left: none; border-right: 5px solid #C89B8B; }
+  </style>
+</head>
+<body class="warm-pattern">
+  <!-- ======== NAVIGATION ======== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+        <!-- Logo -->
+        <a class="flex items-center gap-2 md:gap-3 group shrink-0" href='index.html'>
+          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
+            <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <div>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+          </div>
+        </a>
+        <!-- Desktop nav + actions -->
+        <div class="flex items-center gap-3 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
+          <div class="hidden xl:flex items-center gap-3 xl:gap-6">
+            <div class="dropdown-design">
+              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+              </button>
+              <div class="dropdown-design-menu">
+                <a class="dropdown-item font-medium" href="index.html"> Home 1</a>
+                <a class="dropdown-item" href="home2.html"> Home 2</a>
+              </div>
+            </div>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="portfolio.html">Portfolio</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="consultation.html">Consultation</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+            <!-- Dashboard Dropdown -->
+            <div class="dropdown-design">
+              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                Dashboard <i class="fas fa-chevron-down text-xs ms-1"></i>
+              </button>
+              <div class="dropdown-design-menu">
+                <a class="dropdown-item font-medium" href="client.html">Client</a>
+                <a class="dropdown-item font-medium" href="admin.html">Admin</a>
+              </div>
+            </div>
+          </div>
+          <!-- Desktop actions -->
+          <div class="hidden xl:flex items-center gap-3 ms-2">
+            <div id="auth-buttons" class="flex items-center gap-3">
+              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
+              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+            </div>
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center">
+              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center font-bold text-base">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+          <!-- Mobile toggle -->
+          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#C89B8B] text-[#1E1A17] flex items-center justify-center shadow-md">
+            <i class="fas fa-bars text-base"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu-design xl:hidden">
+        <div class="py-4 px-3 space-y-1">
+          <div class="py-1">
+            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+              <span>Home</span><i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+            </button>
+            <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="index.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 1</a>
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="home2.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 2</a>
+            </div>
+          </div>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="about.html">About</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="portfolio.html">Portfolio</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="services.html">Services</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="consultation.html">Consultation</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="contact.html">Contact</a>
+          <div class="py-1">
+            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+              <span>Dashboard</span><i id="dashboard-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+            </button>
+            <div id="dashboard-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="client.html">Client</a>
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="admin.html">Admin</a>
+            </div>
+          </div>
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E5D9D0] dark:border-[#3D352E]">
+            <div id="mobile-auth-buttons" class="flex flex-col gap-2">
+              <a class="text-center py-2.5 rounded-full font-semibold text-gray-700 border border-gray-200 hover:bg-gray-50 dark:text-white dark:border-gray-700 dark:hover:bg-[#2E2A26]" href="login.html">Sign In</a>
+              <a class="text-center py-2.5 rounded-full font-semibold bg-[#1E1A17] text-white hover:bg-gray-800 dark:bg-white dark:text-[#1E1A17] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
+            </div>
+            <div class="flex gap-3">
+              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme</button>
+              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== HERO (simple minimalist design) ======== -->
+  <section class="pt-36 pb-24 md:pt-44 md:pb-32 relative overflow-hidden bg-[#1E1A17] border-b border-[#3D352E]">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="/assests/hero_bg_portfolio.jpg" alt="Hero Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
+    </div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-3xl text-center animate-slide-up">
+      <span class="inline-block bg-[#C89B8B] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-6"><i class="fas fa-swatchbook"></i> portfolio</span>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6">
+        A Legacy of <br/> Transformed <span class="text-[#C89B8B]">Spaces</span>
+      </h1>
+      <div class="w-16 h-1 bg-[#C89B8B] mx-auto mb-8 rounded-full"></div>
+      <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto font-body">
+        Explore our curated selections of private residences, functional workspaces, and handcrafted details that bring tranquility to modern life.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======== SECTION 1: MAIN GALLERY SHOWCASE ======== -->
+  <section class="py-20 bg-white dark:bg-[#1A1614]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <!-- Category Filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12" id="portfolio-filters">
+        <button class="px-6 py-2 rounded-full font-semibold border border-[#C89B8B] bg-[#C89B8B] text-white transition active-filter-btn" data-filter="all">All Projects</button>
+        <button class="px-6 py-2 rounded-full font-semibold border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#C89B8B] dark:hover:border-[#C89B8B] transition" data-filter="residential">Residential</button>
+        <button class="px-6 py-2 rounded-full font-semibold border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#C89B8B] dark:hover:border-[#C89B8B] transition" data-filter="workspace">Workspace</button>
+        <button class="px-6 py-2 rounded-full font-semibold border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#C89B8B] dark:hover:border-[#C89B8B] transition" data-filter="accents">Accents</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="portfolio-grid">
+        <!-- Card 1 (Residential) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="residential">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio1.jpg" alt="Modern Classic Living" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Residential</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Modern Classic Living</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">A blend of contemporary lines and warm organic textures in a spacious Manhattan home.</p>
+          </div>
+        </div>
+        
+        <!-- Card 2 (Workspace) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="workspace">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio2.jpg" alt="Minimalist Design Studio" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Workspace</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Minimalist Design Studio</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Functional desk alignments, warm wood paneling, and custom lighting to maximize focus.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 (Accents) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="accents">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio3.jpg" alt="Scandinavian Dining Details" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Accents</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Scandinavian Dining Details</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Handmade oak table and custom-designed neutral clay stoneware for cozy gatherings.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 (Residential) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="residential">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio4.jpg" alt="Earthy Bedchamber" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Residential</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Earthy Bedchamber</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Linen curtains, textured wall coatings, and warm hidden backlights for sensory resting.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 (Workspace) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="workspace">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio5.jpg" alt="Architects Office Lounge" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Workspace</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Architects Office Lounge</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Open collaboration zones, modular sofas, and low-hanging concrete clay light pendants.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 (Accents) -->
+        <div class="project-card card-design overflow-hidden filter-item group" data-category="accents">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-[#E5D9D0]">
+            <img src="/assests/portfolio6.jpg" alt="Organic Clay Masonry" class="project-img w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Accents</span>
+            <h3 class="font-bold text-xl text-[#1E1A17] dark:text-white mt-1">Organic Clay Masonry</h3>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Handmade textured ceramic vases and stone sculpture plates curated for neutral tables.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SECTION 2: OUR CREATIVE PROCESS ======== -->
+  <section class="py-20 bg-[#F8F0EB] dark:bg-[#201C1A] border-t border-[#E5D9D0] dark:border-[#3D352E]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-white dark:bg-[#2A2420] text-[#C89B8B] px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide shadow-sm"><i class="fas fa-tasks"></i> workflow</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-[#1E1A17] dark:text-white">Our Design <span class="text-[#C89B8B]">Process</span></h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <!-- Step 1 -->
+        <div class="card-design p-6 bg-white dark:bg-[#2A2420] space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] font-bold flex items-center justify-center text-lg">01</div>
+          <h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Spatial Discovery</h3>
+          <p class="text-xs text-[#7A6E64] dark:text-[#CEC3BA] leading-relaxed">
+            We align on your habits, preferences, and light configurations. We inspect the layout and run site shadow evaluations.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="card-design p-6 bg-white dark:bg-[#2A2420] space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] font-bold flex items-center justify-center text-lg">02</div>
+          <h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">3D Spatial Mapping</h3>
+          <p class="text-xs text-[#7A6E64] dark:text-[#CEC3BA] leading-relaxed">
+            We construct detailed structural configurations. We map sightlines, circulation paths, and artificial light distributions.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="card-design p-6 bg-white dark:bg-[#2A2420] space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] font-bold flex items-center justify-center text-lg">03</div>
+          <h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Material Curation</h3>
+          <p class="text-xs text-[#7A6E64] dark:text-[#CEC3BA] leading-relaxed">
+            We source raw, organic materials—reclaimed oaks, neutral lime wall plasters, textured linen fibers, and custom metals.
+          </p>
+        </div>
+        <!-- Step 4 -->
+        <div class="card-design p-6 bg-white dark:bg-[#2A2420] space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] font-bold flex items-center justify-center text-lg">04</div>
+          <h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Artisanal Styling</h3>
+          <p class="text-xs text-[#7A6E64] dark:text-[#CEC3BA] leading-relaxed">
+            We install custom fixtures, mount handcrafted stone slabs, adjust the warm dimming details, and style details for final reveals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SECTION 3: FAQ ACCORDION ======== -->
+  <section class="py-20 bg-white dark:bg-[#1A1614] border-t border-[#E5D9D0] dark:border-[#3D352E]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-3xl">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-[#F2E3DB] dark:bg-[#2A2420] text-[#C89B8B] px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide"><i class="fas fa-question-circle"></i> support</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-[#1E1A17] dark:text-white">Frequently Asked <span class="text-[#C89B8B]">Questions</span></h2>
+      </div>
+      <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="card-design p-6 cursor-pointer faq-item" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-bold text-base md:text-lg text-[#1E1A17] dark:text-white">What is the typical timeline for an interior transformation?</h3>
+            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B8B]/15 dark:bg-[#C89B8B]/20 border border-[#C89B8B]/30 text-[#C89B8B] flex items-center justify-center transition-all duration-300 faq-icon hover:bg-[#C89B8B]/25"><i class="fas fa-plus text-sm font-bold"></i></span>
+          </div>
+          <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content">
+            <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] pt-4 leading-relaxed">
+              Residential transformations usually require 8 to 12 weeks from initial site survey to final delivery, depending on custom joinery and mason timelines. Workspace layouts typically take 10 to 14 weeks.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="card-design p-6 cursor-pointer faq-item" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-bold text-base md:text-lg text-[#1E1A17] dark:text-white">Do you source custom, one-of-a-kind furniture pieces?</h3>
+            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B8B]/15 dark:bg-[#C89B8B]/20 border border-[#C89B8B]/30 text-[#C89B8B] flex items-center justify-center transition-all duration-300 faq-icon hover:bg-[#C89B8B]/25"><i class="fas fa-plus text-sm font-bold"></i></span>
+          </div>
+          <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content">
+            <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] pt-4 leading-relaxed">
+              Yes, we collaborate directly with independent woodworkers, stone sculptors, and ceramists. We design bespoke fixtures, dining tables, and shelving and supervise their handcrafting.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="card-design p-6 cursor-pointer faq-item" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-bold text-base md:text-lg text-[#1E1A17] dark:text-white">How do you ensure sustainable design choices?</h3>
+            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#C89B8B]/15 dark:bg-[#C89B8B]/20 border border-[#C89B8B]/30 text-[#C89B8B] flex items-center justify-center transition-all duration-300 faq-icon hover:bg-[#C89B8B]/25"><i class="fas fa-plus text-sm font-bold"></i></span>
+          </div>
+          <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content">
+            <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] pt-4 leading-relaxed">
+              We select low-VOC plasters, FSC-certified woods, recyclable metal hardware, and hand-woven fibers. We aim to design timeless interiors that outlive short-term fast-fashion trends, reducing physical waste.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FINISHING / CTA SECTION ======== -->
+  <section class="py-20 bg-[#F8F0EB] dark:bg-[#201C1A] border-t border-[#E5D9D0] dark:border-[#3D352E]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl">
+      <div class="text-center bg-white dark:bg-[#2A2420] rounded-3xl p-12 border border-[#E5D9D0] dark:border-[#3D352E] shadow-lg animate-slide-up">
+        <div class="w-16 h-16 mx-auto bg-[#C89B8B] rounded-2xl flex items-center justify-center text-2xl text-[#1E1A17] shadow-md mb-6"><i class="fas fa-magic"></i></div>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white mb-4">Ready to Create Your <span class="text-[#C89B8B]">Aura</span>?</h2>
+        <p class="text-[#3D352E] dark:text-[#CEC3BA] text-lg mb-8 max-w-xl mx-auto font-body">Let’s collaborate to turn your structural constraints into an inspiring, peaceful sanctuary.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="consultation.html" class="btn-primary-design px-8 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto whitespace-nowrap"><i class="fas fa-calendar-alt"></i> Book Consultation</a>
+          <a href="contact.html" class="btn-outline-design px-8 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap"><i class="fas fa-envelope"></i> Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="bg-white dark:bg-[#1A1614] text-[#1E1A17] dark:text-white pt-16 pb-8 border-t-4 border-[#C89B8B] transition-colors duration-300">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="text-center md:text-start">
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+              <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
+              <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+              <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+          </div>
+          <p class="mb-5 text-[#3D352E] dark:text-[#CEC3BA] text-sm">Where interiors become art. Personalized design for modern living.</p>
+          <div class="flex justify-center md:justify-start gap-3">
+            <a href="#" class="social-icon-design"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+          <ul class="space-y-2">
+            <li><a href="portfolio.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Portfolio</a></li>
+            <li><a href="services.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Services</a></li>
+            <li><a href="consultation.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Consultation</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Client Portal</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">About</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Careers</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Press</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
+          <ul class="space-y-3">
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-map-pin text-[#C89B8B] mt-1"></i><span>45 Design Ave, New York</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-phone text-[#C89B8B]"></i><span>(212) 555-0199</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-envelope text-[#C89B8B]"></i><span>studio@atelier.design</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA] text-sm"><i class="fas fa-clock text-[#C89B8B]"></i><span>Mon–Fri 9am – 7pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-[#E5D9D0] dark:border-[#3D352E] text-center text-sm text-[#4A3F38] dark:text-[#9E8F84]">
+        <p>&copy; 2026 AURA SPACE &middot; Interior Design Studio. <i class="fas fa-heart text-[#C89B8B] mx-1"></i> Crafting beautiful spaces.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== SCRIPTS ======== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dynamic Active Navigation Link highlighting
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      
+      // Desktop Links
+      document.querySelectorAll('.hidden.xl\\:flex.items-center .nav-link, .hidden.xl\\:flex.items-center .dropdown-item').forEach(el => {
+        el.classList.remove('active');
+      });
+      const matchingLink = Array.from(document.querySelectorAll('.hidden.xl\\:flex.items-center a, .hidden.xl\\:flex.items-center button')).find(el => {
+        return el.getAttribute('href') === currentPath;
+      });
+      if (matchingLink) {
+        matchingLink.classList.add('active');
+        const parentDropdown = matchingLink.closest('.dropdown-design');
+        if (parentDropdown) {
+          const dropdownBtn = parentDropdown.querySelector('.nav-link');
+          if (dropdownBtn) dropdownBtn.classList.add('active');
+        }
+      }
+
+      // Mobile Links
+      const mobileContainer = document.getElementById('mobile-menu');
+      if (mobileContainer) {
+        mobileContainer.querySelectorAll('a').forEach(link => {
+          link.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+          link.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+        });
+        mobileContainer.querySelectorAll('.pl-2 a').forEach(link => {
+          link.classList.remove('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+        });
+        mobileContainer.querySelectorAll('.py-1 > button').forEach(btn => {
+          btn.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+          btn.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+        });
+        const matchingMobileLink = Array.from(mobileContainer.querySelectorAll('a')).find(link => {
+          return link.getAttribute('href') === currentPath;
+        });
+        if (matchingMobileLink) {
+          const isNested = matchingMobileLink.closest('#home-mobile-drop') || matchingMobileLink.closest('#dashboard-mobile-drop');
+          if (isNested) {
+            matchingMobileLink.classList.add('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+            const parentButton = matchingMobileLink.closest('.py-1')?.querySelector('button');
+            if (parentButton) {
+              parentButton.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+              parentButton.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+            }
+          } else {
+            matchingMobileLink.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+            matchingMobileLink.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+          }
+        }
+      }
+
+      // Theme toggle
+      const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+      themeBtns.forEach(btn => {
+        btn?.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+      });
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+      // RTL
+      function setRTL(isRTL) {
+        const html = document.documentElement;
+        if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); } 
+        else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+      }
+      const savedDir = localStorage.getItem('dir');
+      if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      const rtlBtn = document.getElementById('rtl-toggle');
+      if (rtlBtn) {
+        rtlBtn.addEventListener('click', () => {
+          const currentDir = document.documentElement.getAttribute('dir');
+          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+        });
+      }
+      const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+      if (mobileRtlBtn) {
+        mobileRtlBtn.addEventListener('click', () => {
+          const currentDir = document.documentElement.getAttribute('dir');
+          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileToggle = document.getElementById('mobile-toggle');
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            if (mobileToggle && mobileToggle.querySelector('i')) {
+              mobileToggle.querySelector('i').classList.remove('fa-times');
+              mobileToggle.querySelector('i').classList.add('fa-bars');
+            }
+          }
+        });
+      }
+      // Mobile menu
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+          const icon = mobileToggle.querySelector('i');
+          if (mobileMenu.classList.contains('open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+        mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            if (mobileToggle.querySelector('i')) {
+              mobileToggle.querySelector('i').classList.remove('fa-times');
+              mobileToggle.querySelector('i').classList.add('fa-bars');
+            }
+          });
+        });
+      }
+      // Auth buttons remain visible
+
+      // Dropdown
+      const userMenuBtn = document.getElementById('user-menu-btn');
+      const userDropdown = document.getElementById('user-dropdown');
+      if (userMenuBtn && userDropdown) {
+        userMenuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle('hidden');
+        });
+        document.addEventListener('click', () => { userDropdown.classList.add('hidden'); });
+      }
+      const handleLogout = () => { localStorage.removeItem('currentUser'); window.location.reload(); };
+      document.getElementById('logout-btn')?.addEventListener('click', handleLogout);
+      document.getElementById('mobile-logout-btn')?.addEventListener('click', handleLogout);
+
+      // Gallery Filter Logic
+      const filterBtns = document.querySelectorAll('#portfolio-filters button');
+      const filterItems = document.querySelectorAll('#portfolio-grid .filter-item');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active class on buttons
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-[#C89B8B]', 'text-white', 'active-filter-btn');
+            b.classList.add('border-gray-200', 'dark:border-gray-700', 'text-gray-700', 'dark:text-gray-300');
+          });
+          btn.classList.add('bg-[#C89B8B]', 'text-white', 'active-filter-btn');
+          btn.classList.remove('border-gray-200', 'dark:border-gray-700', 'text-gray-700', 'dark:text-gray-300');
+
+          const filterValue = btn.getAttribute('data-filter');
+          filterItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+
+    // FAQ Toggle Logic
+    function toggleFaq(element) {
+      const content = element.querySelector('.faq-content');
+      const icon = element.querySelector('.faq-icon');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== element) {
+          item.querySelector('.faq-content').style.maxHeight = null;
+          item.querySelector('.faq-icon').classList.remove('rotate-45');
+        }
+      });
+
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.classList.remove('rotate-45');
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.add('rotate-45');
+      }
+    }
+  </script>
+</body>
+</html>

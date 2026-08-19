@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Space &middot; Services</title>
+  <!-- Custom Favicon (Aura Space geometric circle) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <!-- Tailwind CSS via CDN -->
+    <script src="tailwind.js"></script>
+
+  <!-- Custom Tailwind Configuration (warm, refined palette) -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
+          colors: {
+            brand: {
+              primary: '#1E1A17',
+              secondary: '#3D352E',
+              muted: '#7A6E64',
+              border: '#E5D9D0',
+              accent: '#C89B8B',
+              'accent-dark': '#B08474',
+              'accent-light': '#F2E3DB',
+              bg: '#FCF8F5',
+              'bg-soft': '#F8F0EB',
+            },
+            custom: {
+              clay: '#C89B8B',
+              'clay-light': '#F2E3DB',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+          },
+          keyframes: {
+            floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+            slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+          },
+          backgroundImage: {
+            'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts (serif + sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* consistency overrides */
+    h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+    p { font-weight: 400; }
+    p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
+    .font-extrabold { font-weight: 800 !important; }
+    /* brand color mappings */
+    .bg-brand-accent { background-color: #C89B8B; }
+    .text-brand-accent { color: #C89B8B; }
+    .border-brand-accent { border-color: #C89B8B; }
+    .bg-brand-accent-light { background-color: #F2E3DB; }
+    .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
+    .bg-brand-bg-soft { background-color: #F8F0EB; }
+    body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
+    .dark body { background-color: #1A1614; color: #EDE6E0; }
+    .dark .text-brand-primary { color: #EDE6E0; }
+    .dark .text-brand-secondary { color: #CEC3BA; }
+    .dark .text-brand-muted { color: #9E8F84; }
+    .dark .bg-brand-bg-soft { background-color: #2A2420; }
+    .dark .border-brand-border { border-color: #3D352E; }
+    /* scroll */
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
+    /* cards & buttons */
+    .card-design {
+      background: #FFFFFF;
+      border-radius: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid #E5D9D0;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+    .dark .card-design { background: #2A2420; border-color: #3D352E; }
+    .card-design:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
+      border-color: #C89B8B;
+    }
+    .btn-primary-design {
+      background-color: #1E1A17;
+      color: #FCF8F5;
+      font-weight: 600;
+      border-radius: 60px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .btn-primary-design:hover {
+      background-color: #3D352E;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(200,155,139,0.3);
+      color: #FCF8F5;
+    }
+    .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
+    .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
+    .btn-outline-design {
+      border: 1.5px solid #1E1A17;
+      color: #1E1A17;
+      background: transparent;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
+    .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
+    .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
+    /* navigation (same structure) */
+    .nav-link { position: relative; font-weight: 500; color: #1E1A17; transition: color 0.3s; }
+    .dark .nav-link { color: #EDE6E0; }
+    .nav-link:hover { color: #C89B8B; }
+    .nav-link.active { color: #C89B8B !important; }
+    .dropdown-item.active { background-color: #F8F0EB; color: #C89B8B !important; font-weight: 600; }
+    .dark .dropdown-item.active { background-color: #2E2420; color: #C89B8B !important; }
+    .dropdown-design { position: relative; }
+    .dropdown-design-menu {
+      position: absolute; top: 100%; left: 0; min-width: 200px; background: #FFFFFF;
+      border-radius: 18px; padding: 0.5rem 0; box-shadow: 0 18px 32px rgba(0,0,0,0.06);
+      opacity: 0; visibility: hidden; transform: translateY(12px); transition: all 0.25s ease;
+      z-index: 1000; border: 1px solid #E5D9D0;
+    }
+    .dark .dropdown-design-menu { background: #2A2420; border-color: #3D352E; }
+    .dropdown-design:hover .dropdown-design-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-item {
+      display: flex; align-items: center; padding: 0.6rem 1.4rem; transition: all 0.2s;
+      color: #1E1A17;
+    }
+    .dark .dropdown-item { color: #EDE6E0; }
+    .dropdown-item:hover { background-color: #F8F0EB; color: #1E1A17; padding-left: 1.7rem; }
+    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+    .mobile-menu-design {
+      background: #FFFFFF; max-height: 0; overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 0 24px 24px;
+    }
+    .dark .mobile-menu-design { background: #2A2420; }
+    .mobile-menu-design.open { max-height: 80vh; overflow-y: auto; scrollbar-width: none; }
+    .mobile-menu-design.open::-webkit-scrollbar { display: none; }
+    .social-icon-design {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background-color: #F8F0EB; color: #1E1A17; transition: all 0.3s;
+    }
+    .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; transform: translateY(-3px); }
+    .dark .social-icon-design { background-color: #2A2420; color: #EDE6E0; }
+    .dark .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; }
+    /* project card */
+    .project-card .project-img { transition: transform 0.5s ease; }
+    .project-card:hover .project-img { transform: scale(1.03); }
+    .testimonial-card-design {
+      background: #FFFFFF; border-radius: 28px; padding: 1.8rem;
+      border-left: 5px solid #C89B8B; box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .dark .testimonial-card-design { background: #2A2420; }
+    .rtl-support[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+    [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+    [dir="rtl"] .dropdown-design-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+    [dir="rtl"] .testimonial-card-design { border-left: none; border-right: 5px solid #C89B8B; }
+    /* hero specific */
+    .hero-design-bg {
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%23F8F0EB"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%23E5D9D0" opacity="0.3"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%23D4B8A7" opacity="0.2"/%3E%3C/svg%3E');
+      background-size: cover; background-position: center;
+    }
+    .dark .hero-design-bg { background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%231A1614"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%233D352E" opacity="0.4"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%23B08474" opacity="0.2"/%3E%3C/svg%3E'); }
+    .floating-badge { background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); }
+    .dark .floating-badge { background: rgba(30,26,23,0.85); }
+    /* services extras */
+    .service-hero-overlay {
+      background: linear-gradient(135deg, rgba(30,26,23,0.5) 0%, rgba(30,26,23,0.1) 100%);
+    }
+    .dark .service-hero-overlay {
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%);
+    }
+    .service-card {
+      border-left: 4px solid #C89B8B;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 8px 24px rgba(200,155,139,0.15);
+    }
+    .dark .service-card:hover {
+      box-shadow: 0 8px 24px rgba(200,155,139,0.1);
+    }
+    .price-tag {
+      background: #F8F0EB;
+      padding: 0.25rem 1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1E1A17;
+    }
+    .dark .price-tag {
+      background: #2A2420;
+      color: #EDE6E0;
+    }
+  </style>
+</head>
+<body class="warm-pattern">
+  <!-- ======== NAVIGATION (identical) ======== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+        <!-- Logo -->
+        <a class="flex items-center gap-2 md:gap-3 group shrink-0" href='index.html'>
+          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
+            <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <div>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+          </div>
+        </a>
+        <!-- Desktop nav + actions -->
+        <div class="flex items-center gap-3 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
+          <div class="hidden xl:flex items-center gap-3 xl:gap-6">
+            <div class="dropdown-design">
+              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+              </button>
+              <div class="dropdown-design-menu">
+                <a class="dropdown-item font-medium" href="index.html"> Home 1</a>
+                <a class="dropdown-item" href="home2.html"> Home 2</a>
+              </div>
+            </div>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="portfolio.html">Portfolio</a>
+            <a class="nav-link active hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="consultation.html">Consultation</a>
+            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+            <!-- Dashboard Dropdown -->
+            <div class="dropdown-design">
+              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                Dashboard <i class="fas fa-chevron-down text-xs ms-1"></i>
+              </button>
+              <div class="dropdown-design-menu">
+                <a class="dropdown-item font-medium" href="client.html">Client</a>
+                <a class="dropdown-item font-medium" href="admin.html">Admin</a>
+              </div>
+            </div>
+          </div>
+          <!-- Desktop actions -->
+          <div class="hidden xl:flex items-center gap-3 ms-2">
+            <div id="auth-buttons" class="flex items-center gap-3">
+              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
+              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+            </div>
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center">
+              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center font-bold text-base">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+          <!-- Mobile toggle -->
+          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#C89B8B] text-[#1E1A17] flex items-center justify-center shadow-md">
+            <i class="fas fa-bars text-base"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu-design xl:hidden">
+        <div class="py-4 px-3 space-y-1">
+          <div class="py-1">
+            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+              <span>Home</span><i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+            </button>
+            <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="index.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 1</a>
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="home2.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 2</a>
+            </div>
+          </div>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="about.html">About</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="portfolio.html">Portfolio</a>
+          <a class="block py-3 px-4 font-medium border-l-4 border-[#C89B8B] bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-white rounded-xl transition" href="services.html">Services</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="consultation.html">Consultation</a>
+          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="contact.html">Contact</a>
+          <div class="py-1">
+            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+              <span>Dashboard</span><i id="dashboard-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+            </button>
+            <div id="dashboard-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="client.html">Client</a>
+              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="admin.html">Admin</a>
+            </div>
+          </div>
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E5D9D0] dark:border-[#3D352E]">
+            <div id="mobile-auth-buttons" class="flex flex-col gap-2">
+              <a class="text-center py-2.5 rounded-full font-semibold text-gray-700 border border-gray-200 hover:bg-gray-50 dark:text-white dark:border-gray-700 dark:hover:bg-[#2E2A26]" href="login.html">Sign In</a>
+              <a class="text-center py-2.5 rounded-full font-semibold bg-[#1E1A17] text-white hover:bg-gray-800 dark:bg-white dark:text-[#1E1A17] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
+            </div>
+            <div class="flex gap-3">
+              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme</button>
+              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== SERVICES HERO ======== -->
+  <section class="min-h-[55vh] flex items-center pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden bg-[#1E1A17]">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="/assests/hero_bg_services.jpg" alt="Hero Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
+    </div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="max-w-4xl mx-auto text-center animate-slide-up">
+        <span class="inline-block bg-[#C89B8B] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4"><i class="fas fa-concierge-bell"></i> services</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white">Design <span class="text-[#C89B8B]">Solutions</span> for Every Room</h1>
+        <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">Tailored interior design packages organized by space — with transparent pricing to match your vision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== ROOM SERVICES (Living Room, Bedroom, Kitchen, Bathroom) ======== -->
+  <section class="py-24 bg-[#FCF8F5] dark:bg-[#1A1614] border-y border-[#E5D9D0]/50 dark:border-[#3D352E]/30 overflow-hidden">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-24">
+        <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase block mb-3">— CURATED SPACES</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">Design Packages by Room</h2>
+        <div class="h-[1px] w-16 bg-[#C89B8B] mx-auto mt-4"></div>
+      </div>
+
+      <!-- Spaces Narrative List -->
+      <div class="space-y-32">
+        
+        <!-- Space 01: The Living Salon -->
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-32" id="living-room">
+          <!-- Left Column: Offset Image Frame -->
+          <div class="lg:col-span-5 relative group order-1">
+            <!-- Underlay border -->
+            <div class="absolute inset-0 border border-[#C89B8B] rounded-[32px] translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+            <!-- Image container -->
+            <div class="relative aspect-[4/3] lg:aspect-[3/4] rounded-[32px] overflow-hidden shadow-xl bg-[#1E1A17] border border-[#E5D9D0]/40 dark:border-[#3D352E]/30">
+              <img src="/assests/h1.jpg" alt="The Living Salon" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition duration-700 ease-out" />
+            </div>
+            <!-- Floating Category Tag -->
+            <div class="absolute top-4 left-4 bg-[#1E1A17]/85 dark:bg-[#C89B8B]/95 text-white dark:text-[#1E1A17] px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">
+              Salon
+            </div>
+          </div>
+          
+          <!-- Right Column: Editorial Details -->
+          <div class="lg:col-span-7 space-y-6 order-2">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase">Specification 01</span>
+              <div class="h-[1px] w-12 bg-[#C89B8B]/40"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">The Living Salon</h2>
+            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-wider font-semibold">Conversational Layouts & Textural Balance</p>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] leading-relaxed">
+              Creating a warm, magnetic center for the home. We balance luxury comfort with structural flow, ensuring a space that easily adapts from quiet reading afternoons to elegant social gatherings.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-[#1E1A17] dark:text-white uppercase tracking-widest pt-2">
+              <span>Investment: <span class="text-[#C89B8B]">From $4,800</span></span>
+              <span class="text-[#E5D9D0] dark:text-[#3D352E]">|</span>
+              <span>Timeline: <span class="text-[#C89B8B]">4–6 Weeks</span></span>
+            </div>
+
+            <div class="border-t border-[#E5D9D0]/60 dark:border-[#3D352E]/40 pt-6 space-y-4">
+              <h4 class="text-xs uppercase font-extrabold tracking-widest text-[#1E1A17] dark:text-white">Included Services</h4>
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Spatial Planning:</strong> Scale floor layouts & traffic flow pathing.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Tactile Palette:</strong> Custom plaster, timber, and luxury textile sourcing.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Lighting Plot:</strong> Ambient, task, and architectural fixture layers.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Installation:</strong> White-glove ordering, staging, and styling.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4">
+              <a href="consultation.html" class="btn-primary-design px-7 py-3 rounded-full font-bold inline-flex items-center gap-2 text-xs uppercase tracking-widest shadow-md hover:-translate-y-0.5 transition-all">
+                Book Consultation <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 02: The Bedchamber -->
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-32" id="bedroom">
+          <!-- Left Column: Editorial Details (Zigzag Alternated) -->
+          <div class="lg:col-span-7 space-y-6 order-2 lg:order-1">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase">Specification 02</span>
+              <div class="h-[1px] w-12 bg-[#C89B8B]/40"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">The Bedchamber</h2>
+            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-wider font-semibold">Restful Harmony & Tailored Comfort</p>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] leading-relaxed">
+              We design cozy, peaceful environments optimized for rest, incorporating rich natural textures, bespoke headboards, and clean integrated storage.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-[#1E1A17] dark:text-white uppercase tracking-widest pt-2">
+              <span>Investment: <span class="text-[#C89B8B]">From $3,200</span></span>
+              <span class="text-[#E5D9D0] dark:text-[#3D352E]">|</span>
+              <span>Timeline: <span class="text-[#C89B8B]">3–5 Weeks</span></span>
+            </div>
+
+            <div class="border-t border-[#E5D9D0]/60 dark:border-[#3D352E]/40 pt-6 space-y-4">
+              <h4 class="text-xs uppercase font-extrabold tracking-widest text-[#1E1A17] dark:text-white">Included Services</h4>
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Aura & Layout:</strong> Placing elements to enhance visual calm.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Light-Blocking:</strong> Custom blackout drapery and curtain integration.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Wardrobe Joinery:</strong> Designing functional closets and organization.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Bedding Sourcing:</strong> Curating organic sheets, custom duvets, and pillows.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4">
+              <a href="consultation.html" class="btn-primary-design px-7 py-3 rounded-full font-bold inline-flex items-center gap-2 text-xs uppercase tracking-widest shadow-md hover:-translate-y-0.5 transition-all">
+                Book Consultation <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Offset Image Frame -->
+          <div class="lg:col-span-5 relative group order-1 lg:order-2">
+            <!-- Underlay border -->
+            <div class="absolute inset-0 border border-[#C89B8B] rounded-[32px] -translate-x-4 translate-y-4 transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2"></div>
+            <!-- Image container -->
+            <div class="relative aspect-[4/3] lg:aspect-[3/4] rounded-[32px] overflow-hidden shadow-xl bg-[#1E1A17] border border-[#E5D9D0]/40 dark:border-[#3D352E]/30">
+              <img src="/assests/h3.jpg" alt="The Bedchamber" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition duration-700 ease-out" />
+            </div>
+            <!-- Floating Category Tag -->
+            <div class="absolute top-4 right-4 bg-[#1E1A17]/85 dark:bg-[#C89B8B]/95 text-white dark:text-[#1E1A17] px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">
+              Chamber
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 03: The Culinary Hearth -->
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-32" id="kitchen">
+          <!-- Left Column: Offset Image Frame -->
+          <div class="lg:col-span-5 relative group order-1">
+            <!-- Underlay border -->
+            <div class="absolute inset-0 border border-[#C89B8B] rounded-[32px] translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+            <!-- Image container -->
+            <div class="relative aspect-[4/3] lg:aspect-[3/4] rounded-[32px] overflow-hidden shadow-xl bg-[#1E1A17] border border-[#E5D9D0]/40 dark:border-[#3D352E]/30">
+              <img src="/assests/kitchen_interior.jpg" alt="The Culinary Hearth" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition duration-700 ease-out" />
+            </div>
+            <!-- Floating Category Tag -->
+            <div class="absolute top-4 left-4 bg-[#1E1A17]/85 dark:bg-[#C89B8B]/95 text-white dark:text-[#1E1A17] px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">
+              Hearth
+            </div>
+          </div>
+          
+          <!-- Right Column: Editorial Details -->
+          <div class="lg:col-span-7 space-y-6 order-2">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase">Specification 03</span>
+              <div class="h-[1px] w-12 bg-[#C89B8B]/40"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">The Culinary Hearth</h2>
+            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-wider font-semibold">Premium Finishes & Functional Efficiency</p>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] leading-relaxed">
+              Reimaging the center of nourishment and gathering. We balance hard-wearing natural stones, sleek custom woodwork, and expert appliance integration to deliver a space that is as beautiful as it is ergonomically perfect.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-[#1E1A17] dark:text-white uppercase tracking-widest pt-2">
+              <span>Investment: <span class="text-[#C89B8B]">From $6,500</span></span>
+              <span class="text-[#E5D9D0] dark:text-[#3D352E]">|</span>
+              <span>Timeline: <span class="text-[#C89B8B]">6–10 Weeks</span></span>
+            </div>
+
+            <div class="border-t border-[#E5D9D0]/60 dark:border-[#3D352E]/40 pt-6 space-y-4">
+              <h4 class="text-xs uppercase font-extrabold tracking-widest text-[#1E1A17] dark:text-white">Included Services</h4>
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Triangle Ergonomics:</strong> Planning optimal prep, sink, and stove pathways.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Stone & Wood Curation:</strong> Sourcing marble slabs, wood finishes, and hardware.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Task Illumination:</strong> Placement of under-cabinet LEDs and pendant spots.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Remodel Supervision:</strong> Coordinating spatial layout and cabinet makers.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4">
+              <a href="consultation.html" class="btn-primary-design px-7 py-3 rounded-full font-bold inline-flex items-center gap-2 text-xs uppercase tracking-widest shadow-md hover:-translate-y-0.5 transition-all">
+                Book Consultation <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 04: The Bathing Sanctuary -->
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-32" id="bathroom">
+          <!-- Left Column: Editorial Details (Zigzag Alternated) -->
+          <div class="lg:col-span-7 space-y-6 order-2 lg:order-1">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase">Specification 04</span>
+              <div class="h-[1px] w-12 bg-[#C89B8B]/40"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">The Bathing Sanctuary</h2>
+            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-wider font-semibold">Tactile Stones & Spa-Like Solitude</p>
+            <p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] leading-relaxed">
+              Revisiting the washroom as a luxury spa. We align custom marble vanities, concealed LED lighting systems, and brass hardware to turn daily routines into rituals of relaxation.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-[#1E1A17] dark:text-white uppercase tracking-widest pt-2">
+              <span>Investment: <span class="text-[#C89B8B]">From $4,200</span></span>
+              <span class="text-[#E5D9D0] dark:text-[#3D352E]">|</span>
+              <span>Timeline: <span class="text-[#C89B8B]">4–8 Weeks</span></span>
+            </div>
+
+            <div class="border-t border-[#E5D9D0]/60 dark:border-[#3D352E]/40 pt-6 space-y-4">
+              <h4 class="text-xs uppercase font-extrabold tracking-widest text-[#1E1A17] dark:text-white">Included Services</h4>
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                <li class="flex items-start gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Fixture Blueprint:</strong> Layout for showers, freestanding tubs, and vanities.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Luxury Materials:</strong> Stone vanity tops, custom mosaic tiling, and trim.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Concealed Light:</strong> Custom lighting tracks and custom backlit mirrors.</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <i class="fas fa-minus text-[#C89B8B] mt-1.5 text-[10px]"></i>
+                  <span class="text-xs text-[#3D352E] dark:text-[#CEC3BA]"><strong class="text-[#1E1A17] dark:text-white font-semibold">Soft Accessories:</strong> High-end towels, storage organizers, and tray accents.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4">
+              <a href="consultation.html" class="btn-primary-design px-7 py-3 rounded-full font-bold inline-flex items-center gap-2 text-xs uppercase tracking-widest shadow-md hover:-translate-y-0.5 transition-all">
+                Book Consultation <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Offset Image Frame -->
+          <div class="lg:col-span-5 relative group order-1 lg:order-2">
+            <!-- Underlay border -->
+            <div class="absolute inset-0 border border-[#C89B8B] rounded-[32px] -translate-x-4 translate-y-4 transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2"></div>
+            <!-- Image container -->
+            <div class="relative aspect-[4/3] lg:aspect-[3/4] rounded-[32px] overflow-hidden shadow-xl bg-[#1E1A17] border border-[#E5D9D0]/40 dark:border-[#3D352E]/30">
+              <img src="/assests/bathroom.jpg" alt="The Bathing Sanctuary" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-102 transition duration-700 ease-out" />
+            </div>
+            <!-- Floating Category Tag -->
+            <div class="absolute top-4 right-4 bg-[#1E1A17]/85 dark:bg-[#C89B8B]/95 text-white dark:text-[#1E1A17] px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest">
+              Sanctuary
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Note -->
+      <div class="mt-24 p-8 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-3xl border border-[#E5D9D0] dark:border-[#3D352E] text-center max-w-4xl mx-auto">
+        <p class="text-[#3D352E] dark:text-[#CEC3BA] text-sm leading-relaxed"><i class="fas fa-info-circle text-[#C89B8B] mr-2"></i> All packages include a discovery call, mood board, 3D renderings, and a dedicated project manager. Custom quotes available for multi-room or full-home projects.</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- ======== PRICING PLANS ======== -->
+  <section class="py-24 bg-white dark:bg-[#1A1614] border-b border-[#E5D9D0]/50 dark:border-[#3D352E]/30" id="pricing">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-[10px] text-[#C89B8B] font-extrabold tracking-widest uppercase block mb-3">— INVESTMENT PLANS</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white leading-tight">Tailored Design Investment</h2>
+        <div class="h-[1px] w-16 bg-[#C89B8B] mx-auto mt-4"></div>
+      </div>
+      
+      <!-- Pricing Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1: Lite -->
+        <div class="card-design p-8 bg-[#FCF8F5] dark:bg-[#201B18] border border-[#E5D9D0]/70 dark:border-[#3D352E]/40 flex flex-col justify-between h-full hover:shadow-2xl hover:-translate-y-1.5 duration-300">
+          <div>
+            <div class="mb-6">
+              <span class="text-[9px] text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-widest block mb-1">Tier 01</span>
+              <h3 class="text-xl font-bold text-[#1E1A17] dark:text-white font-display">Aura Lite</h3>
+              <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mt-1.5">Design concept & digital styling guides</p>
+            </div>
+            
+            <div class="border-y border-[#E5D9D0]/50 dark:border-[#3D352E]/30 py-4 mb-6">
+              <span class="text-3xl font-display font-bold text-[#1E1A17] dark:text-white">$950</span>
+              <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">/ Room</span>
+            </div>
+            
+            <ul class="space-y-3.5 mb-8">
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>2-Hour Virtual Discovery</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Curated Mood & Vibe Board</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Digital 2D Space Layout</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Paint & Material Guides</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Shoppable Product Links List</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="consultation.html" class="w-full text-center py-3 border border-[#1E1A17] dark:border-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E1A17] hover:text-white dark:hover:bg-white dark:hover:text-[#1E1A17] transition-all">Select Plan</a>
+        </div>
+        
+        <!-- Card 2: Signature [Featured] -->
+        <div class="card-design p-8 bg-[#1E1A17] text-white border border-[#3D352E]/30 relative flex flex-col justify-between h-full hover:shadow-2xl hover:-translate-y-1.5 duration-300">
+          <div>
+            <div class="mb-6">
+              <span class="text-[9px] text-[#C89B8B] uppercase tracking-widest block mb-1">Tier 02</span>
+              <h3 class="text-xl font-bold font-display text-white">Aura Signature</h3>
+              <p class="text-xs text-gray-400 mt-1.5">Complete spatial blueprints & 3D renderings</p>
+            </div>
+            
+            <div class="border-y border-white/10 py-4 mb-6">
+              <span class="text-3xl font-display font-bold text-white">$3,800</span>
+              <span class="text-xs text-gray-400">/ Room</span>
+            </div>
+            
+            <ul class="space-y-3.5 mb-8">
+              <li class="flex items-center gap-3 text-xs text-gray-300">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Virtual + In-Person Discovery</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-gray-300">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Photorealistic 3D Renderings</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-gray-300">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Material Swatches Direct Box</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-gray-300">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Bespoke Lighting Plot Layouts</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-gray-300">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Full Trade Pricing Access</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="consultation.html" class="w-full text-center py-3 bg-[#C89B8B] text-[#1E1A17] rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#B08474] transition-all">Get Started</a>
+        </div>
+        
+        <!-- Card 3: Elite -->
+        <div class="card-design p-8 bg-[#FCF8F5] dark:bg-[#201B18] border border-[#E5D9D0]/70 dark:border-[#3D352E]/40 flex flex-col justify-between h-full hover:shadow-2xl hover:-translate-y-1.5 duration-300">
+          <div>
+            <div class="mb-6">
+              <span class="text-[9px] text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-widest block mb-1">Tier 03</span>
+              <h3 class="text-xl font-bold text-[#1E1A17] dark:text-white font-display">Aura Elite</h3>
+              <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mt-1.5">Full-home architectural transformation</p>
+            </div>
+            
+            <div class="border-y border-[#E5D9D0]/50 dark:border-[#3D352E]/30 py-4 mb-6">
+              <span class="text-3xl font-display font-bold text-[#1E1A17] dark:text-white">Custom</span>
+              <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">/ Quote</span>
+            </div>
+            
+            <ul class="space-y-3.5 mb-8">
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Complete Multi-Room Blueprints</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Bespoke Furniture Design & Carpentry</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>On-Site Contractor Management</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Full Sourcing & Storage Oversee</span>
+              </li>
+              <li class="flex items-center gap-3 text-xs text-[#3D352E] dark:text-[#CEC3BA]">
+                <i class="fas fa-check text-[#C89B8B] text-[10px]"></i>
+                <span>Final White-Glove Staging & Install</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="consultation.html" class="w-full text-center py-3 border border-[#1E1A17] dark:border-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#1E1A17] hover:text-white dark:hover:bg-white dark:hover:text-[#1E1A17] transition-all">Enquire Now</a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+<!-- ======== CTA ======== -->
+  <section class="py-20 bg-[#F8F0EB] dark:bg-[#25201C]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl">
+      <div class="flex flex-col items-center text-center bg-white dark:bg-[#1A1614] rounded-3xl p-6 md:p-12 border border-[#E5D9D0] dark:border-[#3D352E] shadow-lg">
+        <div class="w-16 h-16 mx-auto bg-[#C89B8B] rounded-2xl flex items-center justify-center text-2xl text-[#1E1A17] shadow-md mb-6"><i class="fas fa-handshake"></i></div>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white mb-4">Ready to <span class="text-[#C89B8B]">Transform</span> Your Space?</h2>
+        <p class="text-[#3D352E] dark:text-[#CEC3BA] text-lg mb-8 max-w-2xl mx-auto">Let’s discuss your project and create a tailored plan that fits your style and budget.</p>
+        <a href="#" class="btn-primary-design px-10 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"><i class="fas fa-calendar-plus"></i> Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER (identical) ======== -->
+  <footer class="bg-white dark:bg-[#1A1614] text-[#1E1A17] dark:text-white pt-16 pb-8 border-t-4 border-[#C89B8B] transition-colors duration-300">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="text-center md:text-start">
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+              <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
+              <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+              <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+          </div>
+          <p class="mb-5 text-[#3D352E] dark:text-[#CEC3BA] text-sm">Where interiors become art. Personalized design for modern living.</p>
+          <div class="flex justify-center md:justify-start gap-3">
+            <a href="#" class="social-icon-design"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon-design"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+          <ul class="space-y-2">
+            <li><a href="portfolio.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Portfolio</a></li>
+            <li><a href="services.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Services</a></li>
+            <li><a href="consultation.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Consultation</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Client Portal</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">About</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Careers</a></li>
+            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Press</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-start">
+          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
+          <ul class="space-y-3">
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-map-pin text-[#C89B8B] mt-1"></i><span>45 Design Ave, New York</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-phone text-[#C89B8B]"></i><span>(212) 555-0199</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-envelope text-[#C89B8B]"></i><span>studio@atelier.design</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA] text-sm"><i class="fas fa-clock text-[#C89B8B]"></i><span>Mon–Fri 9am – 7pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-[#E5D9D0] dark:border-[#3D352E] text-center text-sm text-[#4A3F38] dark:text-[#9E8F84]">
+        <p>&copy; 2026 AURA SPACE &middot; Interior Design Studio. <i class="fas fa-heart text-[#C89B8B] mx-1"></i> Crafting beautiful spaces.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== SCRIPTS (same as reference) ======== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname.split('/').pop() || 'services.html';
+      
+      // Desktop active links
+      document.querySelectorAll('.hidden.xl\\:flex.items-center .nav-link, .hidden.xl\\:flex.items-center .dropdown-item').forEach(el => {
+        el.classList.remove('active');
+      });
+      const matchingLink = Array.from(document.querySelectorAll('.hidden.xl\\:flex.items-center a, .hidden.xl\\:flex.items-center button')).find(el => {
+        return el.getAttribute('href') === currentPath;
+      });
+      if (matchingLink) {
+        matchingLink.classList.add('active');
+        const parentDropdown = matchingLink.closest('.dropdown-design');
+        if (parentDropdown) {
+          const dropdownBtn = parentDropdown.querySelector('.nav-link');
+          if (dropdownBtn) dropdownBtn.classList.add('active');
+        }
+      }
+
+      // Mobile active
+      const mobileContainer = document.getElementById('mobile-menu');
+      if (mobileContainer) {
+        mobileContainer.querySelectorAll('a').forEach(link => {
+          link.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+          link.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+        });
+        mobileContainer.querySelectorAll('.pl-2 a').forEach(link => {
+          link.classList.remove('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+        });
+        mobileContainer.querySelectorAll('.py-1 > button').forEach(btn => {
+          btn.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+          btn.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+        });
+        const matchingMobileLink = Array.from(mobileContainer.querySelectorAll('a')).find(link => {
+          return link.getAttribute('href') === currentPath;
+        });
+        if (matchingMobileLink) {
+          const isNested = matchingMobileLink.closest('#home-mobile-drop') || matchingMobileLink.closest('#dashboard-mobile-drop');
+          if (isNested) {
+            matchingMobileLink.classList.add('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+            const parentButton = matchingMobileLink.closest('.py-1')?.querySelector('button');
+            if (parentButton) {
+              parentButton.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+              parentButton.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+            }
+          } else {
+            matchingMobileLink.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+            matchingMobileLink.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+          }
+        }
+      }
+
+      // Theme toggle
+      const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+      themeBtns.forEach(btn => {
+        btn?.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+      });
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+      // RTL
+      function setRTL(isRTL) {
+        const html = document.documentElement;
+        if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); } 
+        else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+      }
+      const savedDir = localStorage.getItem('dir');
+      if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      const rtlBtn = document.getElementById('rtl-toggle');
+      if (rtlBtn) {
+        rtlBtn.addEventListener('click', () => {
+          const currentDir = document.documentElement.getAttribute('dir');
+          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+        });
+      }
+      const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+      if (mobileRtlBtn) {
+        mobileRtlBtn.addEventListener('click', () => {
+          const currentDir = document.documentElement.getAttribute('dir');
+          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileToggle = document.getElementById('mobile-toggle');
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            if (mobileToggle && mobileToggle.querySelector('i')) {
+              mobileToggle.querySelector('i').classList.remove('fa-times');
+              mobileToggle.querySelector('i').classList.add('fa-bars');
+            }
+          }
+        });
+      }
+      // Mobile menu
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+          const icon = mobileToggle.querySelector('i');
+          if (mobileMenu.classList.contains('open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+        mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            if (mobileToggle.querySelector('i')) {
+              mobileToggle.querySelector('i').classList.remove('fa-times');
+              mobileToggle.querySelector('i').classList.add('fa-bars');
+            }
+          });
+        });
+      }
+      // Session & Profile
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const authButtons = document.getElementById('auth-buttons');
+      const userProfileMenu = document.getElementById('user-profile-menu');
+      const userInitials = document.getElementById('user-initials');
+      const userDisplayName = document.getElementById('user-display-name');
+      const mobileAuthButtons = document.getElementById('mobile-auth-buttons');
+      const mobileUserInfo = document.getElementById('mobile-user-info');
+      const mobileUserInitials = document.getElementById('mobile-user-initials');
+      const mobileUserName = document.getElementById('mobile-user-name');
+      if (currentUser) {
+        if (authButtons) authButtons.classList.add('hidden');
+        if (userProfileMenu) userProfileMenu.classList.remove('hidden');
+        const name = currentUser.name || 'User';
+        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        if (userInitials) userInitials.innerText = initials;
+        if (userDisplayName) userDisplayName.innerText = name;
+        if (mobileAuthButtons) mobileAuthButtons.classList.add('hidden');
+        if (mobileUserInfo) mobileUserInfo.classList.remove('hidden');
+        if (mobileUserInitials) mobileUserInitials.innerText = initials;
+        if (mobileUserName) mobileUserName.innerText = name;
+      } else {
+        if (authButtons) authButtons.classList.remove('hidden');
+        if (userProfileMenu) userProfileMenu.classList.add('hidden');
+        if (mobileAuthButtons) mobileAuthButtons.classList.remove('hidden');
+        if (mobileUserInfo) mobileUserInfo.classList.add('hidden');
+      }
+      // Dropdown
+      const userMenuBtn = document.getElementById('user-menu-btn');
+      const userDropdown = document.getElementById('user-dropdown');
+      if (userMenuBtn && userDropdown) {
+        userMenuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle('hidden');
+        });
+        document.addEventListener('click', () => { userDropdown.classList.add('hidden'); });
+      }
+      const handleLogout = () => { localStorage.removeItem('currentUser'); window.location.reload(); };
+      document.getElementById('logout-btn')?.addEventListener('click', handleLogout);
+      document.getElementById('mobile-logout-btn')?.addEventListener('click', handleLogout);
+    });
+  </script>
+</body>
+</html>

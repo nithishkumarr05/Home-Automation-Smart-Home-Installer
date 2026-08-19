@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Aura Space</title>
+    
+    <!-- Custom Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+    
+    <meta name="description" content="Oops! That page has wandered off. The page you're looking for doesn't exist or has been moved. Let's get you back to Aura Space.">
+
+    <!-- Tailwind CSS -->
+      <script src="tailwind.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
+                    colors: {
+                        brand: {
+                            primary: '#1E1A17',
+                            secondary: '#3D352E',
+                            muted: '#7A6E64',
+                            border: '#E5D9D0',
+                            accent: '#C89B8B',
+                            'accent-dark': '#B08474',
+                            'accent-light': '#F2E3DB',
+                            bg: '#FCF8F5',
+                            'bg-soft': '#F8F0EB',
+                        },
+                        custom: {
+                            clay: '#C89B8B',
+                            'clay-light': '#F2E3DB',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spinSlow 10s linear infinite',
+                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+                        'float-gentle': 'floatGentle 4s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'pulse-gentle': 'pulseGentle 3s ease-in-out infinite',
+                        'bloom': 'bloom 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+                        bounceGentle: { '0%,100%': { transform: 'translateY(0) rotate(0deg)' }, '50%': { transform: 'translateY(-15px) rotate(5deg)' } },
+                        floatGentle: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        pulseGentle: { '0%,100%': { opacity: '0.7' }, '50%': { opacity: '1' } },
+                        bloom: { '0%,100%': { transform: 'scale(1) rotate(0deg)' }, '50%': { transform: 'scale(1.05) rotate(5deg)' } },
+                    },
+                    backgroundImage: {
+                        'warm-pattern': 'radial-gradient(circle at 20% 30%, rgba(200,155,139,0.08) 0%, transparent 60%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
+        p { font-weight: 400; }
+        p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
+        .font-extrabold { font-weight: 800 !important; }
+
+        .bg-brand-accent { background-color: #C89B8B; }
+        .text-brand-accent { color: #C89B8B; }
+        .border-brand-accent { border-color: #C89B8B; }
+        .bg-brand-accent-light { background-color: #F2E3DB; }
+        .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
+        .bg-brand-bg-soft { background-color: #F8F0EB; }
+
+        body {
+            background-color: #FCF8F5;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #1E1A17;
+            line-height: 1.6;
+        }
+        .dark body { background-color: #1A1614; color: #EDE6E0; }
+        .dark .text-brand-primary { color: #EDE6E0; }
+        .dark .text-brand-secondary { color: #CEC3BA; }
+        .dark .text-brand-muted { color: #9E8F84; }
+
+        /* Toggle Buttons */
+        .toggle-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: #C89B8B;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(200,155,139,0.2);
+            font-size: 1.1rem;
+        }
+        .dark .toggle-btn { background: #2A2420; color: #C89B8B; border-color: rgba(200,155,139,0.3); }
+        .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
+        .dark .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
+        .toggle-btn.active { background: #C89B8B; color: #1E1A17; }
+        .dark .toggle-btn.active { background: #C89B8B; color: #1E1A17; }
+
+        /* Button styles */
+        .btn-primary-design {
+            background: #1E1A17;
+            color: #FCF8F5;
+            padding: 0.85rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary-design:hover {
+            background: #3D352E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(200,155,139,0.4);
+        }
+        .dark .btn-primary-design { background: #FCF8F5; color: #1E1A17; }
+        .dark .btn-primary-design:hover { background: #F2E3DB; color: #1E1A17; }
+
+        .btn-outline-design {
+            border: 1.5px solid #1E1A17;
+            background: transparent;
+            color: #1E1A17;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
+        .btn-outline-design:hover { background: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
+        .dark .btn-outline-design:hover { background: #EDE6E0; color: #1E1A17; }
+
+        /* Accent line */
+        .accent-line {
+            width: 70px;
+            height: 3px;
+            background: #C89B8B;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        /* Animated blossom element */
+        .floating-icon {
+            animation: floatGentle 4s ease-in-out infinite;
+        }
+
+        /* RTL Fixes */
+        [dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        [dir="rtl"] .ml-8 { margin-left: 0; margin-right: 2rem; }
+        [dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
+        [dir="rtl"] .accent-line { margin: 1rem auto; }
+    </style>
+</head>
+
+<body class="warm-pattern">
+
+    <!-- ========== HEADER ========== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
+        <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2 md:gap-3 group shrink-0">
+                    <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+                        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
+                        <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+                        <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <div>
+                        <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+                    </div>
+                </a>
+
+                <!-- Toggle Buttons -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="toggle-btn" title="Dark / Light">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn" title="RTL / LTR">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== 404 MAIN CONTENT ========== -->
+    <div class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+        <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+            <!-- Animated Icon -->
+            <div class="mb-6 floating-icon">
+                <div class="w-28 h-28 md:w-36 md:h-36 rounded-full border-8 border-[#C89B8B]/30 flex items-center justify-center mx-auto relative">
+                    <svg class="w-14 h-14 md:w-16 md:h-16 text-[#C89B8B] animate-bloom" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
+                        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
+                        <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
+                        <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute inset-0 rounded-full border-4 border-[#C89B8B]/20 animate-ping opacity-75"></div>
+                </div>
+            </div>
+
+            <!-- Large 404 Number -->
+            <div class="mb-4">
+                <span class="text-[120px] md:text-[180px] font-display font-extrabold text-[#C89B8B] leading-none tracking-tighter drop-shadow-lg">404</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl md:text-3xl font-display font-bold text-[#1E1A17] dark:text-white mb-3">
+                Oops! Page Not Found
+            </h1>
+
+            <!-- Divider -->
+            <div class="accent-line"></div>
+
+            <!-- Message -->
+            <p class="text-base md:text-lg text-[#3D352E] dark:text-[#CEC3BA] mb-8 leading-relaxed max-w-md mx-auto">
+                The page you're looking for has wandered off or never existed. Let's get you back to beautiful design.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <a href="index.html" class="btn-primary-design">
+                    <i class="fas fa-home mr-1"></i> Back to Home
+                </a>
+                <a href="portfolio.html" class="btn-outline-design">
+                    <i class="fas fa-images mr-1"></i> View Portfolio
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="border-t border-[#C89B8B]/20 pt-8">
+                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-4">
+                    <i class="fas fa-heart text-[#C89B8B] mr-2"></i> Explore Aura Space
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <a href="about.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">About</a>
+                    <span class="text-[#C89B8B]/40">•</span>
+                    <a href="portfolio.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Portfolio</a>
+                    <span class="text-[#C89B8B]/40">•</span>
+                    <a href="services.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Services</a>
+                    <span class="text-[#C89B8B]/40">•</span>
+                    <a href="consultation.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Consultation</a>
+                    <span class="text-[#C89B8B]/40">•</span>
+                    <a href="contact.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Contact</a>
+                </div>
+            </div>
+
+            <!-- Fun Fact Note -->
+            <div class="mt-8 text-xs text-[#7A6E64]/60 dark:text-[#9E8F84]/60">
+                <i class="fas fa-smile-wink mr-1"></i> Pro tip: The best designs are discovered when you explore.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+
+            const updateThemeUI = (isDark) => {
+                if (themeBtn) {
+                    const moon = themeBtn.querySelector('.fa-moon');
+                    const sun = themeBtn.querySelector('.fa-sun');
+                    if (moon && sun) {
+                        if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                    }
+                    themeBtn.classList.toggle('active', isDark);
+                }
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+            // Check saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            } else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+                updateThemeUI(false);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                if (rtlBtn) rtlBtn.classList.toggle('active', isRtl);
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+
+            // Check saved RTL direction
+            if (localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            } else {
+                updateRtlUI(false);
+            }
+        });
+    </script>
+</body>
+</html>
