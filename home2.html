@@ -247,16 +247,16 @@
           </div>
           <!-- Desktop actions -->
           <div class="hidden xl:flex items-center gap-3 ms-2">
-            <div id="auth-buttons" class="flex items-center gap-3">
-              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
-              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
-            </div>
             <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center">
               <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
             </button>
             <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center font-bold text-base">
               <i class="fas fa-exchange-alt"></i>
             </button>
+            <div id="auth-buttons" class="flex items-center gap-3">
+              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
+              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+            </div>
           </div>
           <!-- Mobile toggle -->
           <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#C89B8B] text-[#1E1A17] flex items-center justify-center shadow-md">
@@ -730,33 +730,7 @@
           });
         });
       }
-      // Session & Profile
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      const authButtons = document.getElementById('auth-buttons');
-      const userProfileMenu = document.getElementById('user-profile-menu');
-      const userInitials = document.getElementById('user-initials');
-      const userDisplayName = document.getElementById('user-display-name');
-      const mobileAuthButtons = document.getElementById('mobile-auth-buttons');
-      const mobileUserInfo = document.getElementById('mobile-user-info');
-      const mobileUserInitials = document.getElementById('mobile-user-initials');
-      const mobileUserName = document.getElementById('mobile-user-name');
-      if (currentUser) {
-        if (authButtons) authButtons.classList.add('hidden');
-        if (userProfileMenu) userProfileMenu.classList.remove('hidden');
-        const name = currentUser.name || 'User';
-        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-        if (userInitials) userInitials.innerText = initials;
-        if (userDisplayName) userDisplayName.innerText = name;
-        if (mobileAuthButtons) mobileAuthButtons.classList.add('hidden');
-        if (mobileUserInfo) mobileUserInfo.classList.remove('hidden');
-        if (mobileUserInitials) mobileUserInitials.innerText = initials;
-        if (mobileUserName) mobileUserName.innerText = name;
-      } else {
-        if (authButtons) authButtons.classList.remove('hidden');
-        if (userProfileMenu) userProfileMenu.classList.add('hidden');
-        if (mobileAuthButtons) mobileAuthButtons.classList.remove('hidden');
-        if (mobileUserInfo) mobileUserInfo.classList.add('hidden');
-      }
+      // Auth buttons always visible
       // Dropdown
       const userMenuBtn = document.getElementById('user-menu-btn');
       const userDropdown = document.getElementById('user-dropdown');
