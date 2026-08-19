@@ -390,6 +390,93 @@
     </div>
   </section>
 
+  <!-- ======== NEWSLETTER SIGNUP ======== -->
+  <section class="py-20 md:py-28 bg-gradient-to-b from-[#FCF8F5] to-[#F8F0EB] dark:from-[#1A1614] dark:to-[#201C1A] relative overflow-hidden">
+    <!-- Subtle decorative dots pattern -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.02]" style="background-image: radial-gradient(#C89B8B 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl relative z-10">
+      <div class="bg-white dark:bg-[#2A2420] rounded-[32px] border border-[#E5D9D0] dark:border-[#3D352E] shadow-2xl shadow-black/5 dark:shadow-black/30 overflow-hidden">
+        <div class="grid lg:grid-cols-5">
+
+          <!-- Left decorative panel -->
+          <div class="lg:col-span-2 bg-[#1E1A17] dark:bg-[#151210] p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
+
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-[#C89B8B]/10 border border-[#C89B8B]/20 flex items-center justify-center mb-8">
+                <i class="fas fa-paper-plane text-[#C89B8B] text-xl"></i>
+              </div>
+              <h3 class="text-2xl md:text-3xl font-display font-bold text-white leading-snug mb-4">
+                Stay Ahead of<br>Design Trends
+              </h3>
+              <p class="text-white/50 text-sm leading-relaxed">
+                Curated insights from our award-winning design team, delivered once a month.
+              </p>
+            </div>
+
+            <!-- Stats row -->
+            <div class="flex items-center gap-6 mt-10 pt-8 border-t border-white/10">
+              <div>
+                <div class="text-2xl font-bold text-[#C89B8B]">5K+</div>
+                <div class="text-[10px] text-white/40 uppercase tracking-wider mt-0.5">Subscribers</div>
+              </div>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div>
+                <div class="text-2xl font-bold text-[#C89B8B]">48</div>
+                <div class="text-[10px] text-white/40 uppercase tracking-wider mt-0.5">Editions</div>
+              </div>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div>
+                <div class="text-2xl font-bold text-[#C89B8B]">98%</div>
+                <div class="text-[10px] text-white/40 uppercase tracking-wider mt-0.5">Open Rate</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right form panel -->
+          <div class="lg:col-span-3 p-10 md:p-12 flex flex-col justify-center">
+            <span class="inline-block text-[#C89B8B] text-xs font-semibold uppercase tracking-[0.2em] mb-3">Newsletter</span>
+            <h2 class="text-2xl md:text-3xl font-display font-bold text-[#1E1A17] dark:text-white mb-3 leading-tight">
+              Design Inspiration, Delivered to Your <span class="text-[#C89B8B]">Inbox</span>
+            </h2>
+            <p class="text-[#7A6E64] dark:text-[#9E8F84] text-sm leading-relaxed mb-8">
+              Join our community of design lovers. Receive exclusive project reveals, trend reports, expert tips, and early access to consultation slots — all crafted by our creative team.
+            </p>
+
+            <!-- Form -->
+            <form id="newsletter-form" class="space-y-4 mb-6" onsubmit="event.preventDefault(); document.getElementById('nl-success').classList.remove('hidden'); this.classList.add('hidden');">
+              <div class="flex flex-col sm:flex-row gap-3">
+                <input type="email" required placeholder="Your email address"
+                  class="flex-1 px-5 py-3.5 rounded-2xl bg-[#FCF8F5] dark:bg-[#1E1A17] border border-[#E5D9D0] dark:border-[#3D352E] text-[#1E1A17] dark:text-white placeholder-[#B5A99E] dark:placeholder-[#6B5F56] text-sm focus:outline-none focus:border-[#C89B8B] focus:ring-2 focus:ring-[#C89B8B]/15 transition-all duration-300" />
+                <button type="submit"
+                  class="px-8 py-3.5 bg-[#1E1A17] dark:bg-[#C89B8B] hover:bg-[#3D352E] dark:hover:bg-[#B08474] text-white dark:text-[#1E1A17] rounded-2xl font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] whitespace-nowrap flex items-center justify-center gap-2">
+                  Subscribe <i class="fas fa-arrow-right text-xs"></i>
+                </button>
+              </div>
+            </form>
+
+            <!-- Success state (hidden by default) -->
+            <div id="nl-success" class="hidden bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/30 rounded-2xl p-5 text-center mb-6">
+              <div class="w-12 h-12 mx-auto bg-emerald-100 dark:bg-emerald-900/40 rounded-full flex items-center justify-center mb-3">
+                <i class="fas fa-check text-emerald-600 dark:text-emerald-400 text-lg"></i>
+              </div>
+              <p class="text-emerald-800 dark:text-emerald-300 font-semibold text-sm">You're subscribed!</p>
+              <p class="text-emerald-600/70 dark:text-emerald-400/60 text-xs mt-1">Check your inbox for a welcome note.</p>
+            </div>
+
+            <!-- Trust row -->
+            <div class="flex flex-wrap items-center gap-5 text-[11px] text-[#B5A99E] dark:text-[#6B5F56]">
+              <span class="flex items-center gap-1.5"><i class="fas fa-lock text-[#C89B8B]/50 text-[9px]"></i> We respect your privacy</span>
+              <span class="flex items-center gap-1.5"><i class="fas fa-calendar text-[#C89B8B]/50 text-[9px]"></i> Once a month</span>
+              <span class="flex items-center gap-1.5"><i class="fas fa-times-circle text-[#C89B8B]/50 text-[9px]"></i> Unsubscribe anytime</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ======== FOOTER ======== -->
   <footer class="bg-white dark:bg-[#1A1614] text-[#1E1A17] dark:text-white pt-16 pb-8 border-t-4 border-[#C89B8B] transition-colors duration-300">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
