@@ -76,7 +76,12 @@
     .dark .text-brand-secondary { color: #CEC3BA; }
     .dark .text-brand-muted { color: #9E8F84; }
     .dark .bg-brand-bg-soft { background-color: #2A2420; }
-    .dark .border-brand-border { border-color: #3D352E; }
+    /* Light mode contrast enhancements for readability */
+    html:not(.dark) .text-\[\#7A6E64\],
+    html:not(.dark) .text-brand-muted { color: #4D4036 !important; }
+    html:not(.dark) .text-\[\#3D352E\] { color: #2D241E !important; }
+    html:not(.dark) .card-design p { color: #4D4036; }
+    html:not(.dark) .card-design .text-\[\#C89B8B\] { color: #A65A48; }
     /* scroll */
     body::-webkit-scrollbar { width: 6px; }
     body::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
