@@ -1,857 +1,1338 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Client Dashboard | Aura Space</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
-    
-      <script src="tailwind.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='8' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='16' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='12' cy='8' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Cpath d='M12 11V9.5'/%3E%3Cpath d='M10.5 14L9 15.5'/%3E%3Cpath d='M13.5 14L15 15.5'/%3E%3C/svg%3E" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>HomeTech | Client Dashboard — Smart Home Control</title>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
-                    colors: {
-                        brand: {
-                            primary: '#1E1A17',
-                            secondary: '#3D352E',
-                            muted: '#7A6E64',
-                            border: '#E5D9D0',
-                            accent: '#C89B8B',
-                            'accent-dark': '#B08474',
-                            'accent-light': '#F2E3DB',
-                            bg: '#FCF8F5',
-                            'bg-soft': '#F8F0EB',
-                        },
-                        custom: {
-                            clay: '#C89B8B',
-                            'clay-light': '#F2E3DB',
-                        }
-                    },
-                    fontFamily: {
-                        display: ['"Playfair Display"', 'serif'],
-                        body: ['"Inter"', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'float-slow': 'floatSlow 6s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-                        slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-                        bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
-                    },
-                    backgroundImage: {
-                        'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
-        p { font-weight: 400; }
-        p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
-        .font-extrabold { font-weight: 800 !important; }
-        
-        .bg-brand-accent { background-color: #C89B8B; }
-        .text-brand-accent { color: #C89B8B; }
-        .border-brand-accent { border-color: #C89B8B; }
-        .bg-brand-accent-light { background-color: #F2E3DB; }
-        .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
-        .bg-brand-bg-soft { background-color: #F8F0EB; }
-        
-        body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
-        .dark body { background-color: #1A1614; color: #EDE6E0; }
-        .dark .text-brand-primary { color: #EDE6E0; }
-        .dark .text-brand-secondary { color: #CEC3BA; }
-        .dark .text-brand-muted { color: #9E8F84; }
-        .dark .bg-brand-bg-soft { background-color: #2A2420; }
-        .dark .border-brand-border { border-color: #3D352E; }
-    /* Light mode contrast enhancements for readability */
-    html:not(.dark) .text-\[\#7A6E64\],
-    html:not(.dark) .text-brand-muted { color: #4D4036 !important; }
-    html:not(.dark) .text-\[\#3D352E\] { color: #2D241E !important; }
-    html:not(.dark) .card-design p { color: #4D4036; }
-    html:not(.dark) .card-design .text-\[\#C89B8B\] { color: #A65A48; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
-        
-        .card-design {
-            background: #FFFFFF;
-            border-radius: 28px;
+        /* --- HomeTech Theme --- */
+        :root, html[data-theme='light'] {
+            --color-background: #F8FAFC;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #334155;
+            --color-accent: #0EA5E9;
+            --color-accent-light: #38BDF8;
+            --color-border: #E2E8F0;
+            --color-hover: #F1F5F9;
+            --color-card-bg: #FFFFFF;
+            --color-sidebar-bg: #FFFFFF;
+            --color-success: #10B981;
+            --color-warning: #F59E0B;
+            --color-danger: #EF4444;
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #38BDF8;
+            --color-accent-light: #0EA5E9;
+            --color-border: #1E293B;
+            --color-hover: #1E293B;
+            --color-card-bg: #1E293B;
+            --color-sidebar-bg: #0F172A;
+            --color-success: #34D399;
+            --color-warning: #FBBF24;
+            --color-danger: #F87171;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            min-height: 100dvh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+        .card-bg { background-color: var(--color-card-bg); }
+        .bg-sidebar { background-color: var(--color-sidebar-bg); }
+
+        .dashboard-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.5rem;
             transition: all 0.3s ease;
-            border: 1px solid #E5D9D0;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 20px -8px rgba(14,165,233,0.08);
         }
-        .dark .card-design { background: #2A2420; border-color: #3D352E; }
-        .card-design:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
-            border-color: #C89B8B;
+        .dashboard-card:hover {
+            border-color: var(--color-accent-light);
+            box-shadow: 0 12px 28px -12px rgba(14,165,233,0.25);
         }
-        
-        .btn-primary-design {
-            background-color: #1E1A17;
-            color: #FCF8F5;
-            font-weight: 600;
-            border-radius: 60px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+        .bg-ocean-gradient {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
         }
-        .btn-primary-design:hover {
-            background-color: #3D352E;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(200,155,139,0.3);
-            color: #FCF8F5;
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
         }
-        .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
-        .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
-        
-        .btn-outline-design {
-            border: 1.5px solid #1E1A17;
-            color: #1E1A17;
-            background: transparent;
-            border-radius: 60px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
-        .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
-        .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
-        
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-            width: 280px;
-            background: #FFFFFF;
-            border-right: 1px solid #E5D9D0;
-            transition: transform 0.3s ease;
-            z-index: 100;
-            overflow-y: auto;
-        }
-        .dark .sidebar { background: #1A1614; border-right-color: #3D352E; }
-        
-        @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.open { transform: translateX(0); }
-        }
-        
-        .sidebar-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-            display: none;
-        }
-        .sidebar-overlay.open { display: block; }
-        
-        .sidebar-item {
+
+        .sidebar-link {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.85rem 1.5rem;
-            margin: 0.25rem 0.75rem;
-            border-radius: 12px;
-            color: #1E1A17;
-            transition: all 0.2s;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            color: var(--color-secondary-text);
+            transition: all 0.2s ease;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
             cursor: pointer;
         }
-        .dark .sidebar-item { color: #EDE6E0; }
-        .sidebar-item:hover { background: #F2E3DB; color: #1E1A17; }
-        .dark .sidebar-item:hover { background: #2A2420; color: #EDE6E0; }
-        .sidebar-item.active { background: #C89B8B; color: #1E1A17; }
-        .dark .sidebar-item.active { background: #C89B8B; color: #1E1A17; }
-        .sidebar-item i { width: 24px; font-size: 1.1rem; }
-        
-        .main-content {
-            margin-left: 280px;
-            padding: 1.5rem;
-            min-height: 100vh;
+        .sidebar-link:hover, .sidebar-link.active {
+            background: linear-gradient(135deg, var(--color-accent), #0369A1);
+            color: white;
         }
-        @media (max-width: 768px) {
-            .main-content { margin-left: 0; padding-top: 70px; }
+        .sidebar-link:hover svg, .sidebar-link.active svg {
+            stroke: white;
         }
-        
-        .mobile-header {
-            display: none;
+
+        .badge-success { background: rgba(16,185,129,0.12); color: var(--color-success); }
+        .badge-warning { background: rgba(245,158,11,0.15); color: #B45309; }
+        html[data-theme='dark'] .badge-warning { color: #FBBF24; }
+        .badge-danger { background: rgba(239,68,68,0.12); color: var(--color-danger); }
+        .badge-info { background: rgba(14,165,233,0.12); color: var(--color-accent); }
+        html[data-theme='dark'] .badge-info { color: #38BDF8; }
+
+        #mobile-overlay {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
             position: fixed;
-            top: 0; left: 0; right: 0;
-            background: #FFFFFF;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #E5D9D0;
-            z-index: 50;
-            align-items: center;
-            justify-content: space-between;
+            inset: 0;
+            z-index: 55;
         }
-        .dark .mobile-header { background: #1A1614; border-bottom-color: #3D352E; }
-        @media (max-width: 768px) { .mobile-header { display: flex; } }
-        
-        .top-header {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #E5D9D0;
+        #mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
-        .dark .top-header { background: #2A2420; border-color: #3D352E; }
-        
-        .stat-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 1.2rem;
-            border: 1px solid #E5D9D0;
-            transition: all 0.3s;
+
+        .btn-coral {
+            background: var(--color-accent);
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
         }
-        .dark .stat-card { background: #2A2420; border-color: #3D352E; }
-        .stat-card:hover { transform: translateY(-3px); border-color: #C89B8B; }
-        
-        .toggle-btn {
-            width: 36px; height: 36px;
-            border-radius: 10px;
-            background: #F8F0EB;
-            color: #1E1A17;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
+        .btn-coral:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
         }
-        .dark .toggle-btn { background: #3D352E; color: #EDE6E0; }
-        .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
-        
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
+        html[data-theme='dark'] .btn-coral {
+            color: #0F172A;
         }
-        .status-completed { background: #E8F5E9; color: #2E7D32; }
-        .status-pending { background: #FFF3E0; color: #EF6C00; }
-        .status-upcoming { background: #E3F2FD; color: #1E4A76; }
-        .status-review { background: #F3E5F5; color: #6A1B9A; }
-        .status-approved { background: #E8F5E9; color: #1B5E20; }
-        .dark .status-completed { background: #1B5E20; color: #A5D6A7; }
-        .dark .status-pending { background: #E65100; color: #FFCC80; }
-        .dark .status-upcoming { background: #01579B; color: #81D4FA; }
-        .dark .status-review { background: #4A148C; color: #CE93D8; }
-        .dark .status-approved { background: #1B5E20; color: #A5D6A7; }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 16px;
-            border: 1.5px solid #E5D9D0;
-            background: #FCF8F5;
-            transition: all 0.3s;
-            color: #1E1A17;
+        .btn-outline-ocean {
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            transition: 0.2s;
         }
-        .dark .form-input { background: #2A2420; border-color: #3D352E; color: #EDE6E0; }
-        .form-input:focus { outline: none; border-color: #C89B8B; box-shadow: 0 0 0 4px rgba(200,155,139,0.15); }
-        .form-label { display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.4rem; color: #3D352E; }
-        .dark .form-label { color: #CEC3BA; }
-        
-        .upload-zone {
-            border: 2px dashed #E5D9D0;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
+        .btn-outline-ocean:hover {
+            background: var(--color-accent);
+            color: white;
         }
-        .upload-zone:hover { border-color: #C89B8B; background: #F8F0EB; }
-        .dark .upload-zone:hover { background: #2A2420; }
-        .upload-zone.dragover { border-color: #C89B8B; background: #F2E3DB; }
-        .dark .upload-zone.dragover { background: #3D352E; }
-        
-        .page-content.hidden { display: none; }
-        
+        html[data-theme='dark'] .btn-outline-ocean:hover {
+            color: #0F172A;
+        }
+
         .progress-bar {
             height: 8px;
-            background: #E5D9D0;
-            border-radius: 10px;
+            border-radius: 9999px;
+            background: var(--color-border);
             overflow: hidden;
         }
-        .dark .progress-bar { background: #3D352E; }
-        .progress-fill { height: 100%; background: #C89B8B; border-radius: 10px; transition: width 0.5s ease; }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            padding-bottom: 1.5rem;
-            border-left: 2px solid #E5D9D0;
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            transition: width 0.6s ease;
         }
-        .dark .timeline-item { border-left-color: #3D352E; }
-        .timeline-item:last-child { border-left: none; padding-bottom: 0; }
-        .timeline-item::before {
+
+        html[dir="rtl"] .sidebar-link { flex-direction: row-reverse; }
+        html[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+
+        /* Responsive sidebar for mobile */
+        @media (max-width: 1023px) {
+            #sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100dvh;
+                width: 20rem;
+                max-width: 85vw;
+                z-index: 60;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            #sidebar.open {
+                transform: translateX(0);
+            }
+            html[dir="rtl"] #sidebar {
+                left: auto;
+                right: 0;
+                transform: translateX(100%);
+            }
+            html[dir="rtl"] #sidebar.open {
+                transform: translateX(0);
+            }
+        }
+
+        /* Touch-friendly tap targets */
+        @media (max-width: 640px) {
+            .dashboard-card { border-radius: 1.25rem; }
+            .sidebar-link { padding: 0.875rem 1rem; }
+            button, a.sidebar-link { min-height: 44px; }
+        }
+
+        /* Chart containers */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 220px;
+        }
+        @media (min-width: 640px) {
+            .chart-container { height: 240px; }
+        }
+        @media (min-width: 1024px) {
+            .chart-container { height: 260px; }
+        }
+
+        /* Table scroll hint */
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .table-scroll::-webkit-scrollbar { height: 6px; }
+        .table-scroll::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+
+        /* Safe area for iOS */
+        @supports (padding: max(0px)) {
+            .safe-top { padding-top: max(0px, env(safe-area-inset-top)); }
+            .safe-bottom { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+        }
+
+        /* Toggle switch */
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: #94A3B8;
+            border-radius: 9999px;
+            transition: 0.3s;
+            cursor: pointer;
+            flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        html[data-theme='dark'] .toggle-switch { background: #475569; }
+        .toggle-switch::before {
             content: '';
             position: absolute;
-            left: -6px;
-            top: 0;
-            width: 12px;
-            height: 12px;
+            top: 2px; left: 2px;
+            width: 20px; height: 20px;
+            background: white;
             border-radius: 50%;
-            background: #C89B8B;
-            border: 2px solid #FFFFFF;
+            transition: 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
-        .dark .timeline-item::before { border-color: #1A1614; }
-        .timeline-item.completed::before { background: #4CAF50; }
-        .timeline-item.current::before { background: #C89B8B; box-shadow: 0 0 0 4px rgba(200,155,139,0.3); }
-        
-        .mood-board-card {
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #E5D9D0;
-            transition: all 0.3s;
+        .toggle-switch.on, html[data-theme='dark'] .toggle-switch.on { background: #10B981; }
+        .toggle-switch.on::before { transform: translateX(20px); }
+
+        /* Device status dot */
+        .device-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
-        .dark .mood-board-card { border-color: #3D352E; }
-        .mood-board-card:hover { border-color: #C89B8B; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(200,155,139,0.15); }
-        
-        /* RTL support */
-        [dir="rtl"] .sidebar {
-            left: auto;
-            right: 0;
-            border-right: none;
-            border-left: 1px solid #E5D9D0;
+        .device-dot.online { background: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.2); }
+        .device-dot.offline { background: #94A3B8; box-shadow: 0 0 0 3px rgba(148,163,184,0.2); }
+        .device-dot.warning { background: #F59E0B; box-shadow: 0 0 0 3px rgba(245,158,11,0.2); }
+
+        /* Timeline step */
+        .step-circle {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
         }
-        .dark[dir="rtl"] .sidebar { border-left-color: #3D352E; }
-        @media (max-width: 768px) {
-            [dir="rtl"] .sidebar { transform: translateX(100%); }
-            [dir="rtl"] .sidebar.open { transform: translateX(0); }
+        .step-circle.done {
+            background: var(--color-accent);
+            color: white;
         }
-        [dir="rtl"] .main-content {
-            margin-left: 0;
-            margin-right: 280px;
+        .step-circle.current {
+            background: #F59E0B;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(245,158,11,0.2);
         }
-        @media (max-width: 768px) {
-            [dir="rtl"] .main-content { margin-right: 0; }
+        .step-circle.upcoming {
+            background: var(--color-border);
+            color: var(--color-secondary-text);
         }
-        [dir="rtl"] .top-header .border-l {
-            border-left-width: 0 !important;
-            border-right-width: 1px !important;
-            padding-left: 0 !important;
-            padding-right: 1rem !important;
-        }
-        .dark[dir="rtl"] .top-header .border-l { border-right-color: #3D352E; }
-        [dir="rtl"] .timeline-item {
-            padding-left: 0;
-            padding-right: 2rem;
-            border-left: none;
-            border-right: 2px solid #E5D9D0;
-        }
-        .dark[dir="rtl"] .timeline-item { border-right-color: #3D352E; }
-        [dir="rtl"] .timeline-item::before {
-            left: auto;
-            right: -6px;
-        }
-        [dir="rtl"] .sidebar-item i {
-            margin-right: 0;
-            margin-left: 0.75rem;
-        }
-        [dir="rtl"] .text-left { text-align: right !important; }
-        [dir="rtl"] .text-right { text-align: left !important; }
     </style>
 </head>
-<body>
+<body class="antialiased bg-background">
 
-    <!-- Mobile Header -->
-    <div class="mobile-header">
-        <div class="flex items-center gap-3">
-            <button id="menuToggle" class="toggle-btn"><i class="fas fa-bars"></i></button>
-            <a href="index.html" class="flex items-center gap-2 group shrink-0">
-                <svg class="w-8 h-8 text-[#C89B8B]" viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-                    <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
-                    <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span class="text-lg font-display font-extrabold text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
-            </a>
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-background border-b border-border transition-colors safe-top">
+        <div class="max-w-[1920px] mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-2.5 sm:py-3">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-xl hover:bg-hover transition flex-shrink-0" aria-label="Open menu">
+                        <svg class="w-6 h-6 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <a href="index.html" class="flex items-center gap-2 md:gap-3 group flex-shrink-0">
+                        <svg class="w-9 h-9 md:w-10 md:h-10 text-accent group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+                            <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+                            <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+                            <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+                            <path d="M12 11V9.5" />
+                            <path d="M10.5 14L9 15.5" />
+                            <path d="M13.5 14L15 15.5" />
+                        </svg>
+                        <div>
+                            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-primary-text">Home<span class="text-accent">Tech</span></span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-1.5 sm:gap-3 md:gap-4 flex-shrink-0">
+                    <div class="hidden md:flex items-center gap-2 bg-hover px-3 lg:px-4 py-2 rounded-xl">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                        <span class="text-xs lg:text-sm font-medium whitespace-nowrap">System Online · 8 devices active</span>
+                    </div>
+
+                    <button id="lang-toggle" class="p-2 rounded-full hover:bg-hover transition" aria-label="Toggle language">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-hover transition" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 light-icon text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="w-5 h-5 dark-icon hidden text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+
+                    <div class="flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-3 border-l border-border">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-ocean-gradient flex items-center justify-center text-white font-bold text-xs sm:text-sm flex-shrink-0">
+                            JD
+                        </div>
+                        <div class="hidden sm:block">
+                            <p class="text-xs sm:text-sm font-medium leading-tight">Jane Doe</p>
+                            <p class="text-[10px] sm:text-xs text-secondary-text">Smart Home Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex gap-2">
-            <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
-            <button id="rtl-toggle-mobile" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+    </header>
+
+    <div id="mobile-overlay" class="lg:hidden"></div>
+
+    <main class="max-w-[1920px] mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 safe-bottom">
+        <div class="flex flex-col lg:flex-row gap-4 sm:gap-6">
+            <!-- SIDEBAR -->
+            <aside id="sidebar" class="lg:sticky lg:top-24 lg:h-fit w-80 lg:w-72 xl:w-80 flex-shrink-0 bg-sidebar lg:bg-transparent">
+                <div class="dashboard-card p-4 sm:p-5 h-full lg:h-auto overflow-y-auto max-h-[calc(100dvh-1rem)] lg:max-h-none">
+                    <div class="flex lg:hidden justify-between items-center mb-5">
+                        <span class="font-bold text-accent">Client Menu</span>
+                        <button id="close-sidebar" class="p-2 hover:bg-hover rounded-lg" aria-label="Close menu">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 pb-4 sm:pb-5 mb-4 border-b border-border">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-ocean-gradient flex items-center justify-center text-white font-bold text-lg sm:text-xl flex-shrink-0">
+                            JD
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-sm sm:text-base truncate">Jane Doe</p>
+                            <p class="text-xs text-secondary-text truncate">jane.doe@email.com</p>
+                        </div>
+                    </div>
+
+                    <nav class="flex flex-col gap-0.5">
+                        <p class="text-xs uppercase tracking-wider text-secondary-text font-bold px-3 mb-2">Smart Home Panel</p>
+                        
+                        <a href="#" data-section="overview" class="sidebar-link active">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Dashboard</span>
+                        </a>
+
+                        <a href="#" data-section="requests" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9h14M5 15h14M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Setup Requests</span>
+                            <span class="ml-auto bg-accent text-white text-xs px-2 py-0.5 rounded-full flex-shrink-0">2</span>
+                        </a>
+
+                        <a href="#" data-section="progress" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Installation Progress</span>
+                        </a>
+
+                        <a href="#" data-section="devices" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">My Devices</span>
+                            <span class="ml-auto bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full flex-shrink-0">8</span>
+                        </a>
+
+                        <a href="#" data-section="warranty" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Warranty Registry</span>
+                        </a>
+
+                        <a href="#" data-section="support" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Support & Chat</span>
+                        </a>
+
+                        <a href="#" data-section="settings" class="sidebar-link">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Account Settings</span>
+                        </a>
+
+                        <a href="login.html" id="logoutBtn" class="sidebar-link mt-4 border-t border-border pt-3 text-red-500 hover:text-white hover:bg-red-500">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+                            </svg>
+                            <span class="text-sm sm:text-base">Logout</span>
+                        </a>
+                    </nav>
+
+                    <!-- Quick help card -->
+                    <div class="mt-5 p-4 rounded-2xl text-white bg-ocean-gradient">
+                        <i class="fas fa-headset text-lg mb-2 text-white/90"></i>
+                        <p class="text-xs font-semibold mb-1">Need Help?</p>
+                        <p class="text-[11px] text-white/80 leading-snug mb-3">Our smart home experts are ready 24/7.</p>
+                        <a href="contact.html" class="block text-center text-[11px] font-bold bg-white text-[#0EA5E9] rounded-full py-2 hover:bg-gray-100 transition">
+                            Contact Support
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <div class="flex-1 min-w-0 space-y-4 sm:space-y-6">
+
+                <!-- Welcome Message -->
+                <div class="mb-2 sm:mb-4">
+                    <h1 class="text-2xl sm:text-3xl font-display font-bold text-primary-text">Welcome home, Jane! 🏠</h1>
+                    <p class="text-secondary-text mt-1 text-xs sm:text-sm">Track your installation, manage devices, and register warranties — all in one place.</p>
+                </div>
+
+                <!-- OVERVIEW SECTION -->
+                <div id="overview" class="admin-section">
+                    <!-- Stat Cards -->
+                    <div class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <div class="flex justify-between gap-2 h-full">
+                                <div class="min-w-0 flex flex-col h-full">
+                                    <p class="text-secondary-text text-xs sm:text-sm min-h-[2rem] sm:min-h-[2.5rem]">Active Devices</p>
+                                    <p class="text-2xl sm:text-3xl font-semibold mt-1 whitespace-nowrap">8</p>
+                                    <p class="text-[10px] sm:text-xs text-emerald-600 mt-auto pt-1 sm:pt-2 truncate">All connected</p>
+                                </div>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-accent flex-shrink-0">
+                                    <i class="fas fa-microchip text-base sm:text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <div class="flex justify-between gap-2 h-full">
+                                <div class="min-w-0 flex flex-col h-full">
+                                    <p class="text-secondary-text text-xs sm:text-sm min-h-[2rem] sm:min-h-[2.5rem]">Setup in Progress</p>
+                                    <p class="text-2xl sm:text-3xl font-semibold mt-1 whitespace-nowrap">2</p>
+                                    <p class="text-[10px] sm:text-xs text-amber-600 mt-auto pt-1 sm:pt-2 truncate">Step 2 of 4</p>
+                                </div>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-accent flex-shrink-0">
+                                    <i class="fas fa-screwdriver-wrench text-base sm:text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <div class="flex justify-between gap-2 h-full">
+                                <div class="min-w-0 flex flex-col h-full">
+                                    <p class="text-secondary-text text-xs sm:text-sm min-h-[2rem] sm:min-h-[2.5rem]">Warranties Registered</p>
+                                    <p class="text-2xl sm:text-3xl font-semibold mt-1 whitespace-nowrap">5</p>
+                                    <p class="text-[10px] sm:text-xs text-amber-600 mt-auto pt-1 sm:pt-2 truncate">3 devices pending</p>
+                                </div>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-accent flex-shrink-0">
+                                    <i class="fas fa-shield-halved text-base sm:text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <div class="flex justify-between gap-2 h-full">
+                                <div class="min-w-0 flex flex-col h-full">
+                                    <p class="text-secondary-text text-xs sm:text-sm min-h-[2rem] sm:min-h-[2.5rem]">Next Technician Visit</p>
+                                    <p class="text-2xl sm:text-3xl font-semibold mt-1 whitespace-nowrap">Tomorrow</p>
+                                    <p class="text-[10px] sm:text-xs text-amber-600 mt-auto pt-1 sm:pt-2 truncate">10:00 AM · Alex R.</p>
+                                </div>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-accent flex-shrink-0">
+                                    <i class="fas fa-clock text-base sm:text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <h3 class="font-medium text-base sm:text-lg mb-3 sm:mb-4"><i class="fas fa-chart-line text-accent mr-2"></i>Device Activity (Last 7 Days)</h3>
+                            <div class="chart-container">
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <h3 class="font-medium text-base sm:text-lg mb-3 sm:mb-4"><i class="fas fa-chart-pie text-accent mr-2"></i>Devices by Type</h3>
+                            <div class="chart-container">
+                                <canvas id="deviceTypeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity & Support Note -->
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
+                        <div class="dashboard-card p-4 sm:p-6 xl:col-span-2">
+                            <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                <h3 class="font-medium text-base sm:text-lg"><i class="fas fa-clock-rotate-left text-accent mr-2"></i>Recent Activity</h3>
+                                <button class="text-accent text-xs sm:text-sm font-bold hover:underline whitespace-nowrap" data-nav="requests">View all</button>
+                            </div>
+                            <div class="space-y-2 sm:space-y-3">
+                                <div class="flex items-center gap-3 sm:gap-4 p-3 bg-hover rounded-xl">
+                                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-ocean-gradient flex items-center justify-center text-white flex-shrink-0">
+                                        <i class="fas fa-wifi text-sm sm:text-base"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="font-semibold text-sm sm:text-base truncate">Living Room Hub connected</p>
+                                        <p class="text-[10px] sm:text-xs text-secondary-text">Setup complete · Apr 24, 2026</p>
+                                    </div>
+                                    <span class="badge-success text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full flex-shrink-0">Online</span>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-4 p-3 bg-hover rounded-xl">
+                                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gold-gradient flex items-center justify-center text-white flex-shrink-0">
+                                        <i class="fas fa-camera text-sm sm:text-base"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="font-semibold text-sm sm:text-base truncate">Security Camera installed</p>
+                                        <p class="text-[10px] sm:text-xs text-secondary-text">Front door · Apr 22, 2026</p>
+                                    </div>
+                                    <span class="badge-info text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full flex-shrink-0">New</span>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-4 p-3 bg-hover rounded-xl">
+                                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white flex-shrink-0">
+                                        <i class="fas fa-shield-halved text-sm sm:text-base"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="font-semibold text-sm sm:text-base truncate">Smart Doorbell warranty registered</p>
+                                        <p class="text-[10px] sm:text-xs text-secondary-text">24-month coverage · Apr 20, 2026</p>
+                                    </div>
+                                    <span class="badge-warning text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full flex-shrink-0">Registered</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-4 sm:p-6">
+                            <h3 class="font-medium text-base sm:text-lg mb-3 sm:mb-4"><i class="fas fa-comment-dots text-accent mr-2"></i>Support Message</h3>
+                            <div class="p-3 sm:p-4 bg-hover rounded-xl">
+                                <p class="text-xs sm:text-sm italic">"Hi Jane! Your smart lighting setup is running smoothly. Next visit we'll connect the thermostat. — Alex R."</p>
+                                <p class="text-[10px] sm:text-xs text-secondary-text mt-2 sm:mt-3">— Technician · Apr 22</p>
+                            </div>
+                            <button class="mt-3 sm:mt-4 w-full btn-outline-ocean text-xs sm:text-sm py-2 rounded-xl" data-nav="support">
+                                <i class="fas fa-reply mr-1"></i> Message Technician
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETUP REQUESTS SECTION -->
+                <div id="requests" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-display font-bold text-accent mb-1">
+                                    <i class="fas fa-screwdriver-wrench mr-2"></i>Device Setup Requests
+                                </h2>
+                                <p class="text-xs sm:text-sm text-secondary-text">Submit new setup requests and track technician visits</p>
+                            </div>
+                            <button id="newRequestBtn" class="btn-coral px-4 py-2.5 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                                <i class="fas fa-plus mr-1"></i> New Request
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
+                            <div class="p-4 bg-hover rounded-xl border-2 border-accent">
+                                <div class="flex items-start justify-between mb-2">
+                                    <span class="badge-warning text-[10px] px-2 py-0.5 rounded-full font-bold">IN PROGRESS</span>
+                                    <span class="text-[10px] text-secondary-text">#REQ-2041</span>
+                                </div>
+                                <h3 class="font-bold text-sm sm:text-base mb-1">Smart Thermostat</h3>
+                                <p class="text-xs text-secondary-text mb-3">Nest Learning Thermostat 4th Gen</p>
+                                <div class="progress-bar mb-2"><div class="progress-fill" style="width: 60%"></div></div>
+                                <p class="text-[10px] text-secondary-text mb-3">Step 2 of 4 · Wiring check</p>
+                                <div class="flex gap-2">
+                                    <button class="flex-1 btn-outline-ocean py-1.5 rounded-lg text-[11px] font-bold">View</button>
+                                    <button class="flex-1 btn-coral py-1.5 rounded-lg text-[11px] font-bold">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-hover rounded-xl border border-border">
+                                <div class="flex items-start justify-between mb-2">
+                                    <span class="badge-info text-[10px] px-2 py-0.5 rounded-full font-bold">SCHEDULED</span>
+                                    <span class="text-[10px] text-secondary-text">#REQ-2040</span>
+                                </div>
+                                <h3 class="font-bold text-sm sm:text-base mb-1">Front Door Camera</h3>
+                                <p class="text-xs text-secondary-text mb-3">Ring Video Doorbell Pro 2</p>
+                                <div class="progress-bar mb-2"><div class="progress-fill" style="width: 25%"></div></div>
+                                <p class="text-[10px] text-secondary-text mb-3">Visit scheduled · Apr 30, 10:00 AM</p>
+                                <div class="flex gap-2">
+                                    <button class="flex-1 btn-outline-ocean py-1.5 rounded-lg text-[11px] font-bold">View</button>
+                                    <button class="flex-1 btn-coral py-1.5 rounded-lg text-[11px] font-bold">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-hover rounded-xl border border-border opacity-70">
+                                <div class="flex items-start justify-between mb-2">
+                                    <span class="badge-success text-[10px] px-2 py-0.5 rounded-full font-bold">COMPLETED</span>
+                                    <span class="text-[10px] text-secondary-text">#REQ-2038</span>
+                                </div>
+                                <h3 class="font-bold text-sm sm:text-base mb-1">Smart Lighting Hub</h3>
+                                <p class="text-xs text-secondary-text mb-3">Philips Hue Bridge + 4 bulbs</p>
+                                <div class="progress-bar mb-2"><div class="progress-fill" style="width: 100%"></div></div>
+                                <p class="text-[10px] text-secondary-text mb-3">Installed · Apr 22, 2026</p>
+                                <button class="w-full btn-outline-ocean py-1.5 rounded-lg text-[11px] font-bold">View Receipt</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+                            <button class="px-4 sm:px-5 py-2 btn-coral rounded-xl text-sm" id="scheduleInstallBtn">
+                                <i class="fas fa-calendar-plus mr-1"></i> Schedule Installation
+                            </button>
+                            <button class="px-4 sm:px-5 py-2 btn-outline-ocean rounded-xl text-sm">
+                                <i class="fas fa-file-pdf mr-1"></i> Download Request History
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSTALLATION PROGRESS SECTION -->
+                <div id="progress" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <h2 class="text-xl sm:text-2xl font-display font-bold mb-4">
+                            <i class="fas fa-circle-check text-accent mr-2"></i> Installation Progress
+                        </h2>
+
+                        <div class="space-y-6">
+                            <!-- Active Installation -->
+                            <div class="p-4 sm:p-5 bg-hover rounded-2xl">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                    <div>
+                                        <p class="font-bold text-sm sm:text-base">Smart Thermostat Installation</p>
+                                        <p class="text-xs text-secondary-text mt-0.5">Request #REQ-2041 · Nest Learning Thermostat</p>
+                                    </div>
+                                    <span class="badge-warning text-[10px] px-3 py-1 rounded-full font-bold">IN PROGRESS</span>
+                                </div>
+
+                                <!-- Step timeline -->
+                                <div class="space-y-4">
+                                    <div class="flex items-start gap-4">
+                                        <div class="step-circle done"><i class="fas fa-check text-xs"></i></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-semibold text-sm">1. Request Submitted</p>
+                                            <p class="text-xs text-secondary-text mt-0.5">Apr 20, 2026 · Confirmation sent to email</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="step-circle done"><i class="fas fa-check text-xs"></i></div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-semibold text-sm">2. Site Assessment</p>
+                                            <p class="text-xs text-secondary-text mt-0.5">Apr 22, 2026 · Technician verified compatibility</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="step-circle current">3</div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-semibold text-sm">3. Installation Scheduled</p>
+                                            <p class="text-xs text-secondary-text mt-0.5">Apr 30, 2026 · 10:00 AM – 11:30 AM · Alex R.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="step-circle upcoming">4</div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-semibold text-sm text-secondary-text">4. Activation & Walkthrough</p>
+                                            <p class="text-xs text-secondary-text mt-0.5">Pending · After installation completes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Completed Installations -->
+                            <div class="p-4 sm:p-5 bg-hover rounded-2xl opacity-80">
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-bold text-sm sm:text-base">Smart Lighting Hub Installation</p>
+                                        <p class="text-xs text-secondary-text mt-0.5">Request #REQ-2038 · Philips Hue Bridge</p>
+                                    </div>
+                                    <span class="badge-success text-[10px] px-3 py-1 rounded-full font-bold">COMPLETED</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-secondary-text">
+                                    <i class="fas fa-circle-check text-emerald-500"></i>
+                                    <span>Completed Apr 22, 2026 · All 4 steps verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MY DEVICES SECTION -->
+                <div id="devices" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-display font-bold text-accent mb-1">
+                                    <i class="fas fa-microchip mr-2"></i> My Devices
+                                </h2>
+                                <p class="text-xs sm:text-sm text-secondary-text">8 connected devices · 7 online</p>
+                            </div>
+                            <button class="btn-coral px-4 py-2.5 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                                <i class="fas fa-plus mr-1"></i> Add Device
+                            </button>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table class="w-full text-xs sm:text-sm whitespace-nowrap">
+                                <thead class="border-b border-border text-secondary-text text-[10px] sm:text-xs uppercase">
+                                    <tr>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Device</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Type</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Room</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Firmware</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Status</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border">
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Hub Pro</td>
+                                        <td class="py-3 px-3 sm:px-4">Controller</td>
+                                        <td class="py-3 px-3 sm:px-4">Living Room</td>
+                                        <td class="py-3 px-3 sm:px-4">v2.4.1</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Front Door Camera</td>
+                                        <td class="py-3 px-3 sm:px-4">Security</td>
+                                        <td class="py-3 px-3 sm:px-4">Entrance</td>
+                                        <td class="py-3 px-3 sm:px-4">v1.8.0</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Nest Thermostat</td>
+                                        <td class="py-3 px-3 sm:px-4">Climate</td>
+                                        <td class="py-3 px-3 sm:px-4">Hallway</td>
+                                        <td class="py-3 px-3 sm:px-4">v3.2.0</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot warning"></span><span class="badge-warning px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Pending Setup</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Philips Hue Bridge</td>
+                                        <td class="py-3 px-3 sm:px-4">Lighting</td>
+                                        <td class="py-3 px-3 sm:px-4">Living Room</td>
+                                        <td class="py-3 px-3 sm:px-4">v1.5.9</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Doorbell</td>
+                                        <td class="py-3 px-3 sm:px-4">Security</td>
+                                        <td class="py-3 px-3 sm:px-4">Entrance</td>
+                                        <td class="py-3 px-3 sm:px-4">v2.1.3</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Lock v3</td>
+                                        <td class="py-3 px-3 sm:px-4">Security</td>
+                                        <td class="py-3 px-3 sm:px-4">Front Door</td>
+                                        <td class="py-3 px-3 sm:px-4">v4.0.2</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Bedroom Smart Bulb</td>
+                                        <td class="py-3 px-3 sm:px-4">Lighting</td>
+                                        <td class="py-3 px-3 sm:px-4">Bedroom</td>
+                                        <td class="py-3 px-3 sm:px-4">v1.5.9</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot online"></span><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Online</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Kitchen Smart Plug</td>
+                                        <td class="py-3 px-3 sm:px-4">Power</td>
+                                        <td class="py-3 px-3 sm:px-4">Kitchen</td>
+                                        <td class="py-3 px-3 sm:px-4">v1.2.0</td>
+                                        <td class="py-3 px-3 sm:px-4"><div class="flex items-center gap-2"><span class="device-dot offline"></span><span class="badge-danger px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Offline</span></div></td>
+                                        <td class="py-3 px-3 sm:px-4"><button class="text-accent text-xs font-bold hover:underline">Details</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WARRANTY REGISTRY SECTION -->
+                <div id="warranty" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-display font-bold text-accent mb-1">
+                                    <i class="fas fa-shield-halved mr-2"></i> Warranty Registry
+                                </h2>
+                                <p class="text-xs sm:text-sm text-secondary-text">5 registered · 3 devices pending registration</p>
+                            </div>
+                            <button id="registerWarrantyBtn" class="btn-coral px-4 py-2.5 rounded-full text-xs sm:text-sm whitespace-nowrap">
+                                <i class="fas fa-plus mr-1"></i> Register Product
+                            </button>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table class="w-full text-xs sm:text-sm whitespace-nowrap">
+                                <thead class="border-b border-border text-secondary-text text-[10px] sm:text-xs uppercase">
+                                    <tr>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Product</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Serial No.</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Purchased</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Warranty Until</th>
+                                        <th class="pb-3 text-left px-3 sm:px-4 font-bold">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border">
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Hub Pro</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">HTP-4821-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2028</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Front Door Camera</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">HTC-2094-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2028</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Philips Hue Bridge</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">PHB-7788-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2029</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Doorbell</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">HTD-3140-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 20, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 20, 2028</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Smart Lock v3</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">HTL-5522-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Mar 15, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Mar 15, 2029</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Nest Thermostat</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">—</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 30, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">—</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-warning px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Bedroom Smart Bulb</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">HTB-9911-XX</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2028</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-success px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-3 sm:px-4 font-medium">Kitchen Smart Plug</td>
+                                        <td class="py-3 px-3 sm:px-4 font-mono text-[11px]">—</td>
+                                        <td class="py-3 px-3 sm:px-4">Apr 22, 2026</td>
+                                        <td class="py-3 px-3 sm:px-4">—</td>
+                                        <td class="py-3 px-3 sm:px-4"><span class="badge-danger px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold">Unregistered</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUPPORT SECTION -->
+                <div id="support" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <h2 class="text-xl sm:text-2xl font-display font-bold mb-4">
+                            <i class="fas fa-headset text-accent mr-2"></i> Support & Live Chat
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5">
+                            <button class="p-4 bg-hover rounded-xl text-left hover:border-accent border border-transparent transition">
+                                <i class="fas fa-comment-dots text-accent text-2xl mb-2"></i>
+                                <p class="font-bold text-sm">Live Chat</p>
+                                <p class="text-xs text-secondary-text mt-0.5">Avg. response: 2 minutes</p>
+                            </button>
+                            <button class="p-4 bg-hover rounded-xl text-left hover:border-accent border border-transparent transition">
+                                <i class="fas fa-phone text-accent text-2xl mb-2"></i>
+                                <p class="font-bold text-sm">Call Support</p>
+                                <p class="text-xs text-secondary-text mt-0.5">(888) 555-0123 · 24/7</p>
+                            </button>
+                            <button class="p-4 bg-hover rounded-xl text-left hover:border-accent border border-transparent transition">
+                                <i class="fas fa-envelope text-accent text-2xl mb-2"></i>
+                                <p class="font-bold text-sm">Email Support</p>
+                                <p class="text-xs text-secondary-text mt-0.5">support@hometech.io</p>
+                            </button>
+                            <button class="p-4 bg-hover rounded-xl text-left hover:border-accent border border-transparent transition">
+                                <i class="fas fa-book text-accent text-2xl mb-2"></i>
+                                <p class="font-bold text-sm">Help Center</p>
+                                <p class="text-xs text-secondary-text mt-0.5">Guides & tutorials</p>
+                            </button>
+                        </div>
+
+                        <div class="p-4 bg-hover rounded-xl">
+                            <p class="text-xs uppercase tracking-widest text-secondary-text font-bold mb-2">Recent Support Tickets</p>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between gap-3 p-3 bg-background rounded-lg">
+                                    <div class="min-w-0">
+                                        <p class="font-semibold text-sm truncate">Kitchen plug not responding</p>
+                                        <p class="text-[10px] text-secondary-text">Ticket #TKT-2841 · Apr 25</p>
+                                    </div>
+                                    <span class="badge-warning text-[10px] px-2 py-0.5 rounded-full flex-shrink-0">Open</span>
+                                </div>
+                                <div class="flex items-center justify-between gap-3 p-3 bg-background rounded-lg">
+                                    <div class="min-w-0">
+                                        <p class="font-semibold text-sm truncate">Question about warranty renewal</p>
+                                        <p class="text-[10px] text-secondary-text">Ticket #TKT-2840 · Apr 22</p>
+                                    </div>
+                                    <span class="badge-success text-[10px] px-2 py-0.5 rounded-full flex-shrink-0">Resolved</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS SECTION -->
+                <div id="settings" class="admin-section hidden">
+                    <div class="dashboard-card p-4 sm:p-6">
+                        <h2 class="text-xl sm:text-2xl font-display font-bold mb-4"><i class="fas fa-user-cog text-accent mr-2"></i> Account Settings</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block font-bold text-sm mb-1">Full Name</label>
+                                <input type="text" value="Jane Doe" class="w-full p-3 bg-hover rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent text-sm text-primary-text">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-sm mb-1">Email</label>
+                                <input type="email" value="jane.doe@email.com" class="w-full p-3 bg-hover rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent text-sm text-primary-text">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-sm mb-1">Phone</label>
+                                <input type="tel" value="+1 (555) 123-4567" class="w-full p-3 bg-hover rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent text-sm text-primary-text">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-sm mb-1">Home Address</label>
+                                <input type="text" value="890 Oak Street, Apt 12B, Los Angeles, CA 90012" class="w-full p-3 bg-hover rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent text-sm text-primary-text">
+                            </div>
+
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="font-bold text-sm">Email Setup Reminders</span>
+                                <div class="toggle-switch on" data-toggle></div>
+                            </div>
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="font-bold text-sm">SMS Alerts</span>
+                                <div class="toggle-switch on" data-toggle></div>
+                            </div>
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="font-bold text-sm">Device Activity Digest</span>
+                                <div class="toggle-switch" data-toggle></div>
+                            </div>
+
+                            <button class="btn-coral px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl mt-2 text-sm">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="text-center text-[10px] sm:text-xs text-secondary-text border-t border-border pt-6 sm:pt-8 pb-4">
+                    <p>© 2026 HomeTech — Smart Home Automation · Crafting Connected Living</p>
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-3">
+                        <a href="#" class="hover:text-accent transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-accent transition">Warranty Terms</a>
+                        <a href="#" class="hover:text-accent transition">Support Center</a>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
+    </main>
 
-    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[90] pointer-events-none w-auto max-w-[90vw]"></div>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="p-5 border-b border-[#E5D9D0] dark:border-[#3D352E]">
-            <a href="index.html" class="flex items-center gap-3 group">
-                <svg class="w-10 h-10 text-[#C89B8B]" viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-                    <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
-                    <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+    <!-- NEW REQUEST MODAL -->
+    <div id="requestModal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);">
+        <div class="bg-background rounded-3xl shadow-2xl w-full max-w-lg max-h-[90dvh] overflow-y-auto table-scroll">
+            <div class="p-5 sm:p-6 border-b border-border flex justify-between items-center sticky top-0 bg-background z-10">
+                <h3 class="font-display text-xl font-bold text-primary-text">New Setup Request</h3>
+                <button id="closeModal" class="p-2 rounded-lg hover:bg-hover">
+                    <i class="fas fa-times text-secondary-text"></i>
+                </button>
+            </div>
+            <div class="p-5 sm:p-6 space-y-4">
                 <div>
-                    <span class="text-xl font-display font-extrabold text-[#1E1A17] dark:text-white tracking-tight">AURA<span class="text-[#C89B8B]">SPACE</span></span>
-                    <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Client Portal</p>
-                </div>
-            </a>
-        </div>
-        <nav class="py-4">
-            <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div>
-            <div class="sidebar-item" data-page="brief"><i class="fas fa-pencil-ruler"></i><span>Design Brief</span></div>
-            <div class="sidebar-item" data-page="moodboard"><i class="fas fa-images"></i><span>Mood Board</span></div>
-            <div class="sidebar-item" data-page="approve"><i class="fas fa-check-circle"></i><span>Approvals</span></div>
-            <div class="sidebar-item" data-page="timeline"><i class="fas fa-clock"></i><span>Project Timeline</span></div>
-            <div class="sidebar-item" data-page="messages"><i class="fas fa-comments"></i><span>Messages</span></div>
-        </nav>
-        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-[#E5D9D0] dark:border-[#3D352E]">
-            <a href="login.html" class="flex items-center justify-center gap-2 w-full p-2.5 rounded-xl bg-[#F2E3DB]/50 hover:bg-[#C89B8B] transition font-semibold text-sm text-[#1E1A17]">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="top-header flex justify-between items-center flex-wrap gap-3">
-            <div>
-                <h1 class="text-2xl font-display font-bold" id="page-title">Dashboard</h1>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]" id="page-subtitle">Welcome back, Sarah</p>
-            </div>
-            <div class="hidden lg:flex items-center gap-4">
-                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-white dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] flex items-center justify-center text-[#1E1A17] dark:text-white hover:bg-[#F2E3DB] dark:hover:bg-[#3D352E] transition shadow-sm">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:inline"></i>
-                </button>
-                <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-white dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] flex items-center justify-center text-[#1E1A17] dark:text-white hover:bg-[#F2E3DB] dark:hover:bg-[#3D352E] transition shadow-sm font-bold text-base">
-                    <i class="fas fa-exchange-alt"></i>
-                </button>
-                <div class="flex items-center gap-3 border-l border-[#E5D9D0] dark:border-[#3D352E] pl-4">
-                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[#C89B8B] shadow-sm shrink-0">
-                        <img src="/assests/sarah_johnson.jpg" alt="Sarah Johnson" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="text-left hidden lg:block">
-                        <p class="text-sm font-bold text-[#1E1A17] dark:text-white leading-tight">Sarah Johnson</p>
-                        <p class="text-[10px] text-[#7A6E64] dark:text-[#9E8F84]">Client</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== DASHBOARD ========== -->
-        <div id="page-dashboard" class="page-content">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="stat-card">
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Project Status</p>
-                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">In Progress</p>
-                        </div>
-                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-project-diagram text-[#C89B8B]"></i></div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Progress</p>
-                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">65%</p>
-                        </div>
-                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-chart-line text-[#C89B8B]"></i></div>
-                    </div>
-                    <div class="progress-bar mt-2"><div class="progress-fill" style="width:65%"></div></div>
-                </div>
-                <div class="stat-card">
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Pending Reviews</p>
-                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">2</p>
-                        </div>
-                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-clock text-[#C89B8B]"></i></div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mb-1">Completed Milestones</p>
-                            <p class="text-2xl font-bold text-[#1E1A17] dark:text-white">3/5</p>
-                        </div>
-                        <div class="w-10 h-10 bg-[#F2E3DB] rounded-full flex items-center justify-center"><i class="fas fa-check-circle text-[#C89B8B]"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="stat-card">
-                    <h3 class="font-display font-bold text-lg mb-3">Recent Activity</h3>
-                    <div class="space-y-3">
-                        <div class="flex gap-3 pb-2 border-b border-[#E5D9D0] dark:border-[#3D352E]">
-                            <i class="fas fa-upload text-[#C89B8B] mt-1"></i>
-                            <div><p class="text-sm font-medium">Photos uploaded: Living Room</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Today, 10:30 AM</p></div>
-                        </div>
-                        <div class="flex gap-3 pb-2 border-b border-[#E5D9D0] dark:border-[#3D352E]">
-                            <i class="fas fa-palette text-[#C89B8B] mt-1"></i>
-                            <div><p class="text-sm font-medium">Design brief submitted</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 4:15 PM</p></div>
-                        </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-comment text-[#C89B8B] mt-1"></i>
-                            <div><p class="text-sm font-medium">Designer commented on mood board</p><p class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 2:00 PM</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <h3 class="font-display font-bold text-lg mb-3">Quick Actions</h3>
-                    <div class="space-y-3">
-                        <button data-nav="brief" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
-                            <i class="fas fa-pencil-ruler text-[#C89B8B]"></i><span>Submit Design Brief</span>
-                        </button>
-                        <button data-nav="moodboard" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
-                            <i class="fas fa-images text-[#C89B8B]"></i><span>Review Mood Board</span>
-                        </button>
-                        <button data-nav="approve" class="w-full text-left px-4 py-2 bg-[#F2E3DB] dark:bg-[#3D352E]/50 text-[#1E1A17] dark:text-white rounded-xl hover:bg-[#C89B8B]/30 dark:hover:bg-[#C89B8B]/20 transition flex items-center gap-3">
-                            <i class="fas fa-check-circle text-[#C89B8B]"></i><span>Pending Approvals</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== DESIGN BRIEF ========== -->
-        <div id="page-brief" class="page-content hidden">
-            <div class="card-design p-6">
-                <h3 class="font-display font-bold text-2xl mb-4">Design Brief</h3>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Upload photos of your space and tell us about your style preferences, color palette, and budget.</p>
-                
-                <!-- Upload Photos -->
-                <div class="mb-6">
-                    <label class="form-label">Upload Room Photos <span class="text-[#C89B8B]">*</span></label>
-                    <div id="uploadZone" class="upload-zone">
-                        <i class="fas fa-cloud-upload-alt text-4xl text-[#C89B8B] mb-3"></i>
-                        <p class="font-medium">Drag & drop photos here</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">or click to browse (JPG, PNG, WEBP)</p>
-                        <input type="file" id="fileInput" multiple accept="image/*" class="hidden" />
-                    </div>
-                    <div id="fileList" class="mt-3 flex flex-wrap gap-2"></div>
-                </div>
-
-                <!-- Design Preferences -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="form-label">Style Preferences <span class="text-[#C89B8B]">*</span></label>
-                        <select class="form-input" id="stylePref">
-                            <option value="">Select your style</option>
-                            <option>Modern Minimalist</option>
-                            <option>Scandinavian</option>
-                            <option>Mid-Century Modern</option>
-                            <option>Industrial</option>
-                            <option>Bohemian</option>
-                            <option>Traditional Classic</option>
-                            <option>Contemporary</option>
-                            <option>Eclectic</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label">Color Preferences <span class="text-[#C89B8B]">*</span></label>
-                        <select class="form-input" id="colorPref">
-                            <option value="">Select color palette</option>
-                            <option>Warm Neutrals (Beige, Cream, Taupe)</option>
-                            <option>Cool Neutrals (Gray, White, Navy)</option>
-                            <option>Earth Tones (Terracotta, Olive, Sand)</option>
-                            <option>Pastels (Blush, Mint, Lavender)</option>
-                            <option>Bold & Vibrant (Emerald, Sapphire, Gold)</option>
-                            <option>Monochromatic</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <label class="form-label">Budget Range <span class="text-[#C89B8B]">*</span></label>
-                    <select class="form-input" id="budgetRange">
-                        <option value="">Select budget range</option>
-                        <option>$5,000 - $10,000</option>
-                        <option>$10,000 - $25,000</option>
-                        <option>$25,000 - $50,000</option>
-                        <option>$50,000 - $100,000</option>
-                        <option>$100,000+</option>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-secondary-text mb-1.5">Device Type</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-hover border border-border text-sm text-primary-text focus:outline-none focus:ring-2 focus:ring-accent">
+                        <option>Smart Thermostat</option>
+                        <option>Security Camera</option>
+                        <option>Smart Doorbell</option>
+                        <option>Smart Lock</option>
+                        <option>Smart Lighting</option>
+                        <option>Smart Hub / Controller</option>
+                        <option>Other</option>
                     </select>
                 </div>
-                
-                <div class="mt-4">
-                    <label class="form-label">Additional Notes</label>
-                    <textarea class="form-input" rows="3" placeholder="Share any specific requirements, inspirations, or must-have elements..." id="briefNotes"></textarea>
-                </div>
-                
-                <button class="btn-primary-design w-full mt-6 py-3 text-lg font-bold inline-flex items-center justify-center gap-2">
-                    <i class="fas fa-paper-plane"></i> Submit Design Brief
-                </button>
-            </div>
-        </div>
-
-        <!-- ========== MOOD BOARD ========== -->
-        <div id="page-moodboard" class="page-content hidden">
-            <div class="card-design p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-display font-bold text-2xl">Mood Board & Design Concept</h3>
-                    <span class="status-badge status-review">Under Review</span>
-                </div>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-4">Your designer has submitted a mood board. Review and provide feedback below.</p>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div class="mood-board-card aspect-square bg-[#F2E3DB] flex items-center justify-center text-[#C89B8B] text-2xl font-bold">Color</div>
-                    <div class="mood-board-card aspect-square bg-[#E5D9D0] flex items-center justify-center text-[#7A6E64] text-sm">Texture</div>
-                    <div class="mood-board-card aspect-square bg-[#D4B8A7] flex items-center justify-center text-white text-sm">Furniture</div>
-                    <div class="mood-board-card aspect-square bg-[#C89B8B] flex items-center justify-center text-white text-sm">Lighting</div>
-                </div>
-                
-                <div class="mb-4">
-                    <label class="form-label">Designer's Notes</label>
-                    <div class="p-4 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-xl text-sm">
-                        <p>Based on your preferences for warm neutrals and modern minimalist style, we've curated a concept that emphasizes natural light, organic textures, and a calm, uncluttered aesthetic. The color palette incorporates warm beige, soft cream, and touches of terracotta for depth.</p>
-                    </div>
-                </div>
-                
                 <div>
-                    <label class="form-label">Your Comments</label>
-                    <textarea class="form-input" rows="3" placeholder="Share your thoughts on the mood board. What resonates? What would you like to adjust?" id="moodComments"></textarea>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-secondary-text mb-1.5">Preferred Date</label>
+                    <input type="date" class="w-full px-4 py-3 rounded-xl bg-hover border border-border text-sm text-primary-text focus:outline-none focus:ring-2 focus:ring-accent">
                 </div>
-                
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4">
-                    <button class="btn-primary-design px-6 py-2.5 flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap"><i class="fas fa-comment"></i> Submit Feedback</button>
-                    <button class="btn-outline-design px-6 py-2.5 flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap"><i class="fas fa-check"></i> Approve</button>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-secondary-text mb-1.5">Preferred Time</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-hover border border-border text-sm text-primary-text focus:outline-none focus:ring-2 focus:ring-accent">
+                        <option>9:00 AM – 11:00 AM</option>
+                        <option>11:00 AM – 1:00 PM</option>
+                        <option>1:00 PM – 3:00 PM</option>
+                        <option>3:00 PM – 5:00 PM</option>
+                    </select>
                 </div>
-            </div>
-        </div>
-
-        <!-- ========== APPROVALS ========== -->
-        <div id="page-approve" class="page-content hidden">
-            <div class="card-design p-6">
-                <h3 class="font-display font-bold text-2xl mb-4">Approvals</h3>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Review and approve finalized design elements to proceed to the next phase.</p>
-                
-                <div class="space-y-4">
-                    <div class="assignment-card grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                        <div class="col-span-2 md:col-span-1">
-                            <p class="font-bold">Color Palette</p>
-                            <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Phase: Concept</p>
-                        </div>
-                        <div class="col-span-1"><span class="status-badge status-pending">Pending Review</span></div>
-                        <div class="col-span-1 text-right"><button class="text-sm font-semibold text-[#C89B8B] hover:text-[#B08474]">Review →</button></div>
-                    </div>
-                    <div class="assignment-card grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                        <div class="col-span-2 md:col-span-1">
-                            <p class="font-bold">Furniture Selection</p>
-                            <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Phase: Concept</p>
-                        </div>
-                        <div class="col-span-1"><span class="status-badge status-review">In Review</span></div>
-                        <div class="col-span-1 text-right"><button class="text-sm font-semibold text-[#C89B8B] hover:text-[#B08474]">Review →</button></div>
-                    </div>
-                    <div class="assignment-card grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                        <div class="col-span-2 md:col-span-1">
-                            <p class="font-bold">Lighting Plan</p>
-                            <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Phase: Final Design</p>
-                        </div>
-                        <div class="col-span-1"><span class="status-badge status-approved">Approved</span></div>
-                        <div class="col-span-1 text-right"><span class="text-sm text-[#2E7D32]">✓ Completed</span></div>
-                    </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-secondary-text mb-1.5">Notes (optional)</label>
+                    <textarea rows="3" placeholder="Tell us about your home setup..." class="w-full px-4 py-3 rounded-xl bg-hover border border-border text-sm text-primary-text focus:outline-none focus:ring-2 focus:ring-accent resize-y"></textarea>
                 </div>
-            </div>
-        </div>
-
-        <!-- ========== PROJECT TIMELINE ========== -->
-        <div id="page-timeline" class="page-content hidden">
-            <div class="card-design p-6">
-                <h3 class="font-display font-bold text-2xl mb-4">Project Timeline</h3>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Track your project progress with completed and pending milestone updates.</p>
-                
-                <div class="space-y-2">
-                    <div class="timeline-item completed">
-                        <p class="font-bold">Phase 1: Discovery & Consultation</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Completed May 10, 2025</p>
-                        <p class="text-sm mt-1">Initial consultation, style assessment, and project scope defined.</p>
-                    </div>
-                    <div class="timeline-item completed">
-                        <p class="font-bold">Phase 2: Design Brief & Photos</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Completed May 15, 2025</p>
-                        <p class="text-sm mt-1">Photos uploaded and design brief submitted.</p>
-                    </div>
-                    <div class="timeline-item current">
-                        <p class="font-bold">Phase 3: Concept & Mood Board</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">In Progress</p>
-                        <p class="text-sm mt-1">Designer has submitted mood board for review. Awaiting client feedback.</p>
-                        <span class="status-badge status-pending text-xs mt-1 inline-block">Waiting for Review</span>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="font-bold">Phase 4: Final Design & Approvals</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Pending</p>
-                        <p class="text-sm mt-1">Finalize design elements and obtain approvals.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="font-bold">Phase 5: Implementation & Reveal</p>
-                        <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84]">Pending</p>
-                        <p class="text-sm mt-1">Procurement, installation, and final reveal of your transformed space.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== MESSAGES ========== -->
-        <div id="page-messages" class="page-content hidden">
-            <div class="card-design p-6">
-                <h3 class="font-display font-bold text-2xl mb-4">Messages</h3>
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-6">Communicate directly with your designer.</p>
-                
-                <div class="space-y-4">
-                    <div class="p-4 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-xl">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-bold">Elena Voss <span class="text-xs font-normal text-[#7A6E64] dark:text-[#9E8F84]">Designer</span></p>
-                                <p class="text-sm mt-1">I've uploaded the mood board for your review. Let me know your thoughts on the color palette direction.</p>
-                            </div>
-                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Today, 11:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-[#FFFFFF] dark:bg-[#1A1614] rounded-xl border border-[#E5D9D0] dark:border-[#3D352E]">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-bold">You</p>
-                                <p class="text-sm mt-1">Thank you! I love the direction. I'll share my comments shortly.</p>
-                            </div>
-                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 6:30 PM</span>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-[#F8F0EB] dark:bg-[#2A2420] rounded-xl">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-bold">Elena Voss <span class="text-xs font-normal text-[#7A6E64] dark:text-[#9E8F84]">Designer</span></p>
-                                <p class="text-sm mt-1">Great! Once you approve the concept, we'll move to the final design phase.</p>
-                            </div>
-                            <span class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Yesterday, 2:00 PM</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-6">
-                    <label class="form-label">Send a Message</label>
-                    <div class="flex gap-3">
-                        <input type="text" class="form-input flex-1" placeholder="Type your message..." />
-                        <button class="btn-primary-design px-6 py-2"><i class="fas fa-paper-plane"></i></button>
-                    </div>
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button id="submitRequest" class="flex-1 btn-coral py-3 rounded-xl text-sm font-bold"><i class="fas fa-check mr-1"></i> Submit Request</button>
+                    <button id="cancelRequest" class="flex-1 btn-outline-ocean py-3 rounded-xl text-sm font-bold">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // RTL Toggle
-            const rtlToggle = document.getElementById('rtl-toggle');
-            const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
-            function setRTL(isRTL) {
-                if (isRTL) {
-                    document.documentElement.setAttribute('dir', 'rtl');
-                    localStorage.setItem('dir', 'rtl');
-                } else {
-                    document.documentElement.setAttribute('dir', 'ltr');
-                    localStorage.setItem('dir', 'ltr');
+        (function() {
+            const html = document.documentElement;
+
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+                if (window._activityChart || window._deviceTypeChart) {
+                    updateChartColors(theme);
                 }
             }
-            const savedDir = localStorage.getItem('dir');
-            setRTL(savedDir === 'rtl');
-            if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
-            if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
-
-            // Theme Toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-            function setTheme(isDark) {
-                if (isDark) document.documentElement.classList.add('dark');
-                else document.documentElement.classList.remove('dark');
-                [themeToggle, themeToggleMobile].forEach(btn => {
-                    if (btn) {
-                        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
-                        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
-                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
-                    }
-                });
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            }
-            const savedTheme = localStorage.getItem('theme');
-            setTheme(savedTheme === 'dark');
-            if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
-            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
-
-            // Mobile Sidebar
-            const menuToggle = document.getElementById('menuToggle');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
-            function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); }
-            if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
-            if (overlay) overlay.addEventListener('click', closeSidebar);
-            window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
-
-            // Navigation
-            const sidebarItems = document.querySelectorAll('.sidebar-item');
-            const pages = document.querySelectorAll('.page-content');
-            const pageTitle = document.getElementById('page-title');
-            const pageSubtitle = document.getElementById('page-subtitle');
-            const titles = {
-                dashboard: { title: 'Dashboard', subtitle: 'Welcome back, Sarah' },
-                brief: { title: 'Design Brief', subtitle: 'Upload photos and share your vision' },
-                moodboard: { title: 'Mood Board', subtitle: 'Review your designer\'s concept' },
-                approve: { title: 'Approvals', subtitle: 'Review and approve design elements' },
-                timeline: { title: 'Project Timeline', subtitle: 'Track your project milestones' },
-                messages: { title: 'Messages', subtitle: 'Communicate with your designer' }
-            };
-            function navigateTo(page) {
-                sidebarItems.forEach(i => i.classList.remove('active'));
-                document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
-                pages.forEach(p => p.classList.add('hidden'));
-                document.getElementById(`page-${page}`)?.classList.remove('hidden');
-                if (titles[page]) { pageTitle.textContent = titles[page].title; pageSubtitle.textContent = titles[page].subtitle; }
-                closeSidebar();
-            }
-            sidebarItems.forEach(item => { item.addEventListener('click', () => { navigateTo(item.getAttribute('data-page')); }); });
-            document.querySelectorAll('[data-nav]').forEach(btn => { btn.addEventListener('click', () => { navigateTo(btn.getAttribute('data-nav')); }); });
-
-            // File Upload
-            const uploadZone = document.getElementById('uploadZone');
-            const fileInput = document.getElementById('fileInput');
-            const fileList = document.getElementById('fileList');
-            let files = [];
-            
-            uploadZone.addEventListener('click', () => fileInput.click());
-            uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('dragover'); });
-            uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-            uploadZone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadZone.classList.remove('dragover');
-                handleFiles(e.dataTransfer.files);
+            applyTheme(savedTheme);
+            document.getElementById('theme-toggle')?.addEventListener('click', () => {
+                const newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
             });
-            fileInput.addEventListener('change', () => handleFiles(fileInput.files));
-            
-            function handleFiles(newFiles) {
-                for (let f of newFiles) {
-                    if (f.type.startsWith('image/')) {
-                        files.push(f);
-                        const div = document.createElement('div');
-                        div.className = 'flex items-center gap-2 bg-[#F2E3DB] dark:bg-[#3D352E] px-3 py-1 rounded-full text-sm';
-                        div.innerHTML = `<i class="fas fa-image text-[#C89B8B]"></i> ${f.name}`;
-                        fileList.appendChild(div);
-                    }
-                }
+
+            // Language / Direction
+            const savedLang = localStorage.getItem('language') || 'en';
+            html.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('lang-toggle')?.addEventListener('click', () => {
+                const newDir = html.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr';
+                html.setAttribute('dir', newDir);
+                localStorage.setItem('language', newDir === 'rtl' ? 'ar' : 'en');
+            });
+
+            // Mobile Menu
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const closeSide = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        });
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            menuToggle?.addEventListener('click', openMenu);
+            closeSide?.addEventListener('click', closeMenu);
+            overlay?.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') { closeMenu(); hideModal(); }
+            });
+
+            // Section Navigation
+            const sections = ['overview', 'requests', 'progress', 'devices', 'warranty', 'support', 'settings'];
+            const links = document.querySelectorAll('.sidebar-link');
+
+            window.activateSection = function(id) {
+                sections.forEach(s => {
+                    const el = document.getElementById(s);
+                    if (el) el.classList.add('hidden');
+                });
+                const target = document.getElementById(id);
+                if (target) target.classList.remove('hidden');
+
+                links.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.dataset.section === id) l.classList.add('active');
+                });
+
+                if (window.innerWidth < 1024) closeMenu();
+
+                if (id === 'overview') {
+                    setTimeout(() => {
+                        window._activityChart?.resize();
+                        window._deviceTypeChart?.resize();
+                    }, 50);
+                }
+            };
+
+            links.forEach(link => {
+                if (link.dataset.section) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        activateSection(link.dataset.section);
+                    });
+                }
+            });
+
+            document.querySelectorAll('[data-nav]').forEach(btn => {
+                btn.addEventListener('click', () => activateSection(btn.dataset.nav));
+            });
+
+            // Logout
+            document.getElementById("logoutBtn")?.addEventListener("click", (e) => {
+                e.preventDefault();
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = "login.html";
+            });
+
+            // Toggle switches
+            document.querySelectorAll('[data-toggle]').forEach(t => {
+                t.addEventListener('click', () => t.classList.toggle('on'));
+            });
+
+            // Toast
+            function showToast(msg, type = 'info') {
+                const c = document.getElementById('toastContainer');
+                const t = document.createElement('div');
+                let bg = '#0EA5E9', icon = '<i class="fas fa-info-circle"></i>';
+                if (type === 'success') { bg = '#10B981'; icon = '<i class="fas fa-check-circle"></i>'; }
+                if (type === 'warning') { bg = '#F59E0B'; icon = '<i class="fas fa-exclamation-triangle"></i>'; }
+                if (type === 'error') { bg = '#EF4444'; icon = '<i class="fas fa-times-circle"></i>'; }
+                t.className = 'mb-2 px-5 py-3 rounded-xl shadow-lg text-xs sm:text-sm font-medium flex items-center gap-2 pointer-events-auto text-white max-w-full';
+                t.style.backgroundColor = bg;
+                t.style.animation = 'toastFade 3s ease forwards';
+                t.innerHTML = `${icon} <span class="break-words">${msg}</span>`;
+                c.appendChild(t);
+                setTimeout(() => t.remove(), 3100);
+            }
+            const styleTag = document.createElement('style');
+            styleTag.textContent = `@keyframes toastFade { 0%{opacity:0;transform:translateX(-50%) translateY(20px);} 15%{opacity:1;transform:translateX(-50%) translateY(0);} 85%{opacity:1;transform:translateX(-50%) translateY(0);} 100%{opacity:0;transform:translateX(-50%) translateY(-10px);} }`;
+            document.head.appendChild(styleTag);
+
+            // Modal
+            const modal = document.getElementById('requestModal');
+            function openModal() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+            function hideModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+            document.getElementById('newRequestBtn')?.addEventListener('click', openModal);
+            document.getElementById('scheduleInstallBtn')?.addEventListener('click', openModal);
+            document.getElementById('closeModal')?.addEventListener('click', hideModal);
+            document.getElementById('cancelRequest')?.addEventListener('click', hideModal);
+            document.getElementById('submitRequest')?.addEventListener('click', () => {
+                hideModal();
+                showToast('Setup request submitted! We\'ll confirm your visit within 24 hours.', 'success');
+            });
+            modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
+
+            document.getElementById('registerWarrantyBtn')?.addEventListener('click', () => {
+                showToast('Warranty registration form would open here.', 'info');
+            });
+
+            // Charts
+            function getChartColors(theme) {
+                const isDark = theme === 'dark';
+                return {
+                    grid: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+                    text: isDark ? '#94A3B8' : '#334155',
+                    ocean: '#0EA5E9',
+                    oceanLight: '#38BDF8',
+                    amber: '#F59E0B',
+                    emerald: '#10B981'
+                };
+            }
+
+            function updateChartColors(theme) {
+                const colors = getChartColors(theme);
+                [window._activityChart, window._deviceTypeChart].forEach(chart => {
+                    if (!chart) return;
+                    if (chart.options.scales) {
+                        Object.values(chart.options.scales).forEach(scale => {
+                            if (scale.grid) scale.grid.color = colors.grid;
+                            if (scale.ticks) scale.ticks.color = colors.text;
+                        });
+                    }
+                    if (chart.options.plugins?.legend?.labels) {
+                        chart.options.plugins.legend.labels.color = colors.text;
+                    }
+                    chart.update('none');
+                });
+            }
+
+            setTimeout(() => {
+                const colors = getChartColors(html.getAttribute('data-theme'));
+
+                const activityCtx = document.getElementById('activityChart')?.getContext('2d');
+                if (activityCtx) {
+                    window._activityChart = new Chart(activityCtx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            datasets: [
+                                {
+                                    label: 'Device Uptime (hrs)',
+                                    data: [168, 166, 170, 172, 174, 176, 178],
+                                    borderColor: colors.ocean,
+                                    backgroundColor: 'rgba(14,165,233,0.12)',
+                                    tension: 0.35,
+                                    fill: true,
+                                    pointRadius: 3,
+                                    pointHoverRadius: 5,
+                                    borderWidth: 3
+                                },
+                                {
+                                    label: 'Automation Triggers',
+                                    data: [24, 32, 28, 42, 38, 54, 62],
+                                    borderColor: colors.amber,
+                                    backgroundColor: 'rgba(245,158,11,0.10)',
+                                    tension: 0.35,
+                                    fill: true,
+                                    pointRadius: 3,
+                                    pointHoverRadius: 5,
+                                    borderWidth: 3
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            interaction: { intersect: false, mode: 'index' },
+                            plugins: {
+                                legend: { position: 'bottom', labels: { color: colors.text, boxWidth: 12, padding: 12, font: { size: 11 } } }
+                            },
+                            scales: {
+                                x: { grid: { color: colors.grid }, ticks: { color: colors.text, font: { size: 10 } } },
+                                y: { grid: { color: colors.grid }, ticks: { color: colors.text, font: { size: 10 } }, beginAtZero: true }
+                            }
+                        }
+                    });
+                }
+
+                const deviceCtx = document.getElementById('deviceTypeChart')?.getContext('2d');
+                if (deviceCtx) {
+                    window._deviceTypeChart = new Chart(deviceCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Security', 'Lighting', 'Climate', 'Control', 'Power'],
+                            datasets: [{
+                                data: [3, 2, 1, 1, 1],
+                                backgroundColor: [colors.ocean, colors.oceanLight, colors.amber, colors.emerald, '#8B5CF6'],
+                                borderWidth: 0,
+                                hoverOffset: 6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '60%',
+                            plugins: {
+                                legend: { position: 'bottom', labels: { color: colors.text, boxWidth: 12, padding: 12, font: { size: 11 } } }
+                            }
+                        }
+                    });
+                }
+            }, 100);
+
+            // Welcome toast
+            setTimeout(() => showToast('Welcome home, Jane! Your thermostat setup is 60% complete.', 'info'), 500);
+
+            // Resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth >= 1024) closeMenu();
+                }, 150);
+            });
+        })();
     </script>
 </body>
 </html>

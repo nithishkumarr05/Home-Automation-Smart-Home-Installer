@@ -1,355 +1,578 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Page Not Found | Aura Space</title>
-    
-    <!-- Custom Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
-    
-    <meta name="description" content="Oops! That page has wandered off. The page you're looking for doesn't exist or has been moved. Let's get you back to Aura Space.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 | Page Not Found - HomeTech Smart Home Automation</title>
+    <!-- Custom Favicon (HomeTech geometric house) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='8' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='16' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='12' cy='8' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Cpath d='M12 11V9.5'/%3E%3Cpath d='M10.5 14L9 15.5'/%3E%3Cpath d='M13.5 14L15 15.5'/%3E%3C/svg%3E" />
+    <meta name="description" content="Oops! This page has lost connection. Return to HomeTech for smart home automation, security systems, and intelligent living solutions.">
 
-    <!-- Tailwind CSS -->
-      <script src="tailwind.js"></script>
-
+    <!-- Tailwind CSS + Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
-                    colors: {
-                        brand: {
-                            primary: '#1E1A17',
-                            secondary: '#3D352E',
-                            muted: '#7A6E64',
-                            border: '#E5D9D0',
-                            accent: '#C89B8B',
-                            'accent-dark': '#B08474',
-                            'accent-light': '#F2E3DB',
-                            bg: '#FCF8F5',
-                            'bg-soft': '#F8F0EB',
-                        },
-                        custom: {
-                            clay: '#C89B8B',
-                            'clay-light': '#F2E3DB',
-                        }
-                    },
-                    fontFamily: {
-                        display: ['"Playfair Display"', 'serif'],
-                        body: ['"Inter"', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'spin-slow': 'spinSlow 10s linear infinite',
-                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
-                        'float-gentle': 'floatGentle 4s ease-in-out infinite',
-                        'fade-in-up': 'fadeInUp 0.5s ease-out',
-                        'pulse-gentle': 'pulseGentle 3s ease-in-out infinite',
-                        'bloom': 'bloom 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
-                        bounceGentle: { '0%,100%': { transform: 'translateY(0) rotate(0deg)' }, '50%': { transform: 'translateY(-15px) rotate(5deg)' } },
-                        floatGentle: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
-                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        pulseGentle: { '0%,100%': { opacity: '0.7' }, '50%': { opacity: '1' } },
-                        bloom: { '0%,100%': { transform: 'scale(1) rotate(0deg)' }, '50%': { transform: 'scale(1.05) rotate(5deg)' } },
-                    },
-                    backgroundImage: {
-                        'warm-pattern': 'radial-gradient(circle at 20% 30%, rgba(200,155,139,0.08) 0%, transparent 60%)',
-                    }
-                }
-            }
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
-        h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
-        p { font-weight: 400; }
-        p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
-        .font-extrabold { font-weight: 800 !important; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .bg-brand-accent { background-color: #C89B8B; }
-        .text-brand-accent { color: #C89B8B; }
-        .border-brand-accent { border-color: #C89B8B; }
-        .bg-brand-accent-light { background-color: #F2E3DB; }
-        .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
-        .bg-brand-bg-soft { background-color: #F8F0EB; }
+        html {
+            overflow: hidden;
+        }
 
         body {
-            background-color: #FCF8F5;
             font-family: 'Inter', system-ui, sans-serif;
-            color: #1E1A17;
-            line-height: 1.6;
-        }
-        .dark body { background-color: #1A1614; color: #EDE6E0; }
-        .dark .text-brand-primary { color: #EDE6E0; }
-        .dark .text-brand-secondary { color: #CEC3BA; }
-        .dark .text-brand-muted { color: #9E8F84; }
-        /* Light mode contrast enhancements for readability */
-        html:not(.dark) .text-\[\#7A6E64\],
-        html:not(.dark) .text-brand-muted { color: #4D4036 !important; }
-        html:not(.dark) .text-\[\#3D352E\] { color: #2D241E !important; }
-        html:not(.dark) .card-design p { color: #4D4036; }
-        html:not(.dark) .card-design .text-\[\#C89B8B\] { color: #A65A48; }
-
-        /* Toggle Buttons */
-        .toggle-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: #FFFFFF;
-            color: #C89B8B;
-            display: inline-flex;
+            background: #020617;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(200,155,139,0.2);
-            font-size: 1.1rem;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
         }
-        .dark .toggle-btn { background: #2A2420; color: #C89B8B; border-color: rgba(200,155,139,0.3); }
-        .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
-        .dark .toggle-btn:hover { background: #C89B8B; color: #1E1A17; }
-        .toggle-btn.active { background: #C89B8B; color: #1E1A17; }
-        .dark .toggle-btn.active { background: #C89B8B; color: #1E1A17; }
 
-        /* Button styles */
-        .btn-primary-design {
-            background: #1E1A17;
-            color: #FCF8F5;
-            padding: 0.85rem 2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-radius: 50px;
-            display: inline-flex;
+        /* Smart home background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.18;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.94) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: none;
-            cursor: pointer;
+            justify-content: center;
+            height: 100%;
         }
-        .btn-primary-design:hover {
-            background: #3D352E;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(200,155,139,0.4);
-        }
-        .dark .btn-primary-design { background: #FCF8F5; color: #1E1A17; }
-        .dark .btn-primary-design:hover { background: #F2E3DB; color: #1E1A17; }
 
-        .btn-outline-design {
-            border: 1.5px solid #1E1A17;
-            background: transparent;
-            color: #1E1A17;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 500;
+        .error-card {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(4px);
+            border-radius: clamp(24px, 4vw, 40px);
+            padding: clamp(20px, 4vh, 48px) clamp(16px, 4vw, 36px);
+            text-align: center;
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.25);
             transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Dark mode support */
+        .dark .error-card {
+            background: rgba(15, 23, 42, 0.96);
+            border-color: rgba(14, 165, 233, 0.35);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-12px) rotate(3deg);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.22;
+            }
+            90% {
+                opacity: 0.22;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .float-icon {
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+
+        .code-404 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(60px, 15vh, 130px);
+            font-weight: 800;
+            background: linear-gradient(135deg, #0F172A 0%, #0EA5E9 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            letter-spacing: -4px;
+            font-style: italic;
+        }
+
+        .dark .code-404 {
+            background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .main-icon {
+            font-size: clamp(40px, 8vh, 70px);
+            display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
+            color: #0EA5E9;
+        }
+
+        .dark .main-icon {
+            color: #38BDF8;
+        }
+
+        .title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(18px, 4vh, 28px);
+            font-weight: 700;
+            color: #0F172A;
+            margin-top: clamp(8px, 2vh, 16px);
+            margin-bottom: clamp(6px, 1.5vh, 12px);
+        }
+
+        .dark .title {
+            color: #F8FAFC;
+        }
+
+        .message {
+            color: #334155;
+            font-size: clamp(12px, 2vh, 15px);
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto clamp(12px, 3vh, 28px) auto;
+        }
+
+        .dark .message {
+            color: #CBD5E1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: clamp(8px, 2vw, 14px);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: clamp(12px, 3vh, 32px);
+        }
+
+        .btn-primary {
+            background: #0F172A;
+            color: #FFFFFF;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.25s ease;
+            border: none;
             cursor: pointer;
-        }
-        .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
-        .btn-outline-design:hover { background: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
-        .dark .btn-outline-design:hover { background: #EDE6E0; color: #1E1A17; }
-
-        /* Accent line */
-        .accent-line {
-            width: 70px;
-            height: 3px;
-            background: #C89B8B;
-            margin: 1rem auto;
-            border-radius: 3px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
         }
 
-        /* Animated blossom element */
-        .floating-icon {
-            animation: floatGentle 4s ease-in-out infinite;
+        .btn-primary:hover {
+            background: #334155;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
         }
 
-        /* RTL Fixes */
-        [dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]) {
-            --tw-space-x-reverse: 1;
-            margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+        .dark .btn-primary {
+            background: #0EA5E9;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
         }
-        [dir="rtl"] .ml-8 { margin-left: 0; margin-right: 2rem; }
-        [dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
-        [dir="rtl"] .accent-line { margin: 1rem auto; }
+
+        .dark .btn-primary:hover {
+            background: #38BDF8;
+            color: #0F172A;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #0EA5E9;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #0EA5E9;
+            transition: all 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #0EA5E9;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .dark .btn-secondary {
+            color: #38BDF8;
+            border-color: #38BDF8;
+        }
+
+        .dark .btn-secondary:hover {
+            background: #38BDF8;
+            color: #0F172A;
+        }
+
+        .suggestion-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            margin-top: clamp(12px, 2vh, 20px);
+            padding-top: clamp(12px, 2vh, 20px);
+            border-top: 1px solid rgba(14, 165, 233, 0.18);
+        }
+
+        .dark .suggestion-links {
+            border-top-color: rgba(14, 165, 233, 0.25);
+        }
+
+        .suggestion-links a {
+            color: #0EA5E9;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: color 0.2s;
+        }
+
+        .suggestion-links a:hover {
+            color: #0F172A;
+            text-decoration: underline;
+        }
+
+        .dark .suggestion-links a {
+            color: #38BDF8;
+        }
+
+        .dark .suggestion-links a:hover {
+            color: #7DD3FC;
+            text-decoration: underline;
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 14s infinite linear;
+            opacity: 0;
+            color: rgba(14, 165, 233, 0.3);
+        }
+
+        .star-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: starTwinkle 2.4s ease-in-out infinite;
+            color: rgba(56, 189, 248, 0.4);
+            font-size: 14px;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .btn-primary i,
+        [dir="rtl"] .btn-secondary i {
+            transform: scaleX(-1);
+        }
+
+        /* Responsive */
+        @media (max-width: 550px) {
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 18px;
+                font-size: 10px;
+            }
+            .suggestion-links a {
+                font-size: 9.5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-primary,
+            .btn-secondary {
+                padding: 8px 16px;
+                font-size: 9px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .main-icon {
+                display: none;
+            }
+            .message {
+                display: none;
+            }
+            .code-404 {
+                font-size: clamp(50px, 12vh, 90px);
+            }
+        }
+
+        @media (max-height: 480px) {
+            .error-card {
+                padding: 12px 16px;
+                border-radius: 20px;
+            }
+            .code-404 {
+                font-size: 60px;
+            }
+            .title {
+                font-size: 16px;
+                margin-top: 4px;
+            }
+            .button-group {
+                margin-bottom: 8px;
+            }
+            .suggestion-links {
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+        }
+
+        .search-hint {
+            margin-top: clamp(10px, 2vh, 20px);
+            font-size: clamp(9px, 2vh, 11px);
+            color: #64748B;
+        }
+
+        .dark .search-hint {
+            color: #94A3B8;
+        }
+
+        .search-hint a {
+            color: #0EA5E9;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .dark .search-hint a {
+            color: #38BDF8;
+        }
+
+        .search-hint a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
-<body class="warm-pattern">
+<body>
 
-    <!-- ========== HEADER ========== -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
-        <div class="container mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-2 md:gap-3 group shrink-0">
-                    <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none">
-                        <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-                        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
-                        <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-                        <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <!-- Floating decorative elements (smart home icons) -->
+    <div class="floating-element" style="left: 5%; animation-duration: 14s; animation-delay: 0s;"><i class="fas fa-wifi"></i></div>
+    <div class="floating-element" style="left: 15%; animation-duration: 18s; animation-delay: 2s;"><i class="fas fa-microchip"></i></div>
+    <div class="floating-element" style="left: 30%; animation-duration: 16s; animation-delay: 4s;"><i class="fas fa-lightbulb"></i></div>
+    <div class="floating-element" style="left: 55%; animation-duration: 20s; animation-delay: 1s;"><i class="fas fa-shield-halved"></i></div>
+    <div class="floating-element" style="left: 70%; animation-duration: 15s; animation-delay: 3s;"><i class="fas fa-camera"></i></div>
+    <div class="floating-element" style="left: 85%; animation-duration: 22s; animation-delay: 5s;"><i class="fas fa-house-signal"></i></div>
+    <div class="floating-element" style="left: 92%; animation-duration: 17s; animation-delay: 2s;"><i class="fas fa-temperature-half"></i></div>
+    <div class="floating-element" style="left: 42%; animation-duration: 19s; animation-delay: 6s;"><i class="fas fa-bolt"></i></div>
+
+    <!-- Twinkling stars -->
+    <div class="star-element" style="top: 8%; left: 8%; animation-delay: 0.5s;"><i class="fas fa-star"></i></div>
+    <div class="star-element" style="top: 15%; right: 12%; animation-delay: 1.2s;"><i class="fas fa-star"></i></div>
+    <div class="star-element" style="top: 70%; left: 20%; animation-delay: 0.8s;"><i class="fas fa-star"></i></div>
+    <div class="star-element" style="bottom: 20%; right: 25%; animation-delay: 1.8s;"><i class="fas fa-star"></i></div>
+    <div class="star-element" style="top: 45%; right: 8%; animation-delay: 0.3s;"><i class="fas fa-star"></i></div>
+    <div class="star-element" style="bottom: 35%; left: 10%; animation-delay: 2.0s;"><i class="fas fa-star"></i></div>
+
+    <div class="error-container">
+        <div class="error-card animate-fade-up">
+            <!-- Brand mark -->
+            <div class="flex justify-center mb-6 w-full">
+                <a href="index.html" class="flex items-center gap-3 group" style="text-decoration: none;">
+                    <svg class="w-10 h-10 md:w-12 md:h-12 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+                        <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+                        <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+                        <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+                        <path d="M12 11V9.5" />
+                        <path d="M10.5 14L9 15.5" />
+                        <path d="M13.5 14L15 15.5" />
                     </svg>
-                    <div>
-                        <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+                    <div class="flex flex-col text-left">
+                        <span class="text-xl md:text-2xl font-bold tracking-tight drop-shadow-sm" style="font-family: 'Playfair Display', Georgia, serif;">
+                            <span class="text-gray-900 dark:text-white">Home</span><span style="color: #0EA5E9;">Tech</span>
+                        </span>
+                        <span class="text-[8px] tracking-[0.25em] uppercase font-semibold -mt-1 text-gray-500 dark:text-gray-400">Smart Home Automation</span>
                     </div>
                 </a>
-
-                <!-- Toggle Buttons -->
-                <div class="flex items-center gap-3">
-                    <button id="theme-toggle" class="toggle-btn" title="Dark / Light">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:inline"></i>
-                    </button>
-                    <button id="rtl-toggle" class="toggle-btn" title="RTL / LTR">
-                        <i class="fas fa-exchange-alt"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ========== 404 MAIN CONTENT ========== -->
-    <div class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
-        <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
-            <!-- Animated Icon -->
-            <div class="mb-6 floating-icon">
-                <div class="w-28 h-28 md:w-36 md:h-36 rounded-full border-8 border-[#C89B8B]/30 flex items-center justify-center mx-auto relative">
-                    <svg class="w-14 h-14 md:w-16 md:h-16 text-[#C89B8B] animate-bloom" viewBox="0 0 100 100" fill="none">
-                        <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-                        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6"/>
-                        <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-                        <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <div class="absolute inset-0 rounded-full border-4 border-[#C89B8B]/20 animate-ping opacity-75"></div>
-                </div>
             </div>
 
-            <!-- Large 404 Number -->
-            <div class="mb-4">
-                <span class="text-[120px] md:text-[180px] font-display font-extrabold text-[#C89B8B] leading-none tracking-tighter drop-shadow-lg">404</span>
+            <!-- Animated Main Icon -->
+            <div class="main-icon">
+                <i class="fas fa-house-signal"></i>
             </div>
 
-            <!-- Title -->
-            <h1 class="text-2xl md:text-3xl font-display font-bold text-[#1E1A17] dark:text-white mb-3">
-                Oops! Page Not Found
+            <!-- 404 Code -->
+            <div class="code-404">
+                404
+            </div>
+
+            <!-- Error Title -->
+            <h1 class="title">
+                This Page Lost Its Connection
             </h1>
 
-            <!-- Divider -->
-            <div class="accent-line"></div>
-
-            <!-- Message -->
-            <p class="text-base md:text-lg text-[#3D352E] dark:text-[#CEC3BA] mb-8 leading-relaxed max-w-md mx-auto">
-                The page you're looking for has wandered off or never existed. Let's get you back to beautiful design.
+            <!-- Error Message -->
+            <p class="message">
+                The page you're looking for may have been moved, renamed, or is temporarily offline. Let's get you back to the devices, dashboards, and controls that keep your smart home running.
             </p>
 
             <!-- Action Buttons -->
-            <div class="flex flex-wrap gap-4 justify-center mb-12">
-                <a href="index.html" class="btn-primary-design">
-                    <i class="fas fa-home mr-1"></i> Back to Home
+            <div class="button-group">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
                 </a>
-                <a href="portfolio.html" class="btn-outline-design">
-                    <i class="fas fa-images mr-1"></i> View Portfolio
+                <a href="contact.html" class="btn-secondary">
+                    <i class="fas fa-headset"></i> Contact Support
                 </a>
             </div>
 
-            <!-- Quick Links -->
-            <div class="border-t border-[#C89B8B]/20 pt-8">
-                <p class="text-sm text-[#7A6E64] dark:text-[#9E8F84] mb-4">
-                    <i class="fas fa-heart text-[#C89B8B] mr-2"></i> Explore Aura Space
-                </p>
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <a href="about.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">About</a>
-                    <span class="text-[#C89B8B]/40">•</span>
-                    <a href="portfolio.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Portfolio</a>
-                    <span class="text-[#C89B8B]/40">•</span>
-                    <a href="services.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Services</a>
-                    <span class="text-[#C89B8B]/40">•</span>
-                    <a href="consultation.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Consultation</a>
-                    <span class="text-[#C89B8B]/40">•</span>
-                    <a href="contact.html" class="text-sm font-medium text-[#3D352E] dark:text-[#CEC3BA] hover:text-[#C89B8B] transition">Contact</a>
-                </div>
+            <!-- Helpful Quick Links -->
+            <div class="suggestion-links">
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="products.html">Products</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
             </div>
 
-            <!-- Fun Fact Note -->
-            <div class="mt-8 text-xs text-[#7A6E64]/60 dark:text-[#9E8F84]/60">
-                <i class="fas fa-smile-wink mr-1"></i> Pro tip: The best designs are discovered when you explore.
+            <!-- Search hint -->
+            <div class="search-hint">
+                <i class="fas fa-search"></i> Need help finding something? <a href="contact.html">Reach out to our team</a>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme Toggle
-            const themeBtn = document.getElementById('theme-toggle');
+        (function() {
+            // Check for saved RTL preference
+            const savedDir = localStorage.getItem('dir') || localStorage.getItem('language');
+            if (savedDir === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
 
-            const updateThemeUI = (isDark) => {
-                if (themeBtn) {
-                    const moon = themeBtn.querySelector('.fa-moon');
-                    const sun = themeBtn.querySelector('.fa-sun');
-                    if (moon && sun) {
-                        if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
-                        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
-                    }
-                    themeBtn.classList.toggle('active', isDark);
-                }
-            };
-
-            const toggleTheme = () => {
-                document.documentElement.classList.toggle('dark');
-                const isDark = document.documentElement.classList.contains('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                updateThemeUI(isDark);
-            };
-
-            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-
-            // Check saved theme
-            if (localStorage.getItem('theme') === 'dark') {
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark');
-                updateThemeUI(true);
-            } else if (localStorage.getItem('theme') === 'light') {
+            } else if (savedTheme === 'light') {
                 document.documentElement.classList.remove('dark');
-                updateThemeUI(false);
             } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 document.documentElement.classList.add('dark');
-                updateThemeUI(true);
             }
 
-            // RTL Toggle
-            const rtlBtn = document.getElementById('rtl-toggle');
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'h' || e.key === 'H') {
+                    window.location.href = 'index.html';
+                }
+                if (e.key === 'c' || e.key === 'C') {
+                    window.location.href = 'contact.html';
+                }
+                if (e.key === 'a' || e.key === 'A') {
+                    window.location.href = 'about.html';
+                }
+                if (e.key === 's' || e.key === 'S') {
+                    window.location.href = 'services.html';
+                }
+                if (e.key === 'p' || e.key === 'P') {
+                    window.location.href = 'products.html';
+                }
+            });
 
-            const updateRtlUI = (isRtl) => {
-                const dir = isRtl ? 'rtl' : 'ltr';
-                document.documentElement.dir = dir;
-                document.documentElement.lang = isRtl ? 'ar' : 'en';
-                if (rtlBtn) rtlBtn.classList.toggle('active', isRtl);
-            };
-
-            const toggleRtl = () => {
-                const isRtl = document.documentElement.dir !== 'rtl';
-                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
-                updateRtlUI(isRtl);
-            };
-
-            if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
-
-            // Check saved RTL direction
-            if (localStorage.getItem('dir') === 'rtl') {
-                updateRtlUI(true);
-            } else {
-                updateRtlUI(false);
-            }
-        });
+        })();
     </script>
 </body>
+
 </html>

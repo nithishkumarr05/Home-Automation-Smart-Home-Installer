@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aura Space &middot; Interior Design · Home 2</title>
-  <!-- Custom Favicon (Aura Space geometric circle) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <title>HomeTech &middot; Interior Design · Home 2</title>
+  <!-- Custom Favicon (HomeTech geometric circle) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='8' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='16' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='12' cy='8' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Cpath d='M12 11V9.5'/%3E%3Cpath d='M10.5 14L9 15.5'/%3E%3Cpath d='M13.5 14L15 15.5'/%3E%3C/svg%3E" />
   <!-- Tailwind CSS via CDN -->
     <script src="tailwind.js"></script>
 
@@ -18,19 +18,19 @@
           fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
           colors: {
             brand: {
-              primary: '#1E1A17',
-              secondary: '#3D352E',
-              muted: '#7A6E64',
-              border: '#E5D9D0',
-              accent: '#C89B8B',
-              'accent-dark': '#B08474',
-              'accent-light': '#F2E3DB',
-              bg: '#FCF8F5',
-              'bg-soft': '#F8F0EB',
+              primary: '#0F172A',
+              secondary: '#334155',
+              muted: '#64748B',
+              border: '#E2E8F0',
+              accent: '#0EA5E9',
+              'accent-dark': '#0369A1',
+              'accent-light': '#E0F2FE',
+              bg: '#F8FAFC',
+              'bg-soft': '#F1F5F9',
             },
             custom: {
-              clay: '#C89B8B',
-              'clay-light': '#F2E3DB',
+              clay: '#0EA5E9',
+              'clay-light': '#E0F2FE',
             }
           },
           fontFamily: {
@@ -48,7 +48,7 @@
             bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
           },
           backgroundImage: {
-            'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
+            'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(14,165,233,0.08) 0%, transparent 60%)',
           }
         }
       }
@@ -65,162 +65,165 @@
     p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
     .font-extrabold { font-weight: 800 !important; }
     /* brand color mappings */
-    .bg-brand-accent { background-color: #C89B8B; }
-    .text-brand-accent { color: #C89B8B; }
-    .border-brand-accent { border-color: #C89B8B; }
-    .bg-brand-accent-light { background-color: #F2E3DB; }
-    .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
-    .bg-brand-bg-soft { background-color: #F8F0EB; }
-    body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
-    .dark body { background-color: #1A1614; color: #EDE6E0; }
-    .dark .text-brand-primary { color: #EDE6E0; }
-    .dark .text-brand-secondary { color: #CEC3BA; }
-    .dark .text-brand-muted { color: #9E8F84; }
-    .dark .bg-brand-bg-soft { background-color: #2A2420; }
-    .dark .border-brand-border { border-color: #3D352E; }
+    .bg-brand-accent { background-color: #0EA5E9; }
+    .text-brand-accent { color: #0EA5E9; }
+    .border-brand-accent { border-color: #0EA5E9; }
+    .bg-brand-accent-light { background-color: #E0F2FE; }
+    .hover\:bg-brand-accent-dark:hover { background-color: #0369A1; }
+    .bg-brand-bg-soft { background-color: #F1F5F9; }
+    body { background-color: #F8FAFC; color: #0F172A; font-family: 'Inter', system-ui, sans-serif; }
+    .dark body { background-color: #020617; color: #F8FAFC; }
+    .dark .text-brand-primary { color: #F8FAFC; }
+    .dark .text-brand-secondary { color: #CBD5E1; }
+    .dark .text-brand-muted { color: #94A3B8; }
+    .dark .bg-brand-bg-soft { background-color: #1E293B; }
+    .dark .border-brand-border { border-color: #334155; }
     /* Light mode contrast enhancements for readability */
-    html:not(.dark) .text-\[\#7A6E64\],
-    html:not(.dark) .text-brand-muted { color: #4D4036 !important; }
-    html:not(.dark) .text-\[\#3D352E\] { color: #2D241E !important; }
-    html:not(.dark) .card-design p { color: #4D4036; }
-    html:not(.dark) .card-design .text-\[\#C89B8B\] { color: #A65A48; }
+    html:not(.dark) .text-\[\#64748B\],
+    html:not(.dark) .text-brand-muted { color: #334155 !important; }
+    html:not(.dark) .text-\[\#334155\] { color: #0F172A !important; }
+    html:not(.dark) .card-design p { color: #334155; }
+    html:not(.dark) .card-design .text-\[\#0EA5E9\] { color: #0284C7; }
     /* scroll */
     body::-webkit-scrollbar { width: 6px; }
-    body::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
-    body::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
+    body::-webkit-scrollbar-track { background: #F1F5F9; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #0EA5E9; border-radius: 10px; }
     /* cards & buttons */
     .card-design {
       background: #FFFFFF;
       border-radius: 28px;
       transition: all 0.3s ease;
-      border: 1px solid #E5D9D0;
+      border: 1px solid #E2E8F0;
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
-    .dark .card-design { background: #2A2420; border-color: #3D352E; }
+    .dark .card-design { background: #1E293B; border-color: #334155; }
     .card-design:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
-      border-color: #C89B8B;
+      box-shadow: 0 20px 30px -8px rgba(14,165,233,0.2);
+      border-color: #0EA5E9;
     }
     .btn-primary-design {
-      background-color: #1E1A17;
-      color: #FCF8F5;
+      background-color: #0F172A;
+      color: #F8FAFC;
       font-weight: 600;
       border-radius: 60px;
       transition: all 0.3s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .btn-primary-design:hover {
-      background-color: #3D352E;
+      background-color: #334155;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(200,155,139,0.3);
-      color: #FCF8F5;
+      box-shadow: 0 8px 20px rgba(14,165,233,0.3);
+      color: #F8FAFC;
     }
-    .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
-    .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
+    .dark .btn-primary-design { background-color: #F8FAFC; color: #0F172A; }
+    .dark .btn-primary-design:hover { background-color: #E0F2FE; color: #0F172A; }
     .btn-outline-design {
-      border: 1.5px solid #1E1A17;
-      color: #1E1A17;
+      border: 1.5px solid #0F172A;
+      color: #0F172A;
       background: transparent;
       border-radius: 60px;
       font-weight: 500;
       transition: all 0.3s;
     }
-    .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
-    .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
-    .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
+    .btn-outline-design:hover { background-color: #0F172A; color: #F8FAFC; transform: translateY(-2px); }
+    .dark .btn-outline-design { border-color: #F8FAFC; color: #F8FAFC; }
+    .dark .btn-outline-design:hover { background-color: #F8FAFC; color: #0F172A; }
     /* navigation (same structure) */
-    .nav-link { position: relative; font-weight: 500; color: #1E1A17; transition: color 0.3s; }
-    .dark .nav-link { color: #EDE6E0; }
-    .nav-link:hover { color: #C89B8B; }
-    .nav-link.active { color: #C89B8B !important; }
-    .dropdown-item.active { background-color: #F8F0EB; color: #C89B8B !important; font-weight: 600; }
-    .dark .dropdown-item.active { background-color: #2E2420; color: #C89B8B !important; }
+    .nav-link { position: relative; font-weight: 500; color: #0F172A; transition: color 0.3s; }
+    .dark .nav-link { color: #F8FAFC; }
+    .nav-link:hover { color: #0EA5E9; }
+    .nav-link.active { color: #0EA5E9 !important; }
+    .dropdown-item.active { background-color: #F1F5F9; color: #0EA5E9 !important; font-weight: 600; }
+    .dark .dropdown-item.active { background-color: #1E293B; color: #0EA5E9 !important; }
     .dropdown-design { position: relative; }
     .dropdown-design-menu {
       position: absolute; top: 100%; left: 0; min-width: 200px; background: #FFFFFF;
       border-radius: 18px; padding: 0.5rem 0; box-shadow: 0 18px 32px rgba(0,0,0,0.06);
       opacity: 0; visibility: hidden; transform: translateY(12px); transition: all 0.25s ease;
-      z-index: 1000; border: 1px solid #E5D9D0;
+      z-index: 1000; border: 1px solid #E2E8F0;
     }
-    .dark .dropdown-design-menu { background: #2A2420; border-color: #3D352E; }
+    .dark .dropdown-design-menu { background: #1E293B; border-color: #334155; }
     .dropdown-design:hover .dropdown-design-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     .dropdown-item {
       display: flex; align-items: center; padding: 0.6rem 1.4rem; transition: all 0.2s;
-      color: #1E1A17;
+      color: #0F172A;
     }
-    .dark .dropdown-item { color: #EDE6E0; }
-    .dropdown-item:hover { background-color: #F8F0EB; color: #1E1A17; padding-left: 1.7rem; }
+    .dark .dropdown-item { color: #F8FAFC; }
+    .dropdown-item:hover { background-color: #F1F5F9; color: #0F172A; padding-left: 1.7rem; }
     .dropdown-item i { margin-right: 0.75rem; width: 20px; }
     .mobile-menu-design {
       background: #FFFFFF; max-height: 0; overflow: hidden;
       transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 0 0 24px 24px;
     }
-    .dark .mobile-menu-design { background: #2A2420; }
+    .dark .mobile-menu-design { background: #1E293B; }
     .mobile-menu-design.open { max-height: 80vh; overflow-y: auto; scrollbar-width: none; }
     .mobile-menu-design.open::-webkit-scrollbar { display: none; }
     .social-icon-design {
       width: 38px; height: 38px; border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
-      background-color: #F8F0EB; color: #1E1A17; transition: all 0.3s;
+      background-color: #F1F5F9; color: #0F172A; transition: all 0.3s;
     }
-    .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; transform: translateY(-3px); }
-    .dark .social-icon-design { background-color: #2A2420; color: #EDE6E0; }
-    .dark .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; }
+    .social-icon-design:hover { background-color: #0EA5E9; color: #0F172A; transform: translateY(-3px); }
+    .dark .social-icon-design { background-color: #1E293B; color: #F8FAFC; }
+    .dark .social-icon-design:hover { background-color: #0EA5E9; color: #0F172A; }
     /* project card */
     .project-card .project-img { transition: transform 0.5s ease; }
     .project-card:hover .project-img { transform: scale(1.03); }
     .testimonial-card-design {
       background: #FFFFFF; border-radius: 28px; padding: 1.8rem;
-      border-left: 5px solid #C89B8B; box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+      border-left: 5px solid #0EA5E9; box-shadow: 0 8px 18px rgba(0,0,0,0.04);
     }
-    .dark .testimonial-card-design { background: #2A2420; }
+    .dark .testimonial-card-design { background: #1E293B; }
     .rtl-support[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
     [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
     [dir="rtl"] .dropdown-design-menu { left: auto; right: 0; }
     [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
-    [dir="rtl"] .testimonial-card-design { border-left: none; border-right: 5px solid #C89B8B; }
+    [dir="rtl"] .testimonial-card-design { border-left: none; border-right: 5px solid #0EA5E9; }
     /* hero specific */
     .hero-design-bg {
-      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%23F8F0EB"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%23E5D9D0" opacity="0.3"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%23D4B8A7" opacity="0.2"/%3E%3C/svg%3E');
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%23F1F5F9"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%23E2E8F0" opacity="0.3"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%23BAE6FD" opacity="0.2"/%3E%3C/svg%3E');
       background-size: cover; background-position: center;
     }
-    .dark .hero-design-bg { background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%231A1614"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%233D352E" opacity="0.4"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%23B08474" opacity="0.2"/%3E%3C/svg%3E'); }
+    .dark .hero-design-bg { background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Crect width="1200" height="600" fill="%23020617"/%3E%3Ccircle cx="200" cy="150" r="280" fill="%23334155" opacity="0.4"/%3E%3Ccircle cx="900" cy="400" r="200" fill="%230369A1" opacity="0.2"/%3E%3C/svg%3E'); }
     .floating-badge { background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); }
     .dark .floating-badge { background: rgba(30,26,23,0.85); }
     /* home2 extra */
     .split-hero-left {
-      background: linear-gradient(135deg, #F8F0EB 0%, #F2E3DB 100%);
+      background: linear-gradient(135deg, #F1F5F9 0%, #E0F2FE 100%);
     }
     .dark .split-hero-left {
-      background: linear-gradient(135deg, #2A2420 0%, #3D352E 100%);
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
     }
     .stat-ring {
       width: 100px; height: 100px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      border: 4px solid #C89B8B; background: rgba(200,155,139,0.08);
-      font-weight: 700; font-size: 2rem; color: #1E1A17;
+      border: 4px solid #0EA5E9; background: rgba(14,165,233,0.08);
+      font-weight: 700; font-size: 2rem; color: #0F172A;
     }
-    .dark .stat-ring { color: #EDE6E0; }
+    .dark .stat-ring { color: #F8FAFC; }
   </style>
 </head>
 <body class="warm-pattern">
   <!-- ======== NAVIGATION (identical) ======== -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#020617] border-b border-[#E2E8F0] dark:border-[#334155] shadow-sm">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
         <!-- Logo -->
         <a class="flex items-center gap-2 md:gap-3 group shrink-0" href='index.html'>
-          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
-            <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-            <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
+          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+              <path d="M12 11V9.5" />
+              <path d="M10.5 14L9 15.5" />
+              <path d="M13.5 14L15 15.5" />
+            </svg>
           <div>
-            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white">Home<span class="text-[#0EA5E9]">Tech</span></span>
           </div>
         </a>
         <!-- Desktop nav + actions -->
@@ -232,14 +235,15 @@
               </button>
               <div class="dropdown-design-menu">
                 <a class="dropdown-item font-medium" href="index.html"> Home 1</a>
-                <a class="dropdown-item active" href="home2.html"> Home 2</a>
+                <a class="dropdown-item" href="home2.html"> Home 2</a>
               </div>
             </div>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="portfolio.html">Portfolio</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="consultation.html">Consultation</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="solutions.html">Solutions</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="pricing.html">Pricing</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
             <!-- Dashboard Dropdown -->
             <div class="dropdown-design">
               <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
@@ -253,19 +257,18 @@
           </div>
           <!-- Desktop actions -->
           <div class="hidden xl:flex items-center gap-3 ms-2">
-            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center">
-              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center">
+              <span class="dark:hidden"><i class="fas fa-moon"></i></span><span class="hidden dark:inline"><i class="fas fa-sun"></i></span>
             </button>
-            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center font-bold text-base">
+            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center font-bold text-base">
               <i class="fas fa-exchange-alt"></i>
             </button>
             <div id="auth-buttons" class="flex items-center gap-3">
-              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
-              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+              <a href="signup.html" class="px-5 py-2 bg-[#0F172A] dark:bg-white dark:text-[#0F172A] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
             </div>
           </div>
           <!-- Mobile toggle -->
-          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#C89B8B] text-[#1E1A17] flex items-center justify-center shadow-md">
+          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#0EA5E9] text-[#0F172A] flex items-center justify-center shadow-md">
             <i class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -274,36 +277,36 @@
       <div id="mobile-menu" class="mobile-menu-design xl:hidden">
         <div class="py-4 px-3 space-y-1">
           <div class="py-1">
-            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#1E293B]">
               <span>Home</span><i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
             </button>
             <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="index.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 1</a>
-              <a class="block py-2.5 px-4 font-medium bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-white rounded-xl transition" href="home2.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 2</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="index.html"><i class="fas fa-home w-6 text-[#0EA5E9]"></i> Home 1</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="home2.html"><i class="fas fa-home w-6 text-[#0EA5E9]"></i> Home 2</a>
             </div>
           </div>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="about.html">About</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="portfolio.html">Portfolio</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="services.html">Services</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="consultation.html">Consultation</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="contact.html">Contact</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="about.html">About</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="services.html">Services</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="products.html">Products</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="solutions.html">Solutions</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="pricing.html">Pricing</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="contact.html">Contact</a>
           <div class="py-1">
-            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#1E293B]">
               <span>Dashboard</span><i id="dashboard-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
             </button>
             <div id="dashboard-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="client.html">Client</a>
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="admin.html">Admin</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="client.html">Client</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="admin.html">Admin</a>
             </div>
           </div>
-                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E5D9D0] dark:border-[#3D352E]">
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E2E8F0] dark:border-[#334155]">
             <div id="mobile-auth-buttons" class="flex flex-col gap-2">
-              <a class="text-center py-2.5 rounded-full font-semibold text-gray-700 border border-gray-200 hover:bg-gray-50 dark:text-white dark:border-gray-700 dark:hover:bg-[#2E2A26]" href="login.html">Sign In</a>
-              <a class="text-center py-2.5 rounded-full font-semibold bg-[#1E1A17] text-white hover:bg-gray-800 dark:bg-white dark:text-[#1E1A17] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
+              <a class="text-center py-2.5 rounded-full font-semibold bg-[#0F172A] text-white hover:bg-gray-800 dark:bg-white dark:text-[#0F172A] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
             </div>
             <div class="flex gap-3">
-              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme</button>
-              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
+              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] text-sm font-medium flex items-center gap-2 justify-center"><span class="dark:hidden"><i class="fas fa-moon"></i></span><span class="hidden dark:inline"><i class="fas fa-sun"></i></span> Theme</button>
+              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
             </div>
           </div>
         </div>
@@ -311,236 +314,146 @@
     </div>
   </nav>
 
-  <!-- ======== HERO 2 · SIMPLE SPLIT LAYOUT ======== -->
-  <section class="min-h-[520px] md:h-[680px] flex items-center pt-36 pb-16 md:pt-44 md:pb-24 relative overflow-hidden bg-[#1E1A17] border-b border-[#3D352E]">
+    <!-- ======== HERO (Professional Smart Home Installation) ======== -->
+  <section class="min-h-[520px] md:h-[680px] flex items-center pt-36 pb-16 md:pt-44 md:pb-24 relative overflow-hidden bg-[#0F172A] border-b border-[#334155]">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="/assests/hero_bg_home2.jpg" alt="Hero Background" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black/55"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/75"></div>
+      <img src="assests/hero_installation.jpg" alt="Professional Smart Home Installation" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/70 via-transparent to-[#0F172A]/90"></div>
     </div>
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <!-- left content -->
-        <div>
-          <span class="inline-block bg-[#C89B8B] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4 sm:mb-6">
-            <i class="fas fa-pencil-ruler"></i> New Perspective
-          </span>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-4 sm:mb-6">
-            Interior <span class="text-[#C89B8B]">Alchemy</span>
-          </h1>
-          <p class="text-base md:text-lg text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-relaxed max-w-lg mb-6 sm:mb-8">
-            Bespoke designs that fuse soul, texture, and light. Every space tells your story.
-          </p>
-          <div class="flex flex-col sm:flex-row flex-wrap gap-4 mb-8 sm:mb-10">
-            <a href="consultation.html" class="btn-primary-design px-6 sm:px-8 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2 text-sm sm:text-base shadow-md w-full sm:w-auto whitespace-nowrap"><i class="fas fa-calendar-check"></i> Book Consultation</a>
-            <a href="portfolio.html" class="px-6 sm:px-8 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2 text-sm sm:text-base border-2 border-white text-white hover:bg-white hover:text-[#1E1A17] transition duration-300 w-full sm:w-auto whitespace-nowrap"><i class="fas fa-images"></i> View Gallery</a>
-          </div>
-          
-          <!-- Simple Stats Row -->
-          <div class="flex items-center gap-8 pt-6 sm:pt-8 border-t border-white/20">
-            <div>
-              <p class="text-2xl font-display font-bold text-white">12+</p>
-              <p class="text-xs text-white/70 uppercase tracking-wider mt-0.5">Years Craft</p>
-            </div>
-            <div class="w-px h-8 bg-white/20"></div>
-            <div>
-              <p class="text-2xl font-display font-bold text-white">350+</p>
-              <p class="text-xs text-white/70 uppercase tracking-wider mt-0.5">Projects Done</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- right image visual -->
-        <div class="relative hidden lg:block">
-          <div class="rounded-3xl overflow-hidden shadow-xl border border-[#E5D9D0] dark:border-[#3D352E] aspect-[4/3] md:aspect-[5/4]">
-            <img src="/assests/home2.jpg" alt="Interior Alchemy" class="w-full h-full object-cover" />
-          </div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="max-w-4xl mx-auto text-center animate-slide-up">
+        <span class="inline-block bg-[#0EA5E9] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4"><i class="fas fa-tools"></i> Expert Installation</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white">Professional <span class="text-[#0EA5E9]">Smart Home</span> <br class="hidden sm:inline"/> Integration</h1>
+        <p class="text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">We design, wire, and configure enterprise-grade smart home systems so you don't have to lift a finger.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center justify-center gap-2 text-base shadow-lg w-full sm:w-auto whitespace-nowrap bg-[#0EA5E9] hover:bg-[#0369A1] text-white border-none"><i class="fas fa-clipboard-check"></i> Get a Free Quote</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======== SECTION 2: SIGNATURE STYLES (cards) ======== -->
-  <section class="py-20 bg-[#F8F0EB] dark:bg-[#25201C]">
+  <!-- ======== OUR INSTALLATION SERVICES ======== -->
+  <section class="py-20 bg-white dark:bg-[#020617]">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="text-center mb-14">
-        <span class="inline-block bg-white dark:bg-[#2A2420] text-[#1E1A17] dark:text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide border border-[#E5D9D0] dark:border-[#3D352E]"><i class="fas fa-layer-group text-[#C89B8B]"></i> Signatures</span>
-        <h2 class="text-3xl md:text-4xl font-display font-bold mt-5 text-[#1E1A17] dark:text-white">Our <span class="text-[#C89B8B]">Design Languages</span></h2>
+        <span class="inline-block bg-[#E0F2FE] dark:bg-[#1E293B] text-[#0F172A] dark:text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide"><i class="fas fa-cogs text-[#0EA5E9]"></i> Services</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold mt-5 text-[#0F172A] dark:text-white">Our Installation <span class="text-[#0EA5E9]">Services</span></h2>
+        <p class="text-[#334155] dark:text-[#CBD5E1] max-w-2xl mx-auto mt-3">From invisible in-wall wiring to robust network setups.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="card-design p-8 text-center bg-white dark:bg-[#2A2420]"><div class="w-16 h-16 mx-auto bg-[#C89B8B]/20 rounded-2xl flex items-center justify-center text-2xl text-[#C89B8B] mb-4"><i class="fas fa-leaf"></i></div><h3 class="font-bold text-xl text-[#1E1A17] dark:text-white">Organic Minimal</h3><p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Natural materials, soft curves, and earthy palettes.</p></div>
-        <div class="card-design p-8 text-center bg-white dark:bg-[#2A2420]"><div class="w-16 h-16 mx-auto bg-[#C89B8B]/20 rounded-2xl flex items-center justify-center text-2xl text-[#C89B8B] mb-4"><i class="fas fa-gem"></i></div><h3 class="font-bold text-xl text-[#1E1A17] dark:text-white">Modern Classic</h3><p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Timeless elegance with a contemporary twist.</p></div>
-        <div class="card-design p-8 text-center bg-white dark:bg-[#2A2420]"><div class="w-16 h-16 mx-auto bg-[#C89B8B]/20 rounded-2xl flex items-center justify-center text-2xl text-[#C89B8B] mb-4"><i class="fas fa-palette"></i></div><h3 class="font-bold text-xl text-[#1E1A17] dark:text-white">Artisanal Eclectic</h3><p class="text-sm text-[#3D352E] dark:text-[#CEC3BA] mt-2">Bold mixes, global accents, curated character.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== SECTION 3: PORTFOLIO GRID (alternate) ======== -->
-  <section class="py-20 bg-white dark:bg-[#1A1614]">
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="text-center mb-14">
-        <span class="inline-block bg-[#F2E3DB] dark:bg-[#2A2420] text-[#1E1A17] dark:text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide"><i class="fas fa-th-large text-[#C89B8B]"></i> Recent Works</span>
-        <h2 class="text-3xl md:text-4xl font-display font-bold mt-5 text-[#1E1A17] dark:text-white">Curated <span class="text-[#C89B8B]">Spaces</span></h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <div class="card-design overflow-hidden group"><div class="h-48 overflow-hidden bg-[#E5D9D0]"><img src="/assests/h1.jpg" alt="living" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" /></div><div class="p-5"><span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Living</span><h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Terraced Loft</h3></div></div>
-        <div class="card-design overflow-hidden group"><div class="h-48 overflow-hidden bg-[#E5D9D0]"><img src="/assests/kitchen_interior.jpg" alt="kitchen" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" /></div><div class="p-5"><span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Kitchen</span><h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Minimalist Chef</h3></div></div>
-        <div class="card-design overflow-hidden group"><div class="h-48 overflow-hidden bg-[#E5D9D0]"><img src="/assests/h3.jpg" alt="bedroom" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" /></div><div class="p-5"><span class="text-xs font-semibold text-[#C89B8B] uppercase tracking-wider">Bedroom</span><h3 class="font-bold text-lg text-[#1E1A17] dark:text-white">Serene Suite</h3></div></div>
-      </div>
-      <div class="text-center mt-10"><a href="#" class="btn-outline-design px-10 py-3 rounded-full font-semibold inline-flex items-center gap-2">View full portfolio <i class="fas fa-arrow-right"></i></a></div>
-    </div>
-  </section>
-
-  <!-- ======== SECTION 3.5: ANATOMY OF DESIGN (Visual representation) ======== -->
-  <section class="py-24 bg-gradient-to-tr from-[#FCF8F5] via-white to-[#F8F0EB] dark:from-[#1E1A17] dark:via-[#1A1614] dark:to-[#25201C] border-y border-[#E5D9D0]/50 dark:border-[#3D352E]/30 overflow-hidden">
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-        
-        <!-- Left: Curated Photo Grid Collage (Pro Masonry) -->
-        <div class="lg:col-span-6 grid grid-cols-12 gap-4 w-full">
-          <!-- Main Focal Image (3/4 Aspect Card) -->
-          <div class="col-span-8 relative aspect-[3/4] rounded-3xl overflow-hidden shadow-lg border border-[#E5D9D0]/30 dark:border-[#3D352E]/30 group hover:shadow-2xl transition-all duration-500">
-            <img src="/assests/1.jpg" alt="Interior composition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/60 via-transparent to-transparent flex items-end p-5">
-              <div>
-                <span class="text-[9px] uppercase tracking-widest text-[#C89B8B] font-extrabold block mb-1">Concept Edit</span>
-                <h3 class="text-white font-display text-base font-bold">Spatial Narrative</h3>
-              </div>
-            </div>
-          </div>
-          <!-- Stacked Right Images -->
-          <div class="col-span-4 flex flex-col gap-4">
-            <!-- Swatch 1 -->
-            <div class="flex-grow relative aspect-square rounded-2xl overflow-hidden shadow-md border border-[#E5D9D0]/30 dark:border-[#3D352E]/30 group hover:shadow-xl transition-all duration-500">
-              <img src="/assests/2.jpg" alt="Material detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-[#1E1A17]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span class="text-white text-[9px] font-extrabold tracking-widest uppercase bg-[#1E1A17] dark:bg-[#C89B8B] dark:text-[#1E1A17] px-3 py-1.5 rounded-lg shadow-md">Kitchen Detail</span>
-              </div>
-            </div>
-            <!-- Swatch 2 -->
-            <div class="flex-grow relative aspect-square rounded-2xl overflow-hidden shadow-md border border-[#E5D9D0]/30 dark:border-[#3D352E]/30 group hover:shadow-xl transition-all duration-500">
-              <img src="/assests/3.jpg" alt="Bedroom detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-[#1E1A17]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span class="text-white text-[9px] font-extrabold tracking-widest uppercase bg-[#1E1A17] dark:bg-[#C89B8B] dark:text-[#1E1A17] px-3 py-1.5 rounded-lg shadow-md">Bedroom Detail</span>
-              </div>
-            </div>
-          </div>
+        <div class="card-design p-8 text-center bg-[#F8FAFC] dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-16 h-16 mx-auto bg-[#0EA5E9]/10 dark:bg-[#0EA5E9]/20 rounded-2xl flex items-center justify-center text-3xl text-[#0EA5E9] mb-4"><i class="fas fa-network-wired"></i></div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Network & Wiring</h3>
+          <p class="text-sm text-[#334155] dark:text-[#CBD5E1] mt-2">Enterprise-grade Wi-Fi mesh networks and clean, hidden structured wiring.</p>
         </div>
+        <div class="card-design p-8 text-center bg-[#F8FAFC] dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-16 h-16 mx-auto bg-[#0EA5E9]/10 dark:bg-[#0EA5E9]/20 rounded-2xl flex items-center justify-center text-3xl text-[#0EA5E9] mb-4"><i class="fas fa-film"></i></div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Home Theater AV</h3>
+          <p class="text-sm text-[#334155] dark:text-[#CBD5E1] mt-2">Immersive surround sound, hidden projectors, and seamless TV mounting.</p>
+        </div>
+        <div class="card-design p-8 text-center bg-[#F8FAFC] dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-16 h-16 mx-auto bg-[#0EA5E9]/10 dark:bg-[#0EA5E9]/20 rounded-2xl flex items-center justify-center text-3xl text-[#0EA5E9] mb-4"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Security Systems</h3>
+          <p class="text-sm text-[#334155] dark:text-[#CBD5E1] mt-2">Hardwired cameras, video doorbells, and integrated smart locks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Right: Design Narrative -->
-        <div class="lg:col-span-6 space-y-6">
-          <span class="inline-flex items-center gap-2 bg-[#C89B8B]/10 dark:bg-[#C89B8B]/15 text-[#C89B8B] border border-[#C89B8B]/20 px-5 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase mb-2 transform hover:scale-105 transition-transform duration-300">
-            <i class="fas fa-drafting-compass text-[10px]"></i> concept board
-          </span>
-          <h2 class="text-3xl md:text-4xl font-display font-extrabold text-[#1E1A17] dark:text-white leading-tight">
-            The Anatomy of <span class="bg-gradient-to-r from-[#C89B8B] to-[#B08474] bg-clip-text text-transparent font-serif italic font-normal">Curation</span>
+  <!-- ======== SMART PRODUCTS ======== -->
+  <section class="bg-[#F1F5F9] dark:bg-[#0F172A] py-20 border-t border-[#E2E8F0] dark:border-[#334155]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-[#0EA5E9] text-xs font-semibold uppercase tracking-[0.22em] mb-4">Top-Tier Hardware</span>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-[#0F172A] dark:text-white leading-tight mb-6">
+            Premium <span class="text-[#0EA5E9]">Smart Products</span>
           </h2>
-          <p class="text-base text-[#3D352E] dark:text-[#CEC3BA] leading-relaxed">
-            Interior design is more than arrangement — it is an alchemy of textures, tones, and geometry. We visualize each room as a canvas of architectural details, balancing tactile elements with structured lighting to evoke warmth and ease.
-          </p>
-          
-          <div class="space-y-4 pt-4">
-            <!-- Swatch 1 -->
-            <div class="flex gap-4 p-4 rounded-2xl bg-white/60 dark:bg-[#2A2420]/40 border border-[#E5D9D0]/40 dark:border-[#3D352E]/30 hover:border-[#C89B8B]/40 hover:bg-white dark:hover:bg-[#2A2420]/60 transition-all duration-300 group">
-              <div class="w-10 h-10 rounded-xl bg-[#C89B8B]/10 flex items-center justify-center text-[#C89B8B] shrink-0 group-hover:bg-[#C89B8B] group-hover:text-white transition-all duration-300">
-                <i class="fas fa-palette text-sm"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-[#1E1A17] dark:text-white text-sm">Tactile Texture Swatches</h4>
-                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mt-0.5">Combining structured linen, rich bouclé, and velvet to establish deep tactile character.</p>
-              </div>
-            </div>
-
-            <!-- Swatch 2 -->
-            <div class="flex gap-4 p-4 rounded-2xl bg-white/60 dark:bg-[#2A2420]/40 border border-[#E5D9D0]/40 dark:border-[#3D352E]/30 hover:border-[#C89B8B]/40 hover:bg-white dark:hover:bg-[#2A2420]/60 transition-all duration-300 group">
-              <div class="w-10 h-10 rounded-xl bg-[#C89B8B]/10 flex items-center justify-center text-[#C89B8B] shrink-0 group-hover:bg-[#C89B8B] group-hover:text-white transition-all duration-300">
-                <i class="fas fa-gem text-sm"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-[#1E1A17] dark:text-white text-sm">Earthy Stone & Timber Foundations</h4>
-                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mt-0.5">Anchoring rooms with Calacatta viola marble, matte white clay plaster, and sand-blasted oak.</p>
-              </div>
-            </div>
-
-            <!-- Swatch 3 -->
-            <div class="flex gap-4 p-4 rounded-2xl bg-white/60 dark:bg-[#2A2420]/40 border border-[#E5D9D0]/40 dark:border-[#3D352E]/30 hover:border-[#C89B8B]/40 hover:bg-white dark:hover:bg-[#2A2420]/60 transition-all duration-300 group">
-              <div class="w-10 h-10 rounded-xl bg-[#C89B8B]/10 flex items-center justify-center text-[#C89B8B] shrink-0 group-hover:bg-[#C89B8B] group-hover:text-white transition-all duration-300">
-                <i class="fas fa-lightbulb text-sm"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-[#1E1A17] dark:text-white text-sm">Sculptural Architectural Lighting</h4>
-                <p class="text-xs text-[#7A6E64] dark:text-[#9E8F84] mt-0.5">Directing light shadows dynamically to emphasize lines and elevate mood at dusk.</p>
-              </div>
-            </div>
-          </div>
+          <p class="text-[#334155] dark:text-[#CBD5E1] text-lg mb-6">We only install industry-leading devices that guarantee long-term reliability and seamless interoperability.</p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-check-circle text-[#0EA5E9]"></i> <strong>Climate:</strong> Ecobee & Nest Thermostats</li>
+            <li class="flex items-center gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-check-circle text-[#0EA5E9]"></i> <strong>Lighting:</strong> Philips Hue & Lutron Caséta</li>
+            <li class="flex items-center gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-check-circle text-[#0EA5E9]"></i> <strong>Audio/Voice:</strong> Sonos, Google Nest, Amazon Echo</li>
+          </ul>
         </div>
-
+        <div class="rounded-3xl overflow-hidden shadow-2xl relative border border-[#E2E8F0] dark:border-[#334155]">
+          <img src="assests/smart_products.jpg" alt="Smart Home Products" class="w-full h-[300px] md:h-[350px] object-cover" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ======== SECTION 4: TESTIMONIALS (alternate) ======== -->
-  <section class="py-20 bg-[#F8F0EB] dark:bg-[#25201C]">
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl">
-      <div class="text-center mb-12">
-        <span class="inline-block bg-white dark:bg-[#2A2420] text-[#1E1A17] dark:text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide border border-[#E5D9D0] dark:border-[#3D352E]"><i class="fas fa-comment-dots text-[#C89B8B]"></i> Voices</span>
-        <h2 class="text-3xl md:text-4xl font-display font-bold mt-5 text-[#1E1A17] dark:text-white">Client <span class="text-[#C89B8B]">Stories</span></h2>
+  <!-- ======== INSTALLATION PROCESS ======== -->
+  <section class="py-20 bg-white dark:bg-[#020617]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#0F172A] dark:text-white">Our Installation <span class="text-[#0EA5E9]">Process</span></h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Testimonial 1 -->
-        <div class="relative bg-white dark:bg-[#2A2420] rounded-3xl p-8 border border-[#E5D9D0]/60 dark:border-[#3D352E]/60 shadow-[0_15px_30px_rgba(0,0,0,0.03)] dark:shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-          <!-- Background Quote Icon -->
-          <div class="absolute right-6 top-4 text-7xl font-display text-[#C89B8B]/10 dark:text-[#C89B8B]/5 select-none pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">&ldquo;</div>
-          
-          <!-- Rating Stars -->
-          <div class="flex gap-1 mb-4 text-[#C89B8B]">
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
+      <div class="max-w-4xl mx-auto relative">
+        <!-- Connecting Line -->
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[#E2E8F0] dark:bg-[#334155] transform -translate-x-1/2 rounded-full"></div>
+        <!-- Step 1 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-12">
+          <div class="order-2 md:order-1 md:w-5/12 text-center md:text-right p-6">
+            <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Site Survey</h3>
+            <p class="text-sm text-[#64748B] dark:text-[#CBD5E1] mt-2">We analyze your home's layout, electrical wiring, and network capabilities.</p>
           </div>
-
-          <!-- Quote Text -->
-          <p class="text-[#3D352E] dark:text-[#CEC3BA] text-base font-display italic leading-relaxed mb-6">
-            &ldquo;Aura Space reimagined our entire home. The attention to detail is breathtaking.&rdquo;
-          </p>
-
-          <!-- User Profile -->
-          <div class="flex items-center gap-3.5 pt-4 border-t border-[#E5D9D0]/40 dark:border-[#3D352E]/40">
-            <img src="/assests/Ab4.jpg" alt="Elena C." class="w-12 h-12 rounded-full object-cover" />
-            <div>
-              <div class="font-bold text-[#1E1A17] dark:text-white text-sm tracking-wide">Elena C.</div>
-              <div class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">West Village</div>
-            </div>
+          <div class="order-1 md:order-2 w-12 h-12 bg-[#0EA5E9] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10 mb-4 md:mb-0 border-4 border-white dark:border-[#020617]">1</div>
+          <div class="order-3 md:w-5/12 hidden md:block"></div>
+        </div>
+        <!-- Step 2 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-12">
+          <div class="order-3 md:order-1 md:w-5/12 hidden md:block"></div>
+          <div class="order-1 md:order-2 w-12 h-12 bg-[#0EA5E9] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10 mb-4 md:mb-0 border-4 border-white dark:border-[#020617]">2</div>
+          <div class="order-2 md:order-3 md:w-5/12 text-center md:text-left p-6">
+            <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Custom Engineering</h3>
+            <p class="text-sm text-[#64748B] dark:text-[#CBD5E1] mt-2">Creating a tailored blueprint for device placement and cable routing.</p>
           </div>
         </div>
-
-        <!-- Testimonial 2 -->
-        <div class="relative bg-white dark:bg-[#2A2420] rounded-3xl p-8 border border-[#E5D9D0]/60 dark:border-[#3D352E]/60 shadow-[0_15px_30px_rgba(0,0,0,0.03)] dark:shadow-[0_15px_30px_rgba(0,0,0,0.2)] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-          <!-- Background Quote Icon -->
-          <div class="absolute right-6 top-4 text-7xl font-display text-[#C89B8B]/10 dark:text-[#C89B8B]/5 select-none pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">&ldquo;</div>
-          
-          <!-- Rating Stars -->
-          <div class="flex gap-1 mb-4 text-[#C89B8B]">
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
-            <i class="fas fa-star text-xs"></i>
+        <!-- Step 3 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between mb-12">
+          <div class="order-2 md:order-1 md:w-5/12 text-center md:text-right p-6">
+            <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">White-Glove Installation</h3>
+            <p class="text-sm text-[#64748B] dark:text-[#CBD5E1] mt-2">Our certified technicians install all hardware without damaging your interior.</p>
           </div>
+          <div class="order-1 md:order-2 w-12 h-12 bg-[#0EA5E9] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10 mb-4 md:mb-0 border-4 border-white dark:border-[#020617]">3</div>
+          <div class="order-3 md:w-5/12 hidden md:block"></div>
+        </div>
+        <!-- Step 4 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between">
+          <div class="order-3 md:order-1 md:w-5/12 hidden md:block"></div>
+          <div class="order-1 md:order-2 w-12 h-12 bg-[#0EA5E9] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10 mb-4 md:mb-0 border-4 border-white dark:border-[#020617]">4</div>
+          <div class="order-2 md:order-3 md:w-5/12 text-center md:text-left p-6">
+            <h3 class="font-bold text-xl text-[#0F172A] dark:text-white">Handover & Training</h3>
+            <p class="text-sm text-[#64748B] dark:text-[#CBD5E1] mt-2">We teach you how to use your new system through the mobile app and voice commands.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <!-- Quote Text -->
-          <p class="text-[#3D352E] dark:text-[#CEC3BA] text-base font-display italic leading-relaxed mb-6">
-            &ldquo;They turned a cold loft into a warm, inviting masterpiece. Highly recommend.&rdquo;
-          </p>
-
-          <!-- User Profile -->
-          <div class="flex items-center gap-3.5 pt-4 border-t border-[#E5D9D0]/40 dark:border-[#3D352E]/40">
-            <img src="/assests/Ab3.jpg" alt="David T." class="w-12 h-12 rounded-full object-cover" />
-            <div>
-              <div class="font-bold text-[#1E1A17] dark:text-white text-sm tracking-wide">David T.</div>
-              <div class="text-xs text-[#7A6E64] dark:text-[#9E8F84]">Tribeca</div>
+  <!-- ======== WARRANTY & SUPPORT ======== -->
+  <section class="bg-[#F8FAFC] dark:bg-[#1E293B] py-20 border-t border-[#E2E8F0] dark:border-[#334155]">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="rounded-3xl overflow-hidden shadow-2xl relative border border-[#E2E8F0] dark:border-[#334155] order-2 lg:order-1">
+          <img src="assests/warranty_support.jpg" alt="Warranty and Support" class="w-full h-[400px] object-cover" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="inline-block text-[#0EA5E9] text-xs font-semibold uppercase tracking-[0.22em] mb-4">Peace of Mind</span>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-[#0F172A] dark:text-white leading-tight mb-6">
+            Warranty & <span class="text-[#0EA5E9]">Support</span>
+          </h2>
+          <p class="text-[#334155] dark:text-[#CBD5E1] text-lg mb-6">A smart home is only as good as its reliability. We stand by our installations long after the job is done.</p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#0EA5E9]/10 text-[#0EA5E9] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-certificate"></i></div>
+              <div><h4 class="font-bold text-[#0F172A] dark:text-white">3-Year Installation Warranty</h4><p class="text-sm text-[#64748B] dark:text-[#94A3B8]">Full coverage on all wiring and mounting performed by our team.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#0EA5E9]/10 text-[#0EA5E9] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-headset"></i></div>
+              <div><h4 class="font-bold text-[#0F172A] dark:text-white">24/7 Remote Diagnostics</h4><p class="text-sm text-[#64748B] dark:text-[#94A3B8]">If a device goes offline, we can troubleshoot it remotely instantly.</p></div>
             </div>
           </div>
         </div>
@@ -548,34 +461,37 @@
     </div>
   </section>
 
-  <!-- ======== SECTION 5: CTA CONSULTATION ======== -->
-  <section class="py-20 bg-white dark:bg-[#1A1614]">
+  <!-- ======== GET A FREE QUOTE ======== -->
+  <section class="py-20 bg-white dark:bg-[#020617]">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl">
-      <div class="flex flex-col items-center text-center bg-[#F8F0EB] dark:bg-[#2A2420] rounded-3xl p-6 md:p-12 border border-[#E5D9D0] dark:border-[#3D352E] shadow-lg">
-        <div class="w-16 h-16 mx-auto bg-[#C89B8B] rounded-2xl flex items-center justify-center text-2xl text-[#1E1A17] shadow-md mb-6"><i class="fas fa-handshake"></i></div>
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1A17] dark:text-white mb-4">Elevate Your <span class="text-[#C89B8B]">Everyday</span></h2>
-        <p class="text-[#3D352E] dark:text-[#CEC3BA] text-lg mb-8 max-w-2xl mx-auto">Book a complimentary discovery call and let’s craft your next chapter.</p>
-        <a href="#" class="btn-primary-design px-10 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"><i class="fas fa-calendar-plus"></i> Schedule Now</a>
+      <div class="flex flex-col items-center text-center bg-[#0F172A] rounded-3xl p-8 md:p-14 border border-[#334155] shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PHBhdGggZD0iTTAgMEw4IDhaTTAgOEw4IDBaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=')]"></div>
+        <div class="w-16 h-16 mx-auto bg-[#0EA5E9] rounded-2xl flex items-center justify-center text-2xl text-white shadow-md mb-6 relative z-10"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4 relative z-10">Ready to <span class="text-[#0EA5E9]">Automate</span>?</h2>
+        <p class="text-[#CBD5E1] text-lg mb-8 max-w-2xl mx-auto relative z-10">Get a personalized estimate for your smart home setup. No hidden fees, just seamless integration.</p>
+        <a href="contact.html" class="px-10 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto bg-[#0EA5E9] hover:bg-[#0369A1] text-white transition relative z-10"><i class="fas fa-paper-plane"></i> Get a Free Quote</a>
       </div>
     </div>
   </section>
-
-  <!-- ======== FOOTER (identical) ======== -->
-  <footer class="bg-white dark:bg-[#1A1614] text-[#1E1A17] dark:text-white pt-16 pb-8 border-t-4 border-[#C89B8B] transition-colors duration-300">
+ <!-- ======== FOOTER (identical) ======== -->
+  <footer class="bg-white dark:bg-[#020617] text-[#0F172A] dark:text-white pt-16 pb-8 border-t-4 border-[#0EA5E9] transition-colors duration-300">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div class="text-center md:text-start">
-          <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
-            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-              <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
-              <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-              <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <a href="index.html" class="inline-flex items-center justify-center md:justify-start gap-3 mb-6 group">
+            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+              <path d="M12 11V9.5" />
+              <path d="M10.5 14L9 15.5" />
+              <path d="M13.5 14L15 15.5" />
             </svg>
-            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
-          </div>
-          <p class="mb-5 text-[#3D352E] dark:text-[#CEC3BA] text-sm">Where interiors become art. Personalized design for modern living.</p>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white group-hover:text-[#0EA5E9] transition-colors duration-300">Home<span class="text-[#0EA5E9]">Tech</span></span>
+          </a>
+          <p class="mb-5 text-[#334155] dark:text-[#CBD5E1] text-sm">Where interiors become art. Personalized design for modern living.</p>
           <div class="flex justify-center md:justify-start gap-3">
             <a href="#" class="social-icon-design"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-icon-design"><i class="fab fa-facebook-f"></i></a>
@@ -584,34 +500,35 @@
           </div>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
           <ul class="space-y-2">
-            <li><a href="portfolio.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Portfolio</a></li>
-            <li><a href="services.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Services</a></li>
-            <li><a href="consultation.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Consultation</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Client Portal</a></li>
+            <li><a href="services.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Services</a></li>
+            <li><a href="products.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Products</a></li>
+            <li><a href="solutions.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Solutions</a></li>
+            <li><a href="pricing.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Pricing</a></li>
+            <li><a href="#" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Client Portal</a></li>
           </ul>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
           <ul class="space-y-2">
-            <li><a href="about.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">About</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Careers</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Press</a></li>
+            <li><a href="about.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">About</a></li>
+            <li><a href="#" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Careers</a></li>
+            <li><a href="#" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Press</a></li>
           </ul>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
           <ul class="space-y-3">
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-map-pin text-[#C89B8B] mt-1"></i><span>45 Design Ave, New York, NY 10001</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-phone text-[#C89B8B]"></i><span>(212) 555-0199</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-envelope text-[#C89B8B]"></i><span>studio@aura.space</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA] text-sm"><i class="fas fa-clock text-[#C89B8B]"></i><span>Mon–Fri 9am – 7pm</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-map-pin text-[#0EA5E9] mt-1"></i><span>45 Design Ave, New York, NY 10001</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-phone text-[#0EA5E9]"></i><span>(212) 555-0199</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-envelope text-[#0EA5E9]"></i><span>studio@aura.space</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1] text-sm"><i class="fas fa-clock text-[#0EA5E9]"></i><span>Mon–Fri 9am – 7pm</span></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 pt-8 border-t border-[#E5D9D0] dark:border-[#3D352E] text-center text-sm text-[#4A3F38] dark:text-[#9E8F84]">
-        <p>&copy; 2026 AURA SPACE &middot; Interior Design Studio. <i class="fas fa-heart text-[#C89B8B] mx-1"></i> Crafting beautiful spaces.</p>
+      <div class="mt-12 pt-8 border-t border-[#E2E8F0] dark:border-[#334155] text-center text-sm text-[#4A3F38] dark:text-[#94A3B8]">
+        <p>&copy; 2026 HomeTech &middot; Interior Design Studio. <i class="fas fa-heart text-[#0EA5E9] mx-1"></i> Crafting beautiful spaces.</p>
       </div>
     </div>
   </footer>
@@ -641,15 +558,15 @@
       const mobileContainer = document.getElementById('mobile-menu');
       if (mobileContainer) {
         mobileContainer.querySelectorAll('a').forEach(link => {
-          link.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-          link.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+          link.classList.remove('border-l-4', 'border-[#0EA5E9]', 'bg-[#E0F2FE]', 'dark:bg-[#334155]');
+          link.classList.add('hover:bg-[#F1F5F9]', 'dark:hover:bg-[#1E293B]');
         });
         mobileContainer.querySelectorAll('.pl-2 a').forEach(link => {
-          link.classList.remove('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+          link.classList.remove('bg-[#E0F2FE]', 'dark:bg-[#334155]');
         });
         mobileContainer.querySelectorAll('.py-1 > button').forEach(btn => {
-          btn.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-          btn.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+          btn.classList.remove('border-l-4', 'border-[#0EA5E9]', 'bg-[#E0F2FE]', 'dark:bg-[#334155]');
+          btn.classList.add('hover:bg-[#F1F5F9]', 'dark:hover:bg-[#1E293B]');
         });
         const matchingMobileLink = Array.from(mobileContainer.querySelectorAll('a')).find(link => {
           return link.getAttribute('href') === currentPath;
@@ -657,15 +574,15 @@
         if (matchingMobileLink) {
           const isNested = matchingMobileLink.closest('#home-mobile-drop') || matchingMobileLink.closest('#dashboard-mobile-drop');
           if (isNested) {
-            matchingMobileLink.classList.add('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
+            matchingMobileLink.classList.add('bg-[#E0F2FE]', 'dark:bg-[#334155]');
             const parentButton = matchingMobileLink.closest('.py-1')?.querySelector('button');
             if (parentButton) {
-              parentButton.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-              parentButton.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+              parentButton.classList.add('border-l-4', 'border-[#0EA5E9]', 'bg-[#E0F2FE]', 'dark:bg-[#334155]');
+              parentButton.classList.remove('hover:bg-[#F1F5F9]', 'dark:hover:bg-[#1E293B]');
             }
           } else {
-            matchingMobileLink.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-            matchingMobileLink.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
+            matchingMobileLink.classList.add('border-l-4', 'border-[#0EA5E9]', 'bg-[#E0F2FE]', 'dark:bg-[#334155]');
+            matchingMobileLink.classList.remove('hover:bg-[#F1F5F9]', 'dark:hover:bg-[#1E293B]');
           }
         }
       }

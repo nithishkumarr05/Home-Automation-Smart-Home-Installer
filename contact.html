@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us &middot; Aura Space</title>
-  <!-- Custom Favicon (Aura Space geometric circle) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='44' stroke='%23C89B8B' stroke-width='6' stroke-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C89B8B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' stroke='%23C89B8B' stroke-width='2' fill='%23C89B8B' fill-opacity='0.2'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23C89B8B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <!-- Tailwind CSS via CDN -->
-    <script src="tailwind.js"></script>
-
-  <!-- Custom Tailwind Configuration (warm, refined palette) -->
+  <title>HomeTech &middot; Contact Us</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='8' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='16' cy='17' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Ccircle cx='12' cy='8' r='1.5' fill='%230EA5E9' stroke='none'/%3E%3Cpath d='M12 11V9.5'/%3E%3Cpath d='M10.5 14L9 15.5'/%3E%3Cpath d='M13.5 14L15 15.5'/%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -18,19 +14,9 @@
           fontWeight: { bold: '600', extrabold: '600', semibold: '550' },
           colors: {
             brand: {
-              primary: '#1E1A17',
-              secondary: '#3D352E',
-              muted: '#7A6E64',
-              border: '#E5D9D0',
-              accent: '#C89B8B',
-              'accent-dark': '#B08474',
-              'accent-light': '#F2E3DB',
-              bg: '#FCF8F5',
-              'bg-soft': '#F8F0EB',
-            },
-            custom: {
-              clay: '#C89B8B',
-              'clay-light': '#F2E3DB',
+              primary: '#0F172A', secondary: '#334155', muted: '#64748B',
+              border: '#E2E8F0', accent: '#0EA5E9', 'accent-dark': '#0369A1',
+              'accent-light': '#E0F2FE', bg: '#F8FAFC', 'bg-soft': '#F1F5F9',
             }
           },
           fontFamily: {
@@ -39,153 +25,312 @@
           },
           animation: {
             'float-slow': 'floatSlow 6s ease-in-out infinite',
-            'slide-up': 'slideUp 0.6s ease-out',
-            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+            'slide-up': 'slideUp 0.8s ease-out',
           },
           keyframes: {
             floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
             slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
-          },
-          backgroundImage: {
-            'warm-pattern': 'radial-gradient(circle at 30% 20%, rgba(200,155,139,0.08) 0%, transparent 60%)',
           }
         }
       }
     }
   </script>
-  <!-- Google Fonts (serif + sans) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* consistency overrides */
     h1, h2, h3, h4, h5, h6 { font-weight: 600 !important; }
-    p { font-weight: 400; }
-    p strong, p b, p .font-bold, p .font-semibold { font-weight: 550 !important; }
-    .font-extrabold { font-weight: 800 !important; }
-    /* brand color mappings */
-    .bg-brand-accent { background-color: #C89B8B; }
-    .text-brand-accent { color: #C89B8B; }
-    .border-brand-accent { border-color: #C89B8B; }
-    .bg-brand-accent-light { background-color: #F2E3DB; }
-    .hover\:bg-brand-accent-dark:hover { background-color: #B08474; }
-    .bg-brand-bg-soft { background-color: #F8F0EB; }
-    body { background-color: #FCF8F5; color: #1E1A17; font-family: 'Inter', system-ui, sans-serif; }
-    .dark body { background-color: #1A1614; color: #EDE6E0; }
-    .dark .text-brand-primary { color: #EDE6E0; }
-    .dark .text-brand-secondary { color: #CEC3BA; }
-    .dark .text-brand-muted { color: #9E8F84; }
-    .dark .bg-brand-bg-soft { background-color: #2A2420; }
-    .dark .border-brand-border { border-color: #3D352E; }
-    /* Light mode contrast enhancements for readability */
-    html:not(.dark) .text-\[\#7A6E64\],
-    html:not(.dark) .text-brand-muted { color: #4D4036 !important; }
-    html:not(.dark) .text-\[\#3D352E\] { color: #2D241E !important; }
-    html:not(.dark) .card-design p { color: #4D4036; }
-    html:not(.dark) .card-design .text-\[\#C89B8B\] { color: #A65A48; }
-    /* scroll */
+    body { background-color: #F8FAFC; color: #0F172A; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+    .dark body { background-color: #020617; color: #F8FAFC; }
     body::-webkit-scrollbar { width: 6px; }
-    body::-webkit-scrollbar-track { background: #F8F0EB; border-radius: 10px; }
-    body::-webkit-scrollbar-thumb { background: #C89B8B; border-radius: 10px; }
-    /* cards & buttons */
-    .card-design {
-      background: #FFFFFF;
-      border-radius: 28px;
-      transition: all 0.3s ease;
-      border: 1px solid #E5D9D0;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-    }
-    .dark .card-design { background: #2A2420; border-color: #3D352E; }
-    .card-design:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 30px -8px rgba(200,155,139,0.2);
-      border-color: #C89B8B;
-    }
-    .btn-primary-design {
-      background-color: #1E1A17;
-      color: #FCF8F5;
-      font-weight: 600;
-      border-radius: 60px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .btn-primary-design:hover {
-      background-color: #3D352E;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(200,155,139,0.3);
-      color: #FCF8F5;
-    }
-    .dark .btn-primary-design { background-color: #FCF8F5; color: #1E1A17; }
-    .dark .btn-primary-design:hover { background-color: #F2E3DB; color: #1E1A17; }
-    .btn-outline-design {
-      border: 1.5px solid #1E1A17;
-      color: #1E1A17;
-      background: transparent;
-      border-radius: 60px;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    .btn-outline-design:hover { background-color: #1E1A17; color: #FCF8F5; transform: translateY(-2px); }
-    .dark .btn-outline-design { border-color: #EDE6E0; color: #EDE6E0; }
-    .dark .btn-outline-design:hover { background-color: #EDE6E0; color: #1E1A17; }
-    /* navigation (same structure) */
-    .nav-link { position: relative; font-weight: 500; color: #1E1A17; transition: color 0.3s; }
-    .dark .nav-link { color: #EDE6E0; }
-    .nav-link:hover { color: #C89B8B; }
-    .nav-link.active { color: #C89B8B !important; }
-    .dropdown-item.active { background-color: #F8F0EB; color: #C89B8B !important; font-weight: 600; }
-    .dark .dropdown-item.active { background-color: #2E2420; color: #C89B8B !important; }
+    body::-webkit-scrollbar-track { background: #F1F5F9; }
+    body::-webkit-scrollbar-thumb { background: #0EA5E9; border-radius: 10px; }
+    .dark body::-webkit-scrollbar-track { background: #1E293B; }
+
+    .nav-link { position: relative; font-weight: 500; color: #0F172A; transition: color 0.3s; }
+    .dark .nav-link { color: #F8FAFC; }
+    .nav-link:hover { color: #0EA5E9; }
+    .nav-link.active { color: #0EA5E9 !important; }
     .dropdown-design { position: relative; }
     .dropdown-design-menu {
       position: absolute; top: 100%; left: 0; min-width: 200px; background: #FFFFFF;
       border-radius: 18px; padding: 0.5rem 0; box-shadow: 0 18px 32px rgba(0,0,0,0.06);
       opacity: 0; visibility: hidden; transform: translateY(12px); transition: all 0.25s ease;
-      z-index: 1000; border: 1px solid #E5D9D0;
+      z-index: 1000; border: 1px solid #E2E8F0;
     }
-    .dark .dropdown-design-menu { background: #2A2420; border-color: #3D352E; }
+    .dark .dropdown-design-menu { background: #1E293B; border-color: #334155; }
     .dropdown-design:hover .dropdown-design-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-item {
-      display: flex; align-items: center; padding: 0.6rem 1.4rem; transition: all 0.2s;
-      color: #1E1A17;
-    }
-    .dark .dropdown-item { color: #EDE6E0; }
-    .dropdown-item:hover { background-color: #F8F0EB; color: #1E1A17; padding-left: 1.7rem; }
-    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+    .dropdown-item { display: flex; align-items: center; padding: 0.6rem 1.4rem; transition: all 0.2s; color: #0F172A; }
+    .dark .dropdown-item { color: #F8FAFC; }
+    .dropdown-item:hover { background-color: #F1F5F9; padding-left: 1.7rem; }
+    .dark .dropdown-item:hover { background-color: #334155; }
     .mobile-menu-design {
       background: #FFFFFF; max-height: 0; overflow: hidden;
       transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 0 0 24px 24px;
     }
-    .dark .mobile-menu-design { background: #2A2420; }
-    .mobile-menu-design.open { max-height: 80vh; overflow-y: auto; scrollbar-width: none; }
-    .mobile-menu-design.open::-webkit-scrollbar { display: none; }
+    .dark .mobile-menu-design { background: #1E293B; }
+    .mobile-menu-design.open { max-height: 80vh; overflow-y: auto; }
     .social-icon-design {
       width: 38px; height: 38px; border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
-      background-color: #F8F0EB; color: #1E1A17; transition: all 0.3s;
+      background-color: #F1F5F9; color: #0F172A; transition: all 0.3s;
     }
-    .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; transform: translateY(-3px); }
-    .dark .social-icon-design { background-color: #2A2420; color: #EDE6E0; }
-    .dark .social-icon-design:hover { background-color: #C89B8B; color: #1E1A17; }
+    .social-icon-design:hover { background-color: #0EA5E9; color: #0F172A; transform: translateY(-3px); }
+    .dark .social-icon-design { background-color: #1E293B; color: #F8FAFC; }
+    .dark .social-icon-design:hover { background-color: #0EA5E9; color: #0F172A; }
+
+    .btn-primary-design {
+      background-color: #0F172A; color: #F8FAFC; font-weight: 600;
+      border-radius: 60px; transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .btn-primary-design:hover {
+      background-color: #334155; transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14,165,233,0.3);
+    }
+    .dark .btn-primary-design { background-color: #F8FAFC; color: #0F172A; }
+    .dark .btn-primary-design:hover { background-color: #E0F2FE; }
+    .btn-outline-design {
+      border: 1.5px solid #0F172A; color: #0F172A; background: transparent;
+      border-radius: 60px; font-weight: 500; transition: all 0.3s;
+    }
+    .btn-outline-design:hover { background-color: #0F172A; color: #F8FAFC; transform: translateY(-2px); }
+    .dark .btn-outline-design { border-color: #F8FAFC; color: #F8FAFC; }
+    .dark .btn-outline-design:hover { background-color: #F8FAFC; color: #0F172A; }
+
+    [dir="rtl"] .dropdown-design-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+
+    /* ============ CONTACT PAGE UNIQUE STYLES ============ */
+
+    /* Hero */
+    .hero-contact {
+      background-image: url('assests/contact_hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .hero-contact { background-attachment: scroll; }
+    }
+    .hero-contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.78) 50%, rgba(14,165,233,0.35) 100%);
+      z-index: 1;
+    }
+    .hero-contact > * { position: relative; z-index: 2; }
+
+    /* Get in Touch */
+    .get-in-touch-card {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 32px;
+      padding: 1.5rem;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 20px 50px -20px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .dark .get-in-touch-card {
+      background: #1E293B;
+      border-color: #334155;
+    }
+    .get-in-touch-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px -20px rgba(14,165,233,0.25);
+      border-color: #0EA5E9;
+    }
+
+    /* Contact details cards */
+    .contact-detail-card {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid #E2E8F0;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .dark .contact-detail-card {
+      background: #1E293B;
+      border-color: #334155;
+    }
+    .contact-detail-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #0EA5E9, #0369A1);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .contact-detail-card:hover::before { transform: scaleX(1); }
+    .contact-detail-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(14,165,233,0.25);
+    }
+
+    /* Service Location map */
+    .map-container {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2);
+      border: 1px solid #E2E8F0;
+      min-height: 400px;
+    }
+    .dark .map-container { border-color: #334155; }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.05);
+      transition: filter 0.5s ease;
+    }
+    .map-container:hover iframe { filter: grayscale(0) contrast(1); }
+    .dark .map-container iframe { filter: grayscale(0.4) invert(0.88) contrast(0.9) hue-rotate(180deg); }
+
+    /* Enquiry form */
+    .enquiry-form {
+      background: #FFFFFF;
+      border-radius: 32px;
+      padding: 2.5rem;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .dark .enquiry-form {
+      background: #1E293B;
+      border-color: #334155;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1.15rem;
+      border-radius: 14px;
+      border: 1.5px solid #E2E8F0;
+      background: #F8FAFC;
+      color: #0F172A;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .dark .form-input {
+      background: #0F172A;
+      border-color: #334155;
+      color: #F8FAFC;
+    }
+    .form-input:focus {
+      border-color: #0EA5E9;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.12);
+    }
+    .dark .form-input:focus {
+      background: #0F172A;
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.2);
+    }
+    .form-input::placeholder { color: #94A3B8; }
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748B;
+      margin-bottom: 0.5rem;
+    }
+    .dark .form-label { color: #94A3B8; }
+
+    /* Request a Quote — full bleed CTA */
+    .quote-section {
+      background-image: url('assests/quote_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .quote-section { background-attachment: scroll; }
+    }
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(15,23,42,0.96) 0%, rgba(15,23,42,0.85) 40%, rgba(3,105,161,0.75) 100%);
+      z-index: 1;
+    }
+    .quote-section > * { position: relative; z-index: 2; }
+
+    /* Info list */
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px dashed #E2E8F0;
+      transition: all 0.3s ease;
+    }
+    .dark .info-row { border-color: #334155; }
+    .info-row:last-child { border-bottom: none; }
+    .info-row:hover { transform: translateX(4px); }
+
+    /* Floating bubbles */
+    @keyframes floatBubble {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.04); }
+    }
+    .float-bubble { animation: floatBubble 7s ease-in-out infinite; }
+    .float-bubble-delay { animation: floatBubble 8s ease-in-out 2s infinite; }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Business hours mini card */
+    .hours-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.35rem 0;
+      font-size: 0.85rem;
+      border-bottom: 1px dashed rgba(255,255,255,0.15);
+    }
+    .hours-pill:last-child { border-bottom: none; }
   </style>
 </head>
-<body class="warm-pattern">
+<body>
   <!-- ======== NAVIGATION ======== -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1A1614]/95 backdrop-blur-sm border-b border-[#E5D9D0] dark:border-[#3D352E] shadow-sm">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#020617] border-b border-[#E2E8F0] dark:border-[#334155] shadow-sm">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
         <!-- Logo -->
         <a class="flex items-center gap-2 md:gap-3 group shrink-0" href='index.html'>
-          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
-            <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-            <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
+          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+              <path d="M12 11V9.5" />
+              <path d="M10.5 14L9 15.5" />
+              <path d="M13.5 14L15 15.5" />
+            </svg>
           <div>
-            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white">Home<span class="text-[#0EA5E9]">Tech</span></span>
           </div>
         </a>
         <!-- Desktop nav + actions -->
@@ -200,11 +345,12 @@
                 <a class="dropdown-item" href="home2.html"> Home 2</a>
               </div>
             </div>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="portfolio.html">Portfolio</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="consultation.html">Consultation</a>
-            <a class="nav-link hover:text-[#C89B8B] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="solutions.html">Solutions</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="pricing.html">Pricing</a>
+            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
             <!-- Dashboard Dropdown -->
             <div class="dropdown-design">
               <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
@@ -218,19 +364,18 @@
           </div>
           <!-- Desktop actions -->
           <div class="hidden xl:flex items-center gap-3 ms-2">
-            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center">
-              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center">
+              <span class="dark:hidden"><i class="fas fa-moon"></i></span><span class="hidden dark:inline"><i class="fas fa-sun"></i></span>
             </button>
-            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] hover:scale-110 transition flex items-center justify-center font-bold text-base">
+            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center font-bold text-base">
               <i class="fas fa-exchange-alt"></i>
             </button>
             <div id="auth-buttons" class="flex items-center gap-3">
-              <a href="login.html" class="px-5 py-2 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 transition">Sign In</a>
-              <a href="signup.html" class="px-5 py-2 bg-[#1E1A17] dark:bg-white dark:text-[#1E1A17] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+              <a href="signup.html" class="px-5 py-2 bg-[#0F172A] dark:bg-white dark:text-[#0F172A] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
             </div>
           </div>
           <!-- Mobile toggle -->
-          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#C89B8B] text-[#1E1A17] flex items-center justify-center shadow-md">
+          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#0EA5E9] text-[#0F172A] flex items-center justify-center shadow-md">
             <i class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -239,36 +384,36 @@
       <div id="mobile-menu" class="mobile-menu-design xl:hidden">
         <div class="py-4 px-3 space-y-1">
           <div class="py-1">
-            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+            <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#1E293B]">
               <span>Home</span><i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
             </button>
             <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="index.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 1</a>
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="home2.html"><i class="fas fa-home w-6 text-[#C89B8B]"></i> Home 2</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="index.html"><i class="fas fa-home w-6 text-[#0EA5E9]"></i> Home 1</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="home2.html"><i class="fas fa-home w-6 text-[#0EA5E9]"></i> Home 2</a>
             </div>
           </div>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="about.html">About</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="portfolio.html">Portfolio</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="services.html">Services</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="consultation.html">Consultation</a>
-          <a class="block py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="contact.html">Contact</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="about.html">About</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="services.html">Services</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="products.html">Products</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="solutions.html">Solutions</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="pricing.html">Pricing</a>
+          <a class="block py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="contact.html">Contact</a>
           <div class="py-1">
-            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#2A2420]">
+            <button onclick="document.getElementById('dashboard-mobile-drop').classList.toggle('hidden'); document.getElementById('dashboard-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition cursor-pointer dark:text-white dark:hover:bg-[#1E293B]">
               <span>Dashboard</span><i id="dashboard-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
             </button>
             <div id="dashboard-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="client.html">Client</a>
-              <a class="block py-2.5 px-4 font-medium text-[#1E1A17] hover:bg-[#F8F0EB] rounded-xl transition dark:text-white dark:hover:bg-[#2A2420]" href="admin.html">Admin</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="client.html">Client</a>
+              <a class="block py-2.5 px-4 font-medium text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition dark:text-white dark:hover:bg-[#1E293B]" href="admin.html">Admin</a>
             </div>
           </div>
-                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E5D9D0] dark:border-[#3D352E]">
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#E2E8F0] dark:border-[#334155]">
             <div id="mobile-auth-buttons" class="flex flex-col gap-2">
-              <a class="text-center py-2.5 rounded-full font-semibold text-gray-700 border border-gray-200 hover:bg-gray-50 dark:text-white dark:border-gray-700 dark:hover:bg-[#2E2A26]" href="login.html">Sign In</a>
-              <a class="text-center py-2.5 rounded-full font-semibold bg-[#1E1A17] text-white hover:bg-gray-800 dark:bg-white dark:text-[#1E1A17] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
+              <a class="text-center py-2.5 rounded-full font-semibold bg-[#0F172A] text-white hover:bg-gray-800 dark:bg-white dark:text-[#0F172A] dark:hover:bg-gray-100" href="signup.html">Sign up</a>
             </div>
             <div class="flex gap-3">
-              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme</button>
-              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#F2E3DB] dark:bg-[#3D352E] text-[#1E1A17] dark:text-[#C89B8B] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
+              <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] text-sm font-medium flex items-center gap-2 justify-center"><span class="dark:hidden"><i class="fas fa-moon"></i></span><span class="hidden dark:inline"><i class="fas fa-sun"></i></span> Theme</button>
+              <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] text-sm font-medium flex items-center gap-2 justify-center"><i class="fas fa-exchange-alt"></i> RTL</button>
             </div>
           </div>
         </div>
@@ -276,229 +421,559 @@
     </div>
   </nav>
 
-  <!-- ======== HERO (simple minimalist design) ======== -->
-  <section class="min-h-[520px] md:h-[680px] flex items-center pt-36 pb-16 md:pt-44 md:pb-24 relative overflow-hidden bg-[#1E1A17] border-b border-[#3D352E]">
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+  <!-- SECTION 1: HERO (Contact) -->
+  <!-- ============================================================ -->
+  <section class="min-h-[520px] md:h-[680px] flex items-center pt-36 pb-16 md:pt-44 md:pb-24 relative overflow-hidden bg-[#0F172A] border-b border-[#334155]">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="/assests/hero_bg_contact.jpg" alt="Hero Background" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black/55"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/75"></div>
+      <img src="assests/hero_contact.jpg" alt="Contact HomeTech" class="w-full h-full object-cover" />
+      <div class="absolute inset-0" style="background-color: rgba(0,0,0,0.65);"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/70 via-transparent to-[#0F172A]/90"></div>
     </div>
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-3xl text-center animate-slide-up">
-      <span class="inline-block bg-[#C89B8B] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-6"><i class="fas fa-phone"></i> Contact</span>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white mb-6">
-        Let’s Start a <br/> Design <span class="text-[#C89B8B]">Dialogue</span>
-      </h1>
-      <div class="w-16 h-1 bg-[#C89B8B] mx-auto mb-8 rounded-full"></div>
-      <p class="text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-relaxed max-w-2xl mx-auto font-body">
-        Have questions about a space? Reach out to start your custom transformation, or visit our Midtown Manhattan design studio.
-      </p>
-    </div>
-  </section>
-
-  <!-- ======== FORM & CONTACT DETAILS ======== -->
-  <section class="py-20 bg-white dark:bg-[#1A1614]">
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-stretch">
-        
-        <!-- Contact Form Card -->
-        <div class="lg:col-span-7 card-design p-8 md:p-10 space-y-6">
-          <h2 class="text-2xl font-display font-bold text-[#1E1A17] dark:text-white">Send Us a Message</h2>
-          <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-[#7A6E64] dark:text-[#9E8F84] mb-2">Full Name</label>
-                <input type="text" placeholder="John Doe" required class="w-full bg-[#F8F0EB] dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] rounded-2xl px-5 py-3 focus:outline-none focus:border-[#C89B8B] dark:focus:border-[#C89B8B] transition-colors text-sm text-[#1E1A17] dark:text-white" />
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-[#7A6E64] dark:text-[#9E8F84] mb-2">Email Address</label>
-                <input type="email" placeholder="john@example.com" required class="w-full bg-[#F8F0EB] dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] rounded-2xl px-5 py-3 focus:outline-none focus:border-[#C89B8B] dark:focus:border-[#C89B8B] transition-colors text-sm text-[#1E1A17] dark:text-white" />
-              </div>
-            </div>
-            <div>
-              <label class="block text-xs uppercase tracking-wider font-semibold text-[#7A6E64] dark:text-[#9E8F84] mb-2">Subject</label>
-              <input type="text" placeholder="Residential Design Consultation" required class="w-full bg-[#F8F0EB] dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] rounded-2xl px-5 py-3 focus:outline-none focus:border-[#C89B8B] dark:focus:border-[#C89B8B] transition-colors text-sm text-[#1E1A17] dark:text-white" />
-            </div>
-            <div>
-              <label class="block text-xs uppercase tracking-wider font-semibold text-[#7A6E64] dark:text-[#9E8F84] mb-2">Message</label>
-              <textarea placeholder="Tell us about your space, dimensions, or goals..." rows="5" required class="w-full bg-[#F8F0EB] dark:bg-[#2A2420] border border-[#E5D9D0] dark:border-[#3D352E] rounded-2xl px-5 py-3 focus:outline-none focus:border-[#C89B8B] dark:focus:border-[#C89B8B] transition-colors text-sm text-[#1E1A17] dark:text-white"></textarea>
-            </div>
-            <button type="submit" class="btn-primary-design w-full py-4 text-center rounded-full font-bold flex items-center justify-center gap-2 mt-4 cursor-pointer">
-              <i class="fas fa-paper-plane text-xs"></i> Send Message
-            </button>
-          </form>
-        </div>
-
-        <!-- Studio Contact Details Card -->
-        <div class="lg:col-span-5 card-design p-8 md:p-10 flex flex-col justify-between space-y-8 bg-[#F8F0EB]/30 dark:bg-[#2A2420]/30">
-          <div class="space-y-6">
-            <h2 class="text-2xl font-display font-bold text-[#1E1A17] dark:text-white">Studio Details</h2>
-            
-            <ul class="space-y-6">
-              <li class="flex gap-4">
-                <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] flex items-center justify-center shrink-0 shadow-sm"><i class="fas fa-map-pin"></i></div>
-                <div>
-                  <h4 class="font-bold text-sm text-[#1E1A17] dark:text-white uppercase tracking-wider">Address</h4>
-                  <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] mt-1">45 Design Ave, New York, NY 10001</p>
-                </div>
-              </li>
-
-              <li class="flex gap-4">
-                <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] flex items-center justify-center shrink-0 shadow-sm"><i class="fas fa-phone"></i></div>
-                <div>
-                  <h4 class="font-bold text-sm text-[#1E1A17] dark:text-white uppercase tracking-wider">Phone</h4>
-                  <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] mt-1">(212) 555-0199</p>
-                </div>
-              </li>
-
-              <li class="flex gap-4">
-                <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] flex items-center justify-center shrink-0 shadow-sm"><i class="fas fa-envelope"></i></div>
-                <div>
-                  <h4 class="font-bold text-sm text-[#1E1A17] dark:text-white uppercase tracking-wider">Email</h4>
-                  <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] mt-1">studio@aura.space</p>
-                </div>
-              </li>
-
-              <li class="flex gap-4">
-                <div class="w-10 h-10 rounded-xl bg-[#F2E3DB] dark:bg-[#3D352E] text-[#C89B8B] flex items-center justify-center shrink-0 shadow-sm"><i class="fas fa-clock"></i></div>
-                <div>
-                  <h4 class="font-bold text-sm text-[#1E1A17] dark:text-white uppercase tracking-wider">Studio Hours</h4>
-                  <p class="text-sm text-[#7A6E64] dark:text-[#CEC3BA] mt-1">Mon–Fri: 9am – 7pm<br/>Sat–Sun: Closed</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pt-6 border-t border-[#E5D9D0] dark:border-[#3D352E]">
-            <h4 class="font-bold text-xs text-[#7A6E64] dark:text-[#9E8F84] uppercase tracking-wider mb-4">Follow Our Creations</h4>
-            <div class="flex gap-3">
-              <a href="#" class="social-icon-design"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-icon-design"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-icon-design"><i class="fab fa-youtube"></i></a>
-              <a href="#" class="social-icon-design"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-        </div>
-
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="max-w-4xl mx-auto text-center animate-slide-up">
+        <span class="inline-block bg-[#0EA5E9] text-white px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4"><i class="fas fa-headset"></i> Support & Sales</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white">Let's Build Your <br class="hidden sm:inline"/> <span class="text-[#0EA5E9]">Smart Home</span></h1>
+        <p class="text-base sm:text-lg md:text-xl text-[#CBD5E1] font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">Whether you have a question, need a quote, or are ready to book an installation, our team is here to help you every step of the way.</p>
       </div>
     </div>
   </section>
 
-  <!-- ======== OUR LOCATION (Google Maps iframe) ======== -->
-  <section class="py-20 bg-[#F8F0EB] dark:bg-[#201C1A] border-t border-[#E5D9D0] dark:border-[#3D352E]">
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl">
-      <div class="text-center mb-12">
-        <span class="inline-block bg-white dark:bg-[#2A2420] text-[#C89B8B] px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide shadow-sm"><i class="fas fa-map-marked-alt text-[#C89B8B]"></i> Visit Us</span>
-        <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-[#1E1A17] dark:text-white">Our <span class="text-[#C89B8B]">Location</span></h2>
-      </div>
-      <div class="rounded-3xl border border-[#E5D9D0] dark:border-[#3D352E] shadow-xl overflow-hidden h-96 w-full relative group">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4284594247547!2d-73.985131023418!3d40.75493097138676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" class="w-full h-full border-0 absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== NEWSLETTER SIGNUP ======== -->
-  <section class="py-20 md:py-28 bg-gradient-to-b from-[#FCF8F5] to-[#F8F0EB] dark:from-[#1A1614] dark:to-[#201C1A] relative overflow-hidden">
-    <!-- Subtle decorative dots pattern -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.02]" style="background-image: radial-gradient(#C89B8B 1px, transparent 1px); background-size: 32px 32px;"></div>
-
-    <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl relative z-10">
-      <div class="bg-white dark:bg-[#2A2420] rounded-[32px] border border-[#E5D9D0] dark:border-[#3D352E] shadow-2xl shadow-black/5 dark:shadow-black/30 overflow-hidden">
-        <div class="grid lg:grid-cols-5">
-
-          <!-- Left decorative panel -->
-          <div class="lg:col-span-2 bg-[#1E1A17] dark:bg-[#151210] p-6 sm:p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
-
-            <div>
-              <div class="w-14 h-14 rounded-2xl bg-[#C89B8B]/10 border border-[#C89B8B]/20 flex items-center justify-center mb-8">
-                <i class="fas fa-paper-plane text-[#C89B8B] text-xl"></i>
-              </div>
-              <h3 class="text-2xl md:text-3xl font-display font-bold text-white leading-snug mb-4">
-                Stay Ahead of<br>Design Trends
-              </h3>
-              <p class="text-white/50 text-sm leading-relaxed">
-                Curated insights from our award-winning design team, delivered once a month.
-              </p>
-            </div>
-
-            <!-- Stats row -->
-            <div class="flex items-center justify-between gap-2 sm:gap-6 mt-10 pt-8 border-t border-white/10">
-              <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#C89B8B]">5K+</div>
-                <div class="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider mt-0.5 whitespace-nowrap">Subscribers</div>
-              </div>
-              <div class="w-px h-8 bg-white/10 shrink-0"></div>
-              <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#C89B8B]">48</div>
-                <div class="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider mt-0.5 whitespace-nowrap">Editions</div>
-              </div>
-              <div class="w-px h-8 bg-white/10 shrink-0"></div>
-              <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#C89B8B]">98%</div>
-                <div class="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider mt-0.5 whitespace-nowrap">Open Rate</div>
+  <!-- SECTION 2: GET IN TOUCH — Large intro card with image        -->
+  <!-- ============================================================ -->
+  <section class="py-12 bg-white dark:bg-[#020617] relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#0EA5E9]/5 rounded-full blur-3xl"></div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-7xl">
+      <div class="get-in-touch-card reveal-on-scroll">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Image -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#E2E8F0] dark:border-[#334155] group">
+              <img src="assests/contact_team.jpg" alt="HomeTech Team" class="w-full h-[320px] lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-1000">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5">
+                <div class="text-white/80 text-xs uppercase tracking-widest font-bold mb-1">Our Team</div>
+                <div class="text-white font-display font-bold text-lg">Certified Smart Home Experts</div>
               </div>
             </div>
           </div>
-
-          <!-- Right form panel -->
-          <div class="lg:col-span-3 p-6 sm:p-10 md:p-12 flex flex-col justify-center">
-            <span class="inline-block text-[#C89B8B] text-xs font-semibold uppercase tracking-[0.2em] mb-3">Newsletter</span>
-            <h2 class="text-2xl md:text-3xl font-display font-bold text-[#1E1A17] dark:text-white mb-3 leading-tight">
-              Design Inspiration, Delivered to Your <span class="text-[#C89B8B]">Inbox</span>
+          <!-- Content -->
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 bg-[#E0F2FE] dark:bg-[#1E293B] text-[#0369A1] dark:text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] mb-6">
+              <i class="fas fa-comments"></i> We're Here For You
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] dark:text-white mb-6 leading-tight">
+              Let's Start a <span class="text-[#0EA5E9]">Conversation</span>
             </h2>
-            <p class="text-[#7A6E64] dark:text-[#9E8F84] text-sm leading-relaxed mb-8">
-              Join our community of design lovers. Receive exclusive project reveals, trend reports, expert tips, and early access to consultation slots — all crafted by our creative team.
+            <p class="text-[#64748B] dark:text-[#94A3B8] text-base md:text-lg leading-relaxed mb-5">
+              Our team of certified smart home specialists is ready to help you design, install, and maintain the perfect system for your space. No pushy sales, just expert guidance — completely free.
             </p>
 
-            <!-- Form -->
-            <form id="newsletter-form" class="space-y-4 mb-6" onsubmit="event.preventDefault(); document.getElementById('nl-success').classList.remove('hidden'); this.classList.add('hidden');">
-              <div class="flex flex-col sm:flex-row gap-3">
-                <input type="email" required placeholder="Your email address"
-                  class="flex-1 px-5 py-3.5 rounded-2xl bg-[#FCF8F5] dark:bg-[#1E1A17] border border-[#E5D9D0] dark:border-[#3D352E] text-[#1E1A17] dark:text-white placeholder-[#B5A99E] dark:placeholder-[#6B5F56] text-sm focus:outline-none focus:border-[#C89B8B] focus:ring-2 focus:ring-[#C89B8B]/15 transition-all duration-300" />
-                <button type="submit"
-                  class="px-8 py-3.5 bg-[#1E1A17] dark:bg-[#C89B8B] hover:bg-[#3D352E] dark:hover:bg-[#B08474] text-white dark:text-[#1E1A17] rounded-2xl font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] whitespace-nowrap flex items-center justify-center gap-2">
-                  Subscribe <i class="fas fa-arrow-right text-xs"></i>
-                </button>
+            <!-- 3 quick highlights -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                <div class="w-10 h-10 rounded-xl bg-[#0EA5E9]/15 text-[#0EA5E9] flex items-center justify-center mb-3">
+                  <i class="fas fa-user-tie text-sm"></i>
+                </div>
+                <div class="font-bold text-[#0F172A] dark:text-white text-sm">Expert Advice</div>
+                <div class="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1">Certified specialists</div>
               </div>
-            </form>
-
-            <!-- Success state (hidden by default) -->
-            <div id="nl-success" class="hidden bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/30 rounded-2xl p-5 text-center mb-6">
-              <div class="w-12 h-12 mx-auto bg-emerald-100 dark:bg-emerald-900/40 rounded-full flex items-center justify-center mb-3">
-                <i class="fas fa-check text-emerald-600 dark:text-emerald-400 text-lg"></i>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                <div class="w-10 h-10 rounded-xl bg-[#0EA5E9]/15 text-[#0EA5E9] flex items-center justify-center mb-3">
+                  <i class="fas fa-clock text-sm"></i>
+                </div>
+                <div class="font-bold text-[#0F172A] dark:text-white text-sm">Fast Response</div>
+                <div class="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1">Within 2 hours</div>
               </div>
-              <p class="text-emerald-800 dark:text-emerald-300 font-semibold text-sm">You're subscribed!</p>
-              <p class="text-emerald-600/70 dark:text-emerald-400/60 text-xs mt-1">Check your inbox for a welcome note.</p>
+              <div class="p-4 rounded-2xl bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                <div class="w-10 h-10 rounded-xl bg-[#0EA5E9]/15 text-[#0EA5E9] flex items-center justify-center mb-3">
+                  <i class="fas fa-shield-alt text-sm"></i>
+                </div>
+                <div class="font-bold text-[#0F172A] dark:text-white text-sm">No Obligation</div>
+                <div class="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1">Zero pressure consultation</div>
+              </div>
             </div>
 
-            <!-- Trust row -->
-            <div class="flex flex-wrap items-center gap-5 text-[11px] text-[#B5A99E] dark:text-[#6B5F56]">
-              <span class="flex items-center gap-1.5"><i class="fas fa-lock text-[#C89B8B]/50 text-[9px]"></i> We respect your privacy</span>
-              <span class="flex items-center gap-1.5"><i class="fas fa-calendar text-[#C89B8B]/50 text-[9px]"></i> Once a month</span>
-              <span class="flex items-center gap-1.5"><i class="fas fa-times-circle text-[#C89B8B]/50 text-[9px]"></i> Unsubscribe anytime</span>
+            <!-- Business hours strip -->
+            <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-[#E2E8F0] dark:border-[#334155]">
+              <div class="flex items-center gap-2 text-[#334155] dark:text-[#CBD5E1]">
+                <i class="fas fa-calendar-week text-[#0EA5E9]"></i>
+                <span class="text-sm font-medium">Mon–Fri: 9am – 7pm</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#334155] dark:text-[#CBD5E1]">
+                <i class="fas fa-calendar-day text-[#0EA5E9]"></i>
+                <span class="text-sm font-medium">Sat: 10am – 4pm</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#334155] dark:text-[#CBD5E1]">
+                <i class="fas fa-moon text-[#0EA5E9]"></i>
+                <span class="text-sm font-medium">Sun: Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: CONTACT DETAILS — 4-card grid                     -->
+  <!-- ============================================================ -->
+  <section class="py-20 bg-[#F1F5F9] dark:bg-[#0F172A] relative overflow-hidden">
+    <div class="absolute top-1/2 right-0 w-96 h-96 bg-[#0EA5E9]/5 rounded-full blur-3xl -translate-y-1/2"></div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-7xl">
+      <!-- Header -->
+      <div class="text-center mb-8 reveal-on-scroll">
+        <span class="inline-flex items-center gap-2 bg-white dark:bg-[#1E293B] text-[#0369A1] dark:text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-sm">
+          <i class="fas fa-address-card"></i> Contact Details
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] dark:text-white mb-4 leading-tight">
+          Multiple Ways to <span class="text-[#0EA5E9]">Reach Us</span>
+        </h2>
+        <p class="text-[#64748B] dark:text-[#94A3B8] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Pick the channel that works best for you. We're responsive across every platform.
+        </p>
+      </div>
+
+      <!-- 4 contact cards grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Phone -->
+        <div class="contact-detail-card bg-white dark:bg-[#1E293B] p-8 rounded-3xl shadow-sm border border-[#E2E8F0] dark:border-[#334155] reveal-on-scroll flex flex-col h-full">
+          <div class="w-14 h-14 rounded-2xl bg-[#E0F2FE] dark:bg-[#0F172A] text-[#0EA5E9] flex items-center justify-center mb-6">
+            <i class="fas fa-phone text-2xl leading-none block"></i>
+          </div>
+          <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8] mb-2">Call Us</div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white mb-3">Phone</h3>
+          <p class="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-6">Speak with our team during business hours.</p>
+          <a href="tel:+12125550199" class="text-[#0EA5E9] font-bold text-sm hover:underline mt-auto flex items-center h-10">(212) 555-0199</a>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-detail-card bg-white dark:bg-[#1E293B] p-8 rounded-3xl shadow-sm border border-[#E2E8F0] dark:border-[#334155] reveal-on-scroll flex flex-col h-full">
+          <div class="w-14 h-14 rounded-2xl bg-[#E0F2FE] dark:bg-[#0F172A] text-[#0EA5E9] flex items-center justify-center mb-6">
+            <i class="fas fa-envelope text-2xl leading-none block"></i>
+          </div>
+          <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8] mb-2">Write to Us</div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white mb-3">Email</h3>
+          <p class="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-6">We reply within one business day.</p>
+          <a href="mailto:hello@hometech.space" class="text-[#0EA5E9] font-bold text-[13px] xl:text-sm hover:underline mt-auto flex items-center h-10 whitespace-nowrap tracking-tight">hello@hometech.space</a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="contact-detail-card bg-white dark:bg-[#1E293B] p-8 rounded-3xl shadow-sm border border-[#E2E8F0] dark:border-[#334155] reveal-on-scroll flex flex-col h-full">
+          <div class="w-14 h-14 rounded-2xl bg-[#E0F2FE] dark:bg-[#0F172A] text-[#0EA5E9] flex items-center justify-center mb-6">
+            <i class="fab fa-whatsapp text-2xl leading-none block"></i>
+          </div>
+          <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8] mb-2">Quick Chat</div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white mb-3">WhatsApp</h3>
+          <p class="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-6">Message us for instant support.</p>
+          <a href="https://wa.me/12125550199" target="_blank" rel="noopener" class="text-[#0EA5E9] font-bold text-sm hover:underline mt-auto flex items-center h-10">Message Now &rarr;</a>
+        </div>
+
+        <!-- Social -->
+        <div class="contact-detail-card bg-white dark:bg-[#1E293B] p-8 rounded-3xl shadow-sm border border-[#E2E8F0] dark:border-[#334155] reveal-on-scroll flex flex-col h-full">
+          <div class="w-14 h-14 rounded-2xl bg-[#E0F2FE] dark:bg-[#0F172A] text-[#0EA5E9] flex items-center justify-center mb-6">
+            <i class="fas fa-share-alt text-2xl leading-none block"></i>
+          </div>
+          <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8] mb-2">Follow</div>
+          <h3 class="font-bold text-xl text-[#0F172A] dark:text-white mb-3">Social Media</h3>
+          <p class="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-6">See our latest installations and tips.</p>
+          <div class="flex gap-2 mt-auto h-10 items-center">
+            <a href="#" class="w-8 h-8 rounded-full bg-[#F1F5F9] dark:bg-[#0F172A] text-[#64748B] dark:text-[#94A3B8] hover:text-[#0EA5E9] dark:hover:text-[#0EA5E9] flex items-center justify-center transition-colors">
+              <i class="fab fa-instagram text-sm leading-none block"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-[#F1F5F9] dark:bg-[#0F172A] text-[#64748B] dark:text-[#94A3B8] hover:text-[#0EA5E9] dark:hover:text-[#0EA5E9] flex items-center justify-center transition-colors">
+              <i class="fab fa-facebook-f text-sm leading-none block"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-[#F1F5F9] dark:bg-[#0F172A] text-[#64748B] dark:text-[#94A3B8] hover:text-[#0EA5E9] dark:hover:text-[#0EA5E9] flex items-center justify-center transition-colors">
+              <i class="fab fa-youtube text-sm leading-none block"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: SERVICE LOCATION — Split with map + address       -->
+  <!-- ============================================================ -->
+  <section class="py-20 bg-white dark:bg-[#020617] relative overflow-hidden">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-7xl">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- Left side - Address details -->
+        <div class="lg:col-span-5 reveal-on-scroll">
+          <span class="inline-flex items-center gap-2 bg-[#E0F2FE] dark:bg-[#1E293B] text-[#0369A1] dark:text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] mb-6">
+            <i class="fas fa-map-marker-alt"></i> Visit Our Studio
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] dark:text-white mb-6 leading-tight">
+            Service <span class="text-[#0EA5E9]">Location</span>
+          </h2>
+          <p class="text-[#64748B] dark:text-[#94A3B8] text-base leading-relaxed mb-8">
+            Our flagship showroom and installation hub is located in Manhattan's Design District. Drop by for a live demo of our smart home systems.
+          </p>
+
+          <!-- Address block -->
+          <div class="bg-[#F8FAFC] dark:bg-[#1E293B] rounded-3xl p-6 border border-[#E2E8F0] dark:border-[#334155] mb-6">
+            <div class="flex items-start gap-4 mb-5 pb-5 border-b border-dashed border-[#E2E8F0] dark:border-[#334155]">
+              <div class="w-11 h-11 rounded-xl bg-[#0EA5E9] flex items-center justify-center text-white shrink-0">
+                <i class="fas fa-building text-sm"></i>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8] mb-1">Showroom</div>
+                <div class="font-bold text-[#0F172A] dark:text-white text-base">HomeTech Design Studio</div>
+                <div class="text-sm text-[#64748B] dark:text-[#94A3B8] mt-1 leading-relaxed">
+                  45 Design Avenue<br>
+                  Manhattan, New York, NY 10001<br>
+                  United States
+                </div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fas fa-clock text-[#0EA5E9] mt-1"></i>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-[#0F172A] dark:text-white">Mon – Fri</div>
+                <div class="text-sm text-[#64748B] dark:text-[#94A3B8]">9:00 AM – 7:00 PM</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <i class="fas fa-clock text-[#0EA5E9] mt-1"></i>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-[#0F172A] dark:text-white">Saturday</div>
+                <div class="text-sm text-[#64748B] dark:text-[#94A3B8]">10:00 AM – 4:00 PM</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <i class="fas fa-clock text-[#0EA5E9] mt-1"></i>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-[#0F172A] dark:text-white">Sunday</div>
+                <div class="text-sm text-[#64748B] dark:text-[#94A3B8]">Closed</div>
+              </div>
             </div>
           </div>
 
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-primary-design px-6 py-3 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg">
+              <i class="fas fa-directions"></i> Get Directions
+            </a>
+            <a href="tel:+12125550199" class="btn-outline-design px-6 py-3 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold">
+              <i class="fas fa-phone"></i> Call Studio
+            </a>
+          </div>
+        </div>
+
+        <!-- Right side - Map -->
+        <div class="lg:col-span-7 reveal-on-scroll">
+          <div class="map-container h-[450px] lg:h-[500px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6936686757026!2d-73.98811728459385!3d40.74844097932842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="HomeTech Studio Location">
+            </iframe>
+            <!-- Map info overlay -->
+            <div class="absolute bottom-6 left-6 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl rounded-2xl px-5 py-4 shadow-2xl border border-white/50 dark:border-white/10 max-w-xs">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-full bg-[#0EA5E9] flex items-center justify-center text-white shrink-0">
+                  <i class="fas fa-map-pin text-xs"></i>
+                </div>
+                <div class="text-[10px] uppercase tracking-widest font-bold text-[#64748B] dark:text-[#94A3B8]">Location</div>
+              </div>
+              <div class="font-bold text-[#0F172A] dark:text-white text-sm">45 Design Avenue</div>
+              <div class="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1">Manhattan, NY 10001</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 5: SEND AN ENQUIRY — Form with side info panel       -->
+  <!-- ============================================================ -->
+  <section id="enquiry" class="py-12 bg-[#F1F5F9] dark:bg-[#0F172A] relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-[#0EA5E9]/5 rounded-full blur-3xl"></div>
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-7xl">
+      <!-- Header -->
+      <div class="text-center mb-14 reveal-on-scroll">
+        <span class="inline-flex items-center gap-2 bg-white dark:bg-[#1E293B] text-[#0369A1] dark:text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] mb-6 shadow-sm">
+          <i class="fas fa-paper-plane"></i> Send an Enquiry
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] dark:text-white mb-4 leading-tight">
+          Have a Question? <span class="text-[#0EA5E9]">Ask Away.</span>
+        </h2>
+        <p class="text-[#64748B] dark:text-[#94A3B8] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Fill in the form below and we'll get back to you as soon as possible — usually within 2 hours during business days.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <!-- Left side - Info panel (dark) -->
+        <div class="lg:col-span-4 reveal-on-scroll">
+          <div class="bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] rounded-3xl p-5 md:p-6 text-white shadow-2xl relative overflow-hidden">
+            <!-- Decorative -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#0EA5E9]/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-[#0369A1]/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10">
+              <div class="w-14 h-14 rounded-2xl bg-[#0EA5E9] flex items-center justify-center mb-2">
+                <i class="fas fa-headset text-base"></i>
+              </div>
+              <h3 class="font-display font-bold text-2xl mb-3">We're Just a Message Away</h3>
+              <p class="text-white/70 text-xs leading-relaxed mb-2">
+                Have a unique project in mind? Need technical advice? Our team is ready to help with anything smart home related.
+              </p>
+
+              <!-- Contact list -->
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <i class="fas fa-phone text-[#0EA5E9] text-[13px]"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-white/50">Call</div>
+                    <div class="text-[13px] font-bold">(212) 555-0199</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <i class="fas fa-envelope text-[#0EA5E9] text-[13px]"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-white/50">Email</div>
+                    <div class="text-[13px] font-bold break-all">hello@hometech.space</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <i class="fab fa-whatsapp text-[#0EA5E9] text-[13px]"></i>
+                  </div>
+                  <div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-white/50">WhatsApp</div>
+                    <div class="text-[13px] font-bold">Chat with us</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Business hours -->
+              <div class="pt-3 border-t border-white/10">
+                <div class="text-[9px] uppercase tracking-widest font-bold text-white/50 mb-2">Business Hours</div>
+                <div class="hours-pill">
+                  <span class="text-white/80 text-[13px]">Mon – Fri</span>
+                  <span class="text-[#0EA5E9] text-[13px] font-bold">9am – 7pm</span>
+                </div>
+                <div class="hours-pill">
+                  <span class="text-white/80 text-[13px]">Saturday</span>
+                  <span class="text-[#0EA5E9] text-[13px] font-bold">10am – 4pm</span>
+                </div>
+                <div class="hours-pill">
+                  <span class="text-white/80 text-[13px]">Sunday</span>
+                  <span class="text-white/50 text-[13px] font-bold">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side - Form -->
+        <div class="lg:col-span-8 reveal-on-scroll">
+          <form class="enquiry-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="name" class="form-label">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe" class="form-input">
+              </div>
+              <div>
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com" class="form-input">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" class="form-input">
+              </div>
+              <div>
+                <label for="subject" class="form-label">Subject *</label>
+                <select id="subject" name="subject" required class="form-input appearance-none cursor-pointer">
+                  <option value="" disabled selected>Choose a topic</option>
+                  <option value="installation">New Installation</option>
+                  <option value="upgrade">System Upgrade</option>
+                  <option value="maintenance">Maintenance Request</option>
+                  <option value="quote">Request a Quote</option>
+                  <option value="support">Technical Support</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="form-label">Your Message *</label>
+              <textarea id="message" name="message" rows="3" required placeholder="Tell us about your project, questions, or requirements..." class="form-input resize-y min-h-[100px]"></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 mb-6">
+              <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-4 h-4 rounded border-gray-300 dark:border-white/20 text-[#0EA5E9] focus:ring-[#0EA5E9] accent-[#0EA5E9]">
+              <label for="privacy" class="text-xs text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+                I agree to the <a href="#" class="text-[#0EA5E9] hover:underline font-semibold">Privacy Policy</a> and consent to being contacted regarding my enquiry.
+              </label>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <button type="submit" class="btn-primary-design px-10 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 shadow-lg w-full sm:w-auto justify-center">
+                Send Enquiry <i class="fas fa-paper-plane"></i>
+              </button>
+              <span class="text-xs text-[#64748B] dark:text-[#94A3B8] flex items-center gap-2">
+                <i class="fas fa-lock text-[#0EA5E9]"></i> Your information is 100% secure
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 6: REQUEST A QUOTE — Full bleed CTA with image      -->
+  <!-- ============================================================ -->
+  <section id="quote" class="quote-section py-24 relative overflow-hidden">
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-7xl">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Content -->
+        <div class="lg:col-span-7 reveal-on-scroll">
+          <span class="inline-flex items-center gap-2 bg-[#0EA5E9]/20 border border-[#0EA5E9]/40 text-[#0EA5E9] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] mb-6 backdrop-blur-sm">
+            <i class="fas fa-tags"></i> Request a Quote
+          </span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.05]">
+            Ready for Your<br>
+            <span class="text-[#0EA5E9]">Free Quote?</span>
+          </h2>
+          <p class="text-[#CBD5E1] text-base md:text-lg leading-relaxed mb-10 max-w-2xl">
+            Tell us about your space and requirements. We'll design a custom solution and send you a detailed, transparent quote within 24 hours — completely free, no strings attached.
+          </p>
+
+          <!-- Steps -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#0EA5E9] flex items-center justify-center text-white shrink-0 font-bold text-xs">1</div>
+              <div>
+                <div class="text-white font-bold text-sm">Share Details</div>
+                <div class="text-white/60 text-xs mt-1">Tell us about your space</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#0EA5E9] flex items-center justify-center text-white shrink-0 font-bold text-xs">2</div>
+              <div>
+                <div class="text-white font-bold text-sm">Get Design</div>
+                <div class="text-white/60 text-xs mt-1">We craft your solution</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#0EA5E9] flex items-center justify-center text-white shrink-0 font-bold text-xs">3</div>
+              <div>
+                <div class="text-white font-bold text-sm">Receive Quote</div>
+                <div class="text-white/60 text-xs mt-1">Transparent pricing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold bg-[#0EA5E9] hover:bg-[#0369A1] text-white shadow-2xl">
+              <i class="fas fa-file-invoice"></i> Request Free Quote
+            </a>
+            <a href="tel:+12125550199" class="px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold border-2 border-white/40 text-white hover:bg-white hover:text-[#0F172A] transition-all duration-300 backdrop-blur-sm">
+              <i class="fas fa-phone"></i> Call (212) 555-0199
+            </a>
+          </div>
+        </div>
+
+        <!-- Right side - Quote card preview -->
+        <div class="lg:col-span-5 hidden lg:block reveal-on-scroll">
+          <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] p-8 shadow-2xl">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-6 pb-6 border-b border-white/10">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-[#0EA5E9] flex items-center justify-center text-white">
+                  <i class="fas fa-file-invoice-dollar text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-white font-bold text-sm">Free Quote</div>
+                  <div class="text-white/50 text-xs">Delivered in 24 hours</div>
+                </div>
+              </div>
+              <div class="bg-green-500/20 border border-green-500/40 px-3 py-1.5 rounded-full">
+                <span class="text-green-400 text-[10px] font-bold uppercase tracking-widest">Free</span>
+              </div>
+            </div>
+
+            <!-- What's included -->
+            <div class="space-y-4 mb-8">
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9]">
+                  <i class="fas fa-check text-[10px]"></i>
+                </div>
+                <span class="text-white/90 text-sm">Custom system design</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9]">
+                  <i class="fas fa-check text-[10px]"></i>
+                </div>
+                <span class="text-white/90 text-sm">Itemized pricing breakdown</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9]">
+                  <i class="fas fa-check text-[10px]"></i>
+                </div>
+                <span class="text-white/90 text-sm">Product recommendations</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9]">
+                  <i class="fas fa-check text-[10px]"></i>
+                </div>
+                <span class="text-white/90 text-sm">Installation timeline</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9]">
+                  <i class="fas fa-check text-[10px]"></i>
+                </div>
+                <span class="text-white/90 text-sm">Optional upgrade paths</span>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+              <div>
+                <div class="text-2xl font-display font-bold text-[#0EA5E9]">500+</div>
+                <div class="text-white/60 text-[10px] uppercase tracking-widest font-bold mt-1">Quotes Sent</div>
+              </div>
+              <div>
+                <div class="text-2xl font-display font-bold text-[#0EA5E9]">100%</div>
+                <div class="text-white/60 text-[10px] uppercase tracking-widest font-bold mt-1">Free Service</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======== FOOTER ======== -->
-  <footer class="bg-white dark:bg-[#1A1614] text-[#1E1A17] dark:text-white pt-16 pb-8 border-t-4 border-[#C89B8B] transition-colors duration-300">
+  <footer class="bg-white dark:bg-[#020617] text-[#0F172A] dark:text-white pt-16 pb-8 border-t-4 border-[#0EA5E9]">
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div class="text-center md:text-start">
-          <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
-            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#C89B8B] hover:rotate-45 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="6" stroke-opacity="0.3"/>
-              <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="6" />
-              <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.2"/>
-              <path d="M50 10 L50 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <path d="M10 50 L90 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <a href="index.html" class="inline-flex items-center justify-center md:justify-start gap-3 mb-6 group">
+            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="17" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
             </svg>
-            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#1E1A17] dark:text-white">AURA<span class="text-[#C89B8B]">SPACE</span></span>
-          </div>
-          <p class="mb-5 text-[#3D352E] dark:text-[#CEC3BA] text-sm">Where interiors become art. Personalized design for modern living.</p>
+            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white">Home<span class="text-[#0EA5E9]">Tech</span></span>
+          </a>
+          <p class="mb-5 text-[#334155] dark:text-[#CBD5E1] text-sm">Where interiors become art. Personalized design for modern living.</p>
           <div class="flex justify-center md:justify-start gap-3">
             <a href="#" class="social-icon-design"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-icon-design"><i class="fab fa-facebook-f"></i></a>
@@ -507,34 +982,33 @@
           </div>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
           <ul class="space-y-2">
-            <li><a href="portfolio.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Portfolio</a></li>
-            <li><a href="services.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Services</a></li>
-            <li><a href="consultation.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Consultation</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Client Portal</a></li>
+            <li><a href="services.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Services</a></li>
+            <li><a href="products.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Products</a></li>
+            <li><a href="solutions.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Solutions</a></li>
+            <li><a href="pricing.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Pricing</a></li>
           </ul>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
           <ul class="space-y-2">
-            <li><a href="about.html" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">About</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Careers</a></li>
-            <li><a href="#" class="hover:text-[#C89B8B] transition block text-[#3D352E] dark:text-[#CEC3BA]">Press</a></li>
+            <li><a href="about.html" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">About</a></li>
+            <li><a href="#" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Careers</a></li>
+            <li><a href="#" class="hover:text-[#0EA5E9] transition block text-[#334155] dark:text-[#CBD5E1]">Press</a></li>
           </ul>
         </div>
         <div class="text-center md:text-start">
-          <h4 class="text-[#1E1A17] dark:text-[#C89B8B] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
+          <h4 class="text-[#0F172A] dark:text-[#0EA5E9] font-bold text-lg mb-5 uppercase tracking-wider">Contact</h4>
           <ul class="space-y-3">
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-map-pin text-[#C89B8B] mt-1"></i><span>45 Design Ave, New York, NY 10001</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-phone text-[#C89B8B]"></i><span>(212) 555-0199</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA]"><i class="fas fa-envelope text-[#C89B8B]"></i><span>studio@aura.space</span></li>
-            <li class="flex justify-center md:justify-start gap-3 text-[#3D352E] dark:text-[#CEC3BA] text-sm"><i class="fas fa-clock text-[#C89B8B]"></i><span>Mon–Fri 9am – 7pm</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-map-pin text-[#0EA5E9] mt-1"></i><span>45 Design Ave, New York, NY 10001</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-phone text-[#0EA5E9]"></i><span>(212) 555-0199</span></li>
+            <li class="flex justify-center md:justify-start gap-3 text-[#334155] dark:text-[#CBD5E1]"><i class="fas fa-envelope text-[#0EA5E9]"></i><span>hello@hometech.space</span></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 pt-8 border-t border-[#E5D9D0] dark:border-[#3D352E] text-center text-sm text-[#4A3F38] dark:text-[#9E8F84]">
-        <p>&copy; 2026 AURA SPACE &middot; Interior Design Studio. <i class="fas fa-heart text-[#C89B8B] mx-1"></i> Crafting beautiful spaces.</p>
+      <div class="mt-12 pt-8 border-t border-[#E2E8F0] dark:border-[#334155] text-center text-sm text-[#64748B] dark:text-[#94A3B8]">
+        <p>&copy; 2026 HomeTech &middot; Interior Design Studio. <i class="fas fa-heart text-[#0EA5E9] mx-1"></i> Crafting beautiful spaces.</p>
       </div>
     </div>
   </footer>
@@ -542,58 +1016,6 @@
   <!-- ======== SCRIPTS ======== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Dynamic Active Navigation Link highlighting
-      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-      
-      // Desktop Links
-      document.querySelectorAll('.hidden.xl\\:flex.items-center .nav-link, .hidden.xl\\:flex.items-center .dropdown-item').forEach(el => {
-        el.classList.remove('active');
-      });
-      const matchingLink = Array.from(document.querySelectorAll('.hidden.xl\\:flex.items-center a, .hidden.xl\\:flex.items-center button')).find(el => {
-        return el.getAttribute('href') === currentPath;
-      });
-      if (matchingLink) {
-        matchingLink.classList.add('active');
-        const parentDropdown = matchingLink.closest('.dropdown-design');
-        if (parentDropdown) {
-          const dropdownBtn = parentDropdown.querySelector('.nav-link');
-          if (dropdownBtn) dropdownBtn.classList.add('active');
-        }
-      }
-
-      // Mobile Links
-      const mobileContainer = document.getElementById('mobile-menu');
-      if (mobileContainer) {
-        mobileContainer.querySelectorAll('a').forEach(link => {
-          link.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-          link.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
-        });
-        mobileContainer.querySelectorAll('.pl-2 a').forEach(link => {
-          link.classList.remove('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-        });
-        mobileContainer.querySelectorAll('.py-1 > button').forEach(btn => {
-          btn.classList.remove('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-          btn.classList.add('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
-        });
-        const matchingMobileLink = Array.from(mobileContainer.querySelectorAll('a')).find(link => {
-          return link.getAttribute('href') === currentPath;
-        });
-        if (matchingMobileLink) {
-          const isNested = matchingMobileLink.closest('#home-mobile-drop') || matchingMobileLink.closest('#dashboard-mobile-drop');
-          if (isNested) {
-            matchingMobileLink.classList.add('bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-            const parentButton = matchingMobileLink.closest('.py-1')?.querySelector('button');
-            if (parentButton) {
-              parentButton.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-              parentButton.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
-            }
-          } else {
-            matchingMobileLink.classList.add('border-l-4', 'border-[#C89B8B]', 'bg-[#F2E3DB]', 'dark:bg-[#3D352E]');
-            matchingMobileLink.classList.remove('hover:bg-[#F8F0EB]', 'dark:hover:bg-[#2A2420]');
-          }
-        }
-      }
-
       // Theme toggle
       const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
       themeBtns.forEach(btn => {
@@ -603,6 +1025,7 @@
         });
       });
       if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
       // RTL
       function setRTL(isRTL) {
         const html = document.documentElement;
@@ -613,28 +1036,10 @@
       if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
       else document.documentElement.setAttribute('dir', 'ltr');
       const rtlBtn = document.getElementById('rtl-toggle');
-      if (rtlBtn) {
-        rtlBtn.addEventListener('click', () => {
-          const currentDir = document.documentElement.getAttribute('dir');
-          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
-        });
-      }
+      if (rtlBtn) rtlBtn.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl'));
       const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
-      if (mobileRtlBtn) {
-        mobileRtlBtn.addEventListener('click', () => {
-          const currentDir = document.documentElement.getAttribute('dir');
-          setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
-          const mobileMenu = document.getElementById('mobile-menu');
-          const mobileToggle = document.getElementById('mobile-toggle');
-          if (mobileMenu && mobileMenu.classList.contains('open')) {
-            mobileMenu.classList.remove('open');
-            if (mobileToggle && mobileToggle.querySelector('i')) {
-              mobileToggle.querySelector('i').classList.remove('fa-times');
-              mobileToggle.querySelector('i').classList.add('fa-bars');
-            }
-          }
-        });
-      }
+      if (mobileRtlBtn) mobileRtlBtn.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl'));
+
       // Mobile menu
       const mobileToggle = document.getElementById('mobile-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -643,38 +1048,72 @@
           mobileMenu.classList.toggle('open');
           const icon = mobileToggle.querySelector('i');
           if (mobileMenu.classList.contains('open')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
+            icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
           } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
           }
         });
-        mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
             mobileMenu.classList.remove('open');
-            if (mobileToggle.querySelector('i')) {
-              mobileToggle.querySelector('i').classList.remove('fa-times');
-              mobileToggle.querySelector('i').classList.add('fa-bars');
-            }
+            const icon = mobileToggle.querySelector('i');
+            if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
           });
         });
       }
-      // Auth buttons remain visible
 
-      // Dropdown
-      const userMenuBtn = document.getElementById('user-menu-btn');
-      const userDropdown = document.getElementById('user-dropdown');
-      if (userMenuBtn && userDropdown) {
-        userMenuBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          userDropdown.classList.toggle('hidden');
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            const offset = 100;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
         });
-        document.addEventListener('click', () => { userDropdown.classList.add('hidden'); });
+      });
+
+      // Reveal on scroll
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // Active nav link
+      const currentPath = window.location.pathname.split('/').pop() || 'contact.html';
+      document.querySelectorAll('.nav-link, .dropdown-item').forEach(el => {
+        if (el.getAttribute('href') === currentPath) el.classList.add('active');
+      });
+
+      // Form submission (demo)
+      const enquiryForm = document.querySelector('.enquiry-form');
+      if (enquiryForm) {
+        enquiryForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const btn = enquiryForm.querySelector('button[type="submit"]');
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            btn.classList.add('bg-green-500');
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.classList.remove('bg-green-500');
+              btn.disabled = false;
+              enquiryForm.reset();
+            }, 2500);
+          }, 1200);
+        });
       }
-      const handleLogout = () => { localStorage.removeItem('currentUser'); window.location.reload(); };
-      document.getElementById('logout-btn')?.addEventListener('click', handleLogout);
-      document.getElementById('mobile-logout-btn')?.addEventListener('click', handleLogout);
     });
   </script>
 </body>
