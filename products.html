@@ -103,32 +103,58 @@
       border-color: #0EA5E9;
     }
     .btn-primary-design {
-      background-color: #0F172A;
-      color: #F8FAFC;
+      background-color: #0EA5E9 !important;
+      color: #FFFFFF !important;
       font-weight: 600;
-      border-radius: 60px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 2px solid transparent !important;
+      border-radius: 9999px !important;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.35) !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
     .btn-primary-design:hover {
-      background-color: #334155;
+      background-color: #0284C7 !important;
+      color: #FFFFFF !important;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(14,165,233,0.3);
-      color: #F8FAFC;
+      box-shadow: 0 14px 26px -6px rgba(14, 165, 233, 0.45) !important;
     }
-    .dark .btn-primary-design { background-color: #F8FAFC; color: #0F172A; }
-    .dark .btn-primary-design:hover { background-color: #E0F2FE; color: #0F172A; }
+    .dark .btn-primary-design {
+      background-color: #0EA5E9 !important;
+      color: #FFFFFF !important;
+    }
+    .dark .btn-primary-design:hover {
+      background-color: #0284C7 !important;
+      color: #FFFFFF !important;
+    }
     .btn-outline-design {
-      border: 1.5px solid #0F172A;
-      color: #0F172A;
-      background: transparent;
-      border-radius: 60px;
-      font-weight: 500;
-      transition: all 0.3s;
+      border: 2px solid #0F172A !important;
+      color: #0F172A !important;
+      background: transparent !important;
+      border-radius: 9999px !important;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
-    .btn-outline-design:hover { background-color: #0F172A; color: #F8FAFC; transform: translateY(-2px); }
-    .dark .btn-outline-design { border-color: #F8FAFC; color: #F8FAFC; }
-    .dark .btn-outline-design:hover { background-color: #F8FAFC; color: #0F172A; }
+    .btn-outline-design:hover {
+      background-color: #0F172A !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px);
+    }
+    .dark .btn-outline-design {
+      border-color: #F8FAFC !important;
+      color: #F8FAFC !important;
+      background: transparent !important;
+    }
+    .dark .btn-outline-design:hover {
+      background-color: #F8FAFC !important;
+      color: #0F172A !important;
+    }
     /* navigation (same structure) */
     .nav-link { position: relative; font-weight: 500; color: #0F172A; transition: color 0.3s; }
     .dark .nav-link { color: #F8FAFC; }
@@ -268,8 +294,9 @@
     <div class="container mx-auto px-6 sm:px-8 lg:px-12">
       <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
         <!-- Logo -->
-        <a class="flex items-center gap-2 md:gap-3 group shrink-0" href='index.html'>
-          <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <div class="flex items-center justify-start min-w-0 xl:flex-1">
+          <a class="h-10 inline-flex items-center gap-2.5 md:gap-3 group shrink-0" href='index.html'>
+            <svg class="w-9 h-9 md:w-10 md:h-10 text-[#0EA5E9] group-hover:scale-110 hover:scale-110 transition-transform duration-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
               <circle cx="12" cy="13" r="2" fill="currentColor" stroke="none" />
               <circle cx="8" cy="17" r="1.5" fill="currentColor" stroke="none" />
@@ -279,15 +306,15 @@
               <path d="M10.5 14L9 15.5" />
               <path d="M13.5 14L15 15.5" />
             </svg>
-          <div>
-            <span class="text-lg md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white">Home<span class="text-[#0EA5E9]">Tech</span></span>
-          </div>
-        </a>
-        <!-- Desktop nav + actions -->
-        <div class="flex items-center gap-3 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
-          <div class="hidden xl:flex items-center gap-3 xl:gap-6">
-            <div class="dropdown-design">
-              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+            <span class="text-xl md:text-2xl font-display font-extrabold tracking-tight text-[#0F172A] dark:text-white leading-none">Home<span class="text-[#0EA5E9]">Tech</span></span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation (Center Aligned) -->
+        <div class="hidden xl:flex items-center justify-center shrink-0">
+          <div class="flex items-center gap-1 xl:gap-2 2xl:gap-3">
+            <div class="dropdown-design flex items-center">
+              <button class="nav-link h-10 inline-flex items-center gap-1.5 px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base font-medium">
                 Home <i class="fas fa-chevron-down text-xs ms-1"></i>
               </button>
               <div class="dropdown-design-menu">
@@ -295,15 +322,15 @@
                 <a class="dropdown-item" href="home2.html"> Home 2</a>
               </div>
             </div>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="services.html">Services</a>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="solutions.html">Solutions</a>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="pricing.html">Pricing</a>
-            <a class="nav-link hover:text-[#0EA5E9] transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="about.html">About</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="services.html">Services</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="products.html">Products</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="solutions.html">Solutions</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="pricing.html">Pricing</a>
+            <a class="nav-link h-10 inline-flex items-center px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base hover:text-[#0EA5E9] transition font-medium" href="contact.html">Contact</a>
             <!-- Dashboard Dropdown -->
-            <div class="dropdown-design">
-              <button class="nav-link font-medium transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+            <div class="dropdown-design flex items-center">
+              <button class="nav-link h-10 inline-flex items-center gap-1.5 px-3 whitespace-nowrap text-sm xl:text-[15px] 2xl:text-base font-medium">
                 Dashboard <i class="fas fa-chevron-down text-xs ms-1"></i>
               </button>
               <div class="dropdown-design-menu">
@@ -312,20 +339,24 @@
               </div>
             </div>
           </div>
-          <!-- Desktop actions -->
-          <div class="hidden xl:flex items-center gap-3 ms-2">
-            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center">
-              <span class="dark:hidden"><i class="fas fa-moon"></i></span><span class="hidden dark:inline"><i class="fas fa-sun"></i></span>
+        </div>
+
+        <!-- Desktop actions + Mobile toggle (Right Aligned) -->
+        <div class="flex items-center justify-end shrink-0 gap-3 xl:flex-1">
+          <div class="hidden xl:flex items-center gap-3">
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center shrink-0" aria-label="Toggle theme">
+              <span class="dark:hidden flex items-center justify-center"><i class="fas fa-moon"></i></span>
+              <span class="hidden dark:flex items-center justify-center"><i class="fas fa-sun"></i></span>
             </button>
-            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center font-bold text-base">
+            <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-[#E0F2FE] dark:bg-[#334155] text-[#0F172A] dark:text-[#0EA5E9] hover:scale-110 transition flex items-center justify-center font-bold text-base shrink-0" aria-label="Toggle RTL">
               <i class="fas fa-exchange-alt"></i>
             </button>
-            <div id="auth-buttons" class="flex items-center gap-3">
-              <a href="signup.html" class="px-5 py-2 bg-[#0F172A] dark:bg-white dark:text-[#0F172A] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm">Sign up</a>
+            <div id="auth-buttons" class="flex items-center shrink-0">
+              <a href="signup.html" class="h-10 px-5 inline-flex items-center justify-center bg-[#0F172A] dark:bg-white dark:text-[#0F172A] text-white rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm leading-none shrink-0">Sign up</a>
             </div>
           </div>
           <!-- Mobile toggle -->
-          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#0EA5E9] text-[#0F172A] flex items-center justify-center shadow-md">
+          <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-[#0EA5E9] text-[#0F172A] flex items-center justify-center shadow-md shrink-0" aria-label="Toggle mobile menu">
             <i class="fas fa-bars text-base"></i>
           </button>
         </div>
@@ -384,8 +415,8 @@
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white">Intelligent Devices, <br class="hidden sm:inline"/> <span class="text-[#0EA5E9]">Flawless Execution</span></h1>
         <p class="text-base sm:text-lg md:text-xl text-[#CBD5E1] font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">We exclusively install industry-leading hardware. Explore our curated selection of smart hubs, lighting, and security ecosystems designed for uncompromising reliability.</p>
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center justify-center gap-2 text-base shadow-lg w-full sm:w-auto whitespace-nowrap bg-[#0EA5E9] hover:bg-[#0369A1] text-white border-none"><i class="fas fa-comments"></i> Request a Quote</a>
-          <a href="#ecosystem" class="px-8 py-3 rounded-full inline-flex items-center justify-center gap-2 text-base border-2 border-white text-white hover:bg-white hover:text-[#0F172A] transition duration-300 font-semibold w-full sm:w-auto whitespace-nowrap"><i class="fas fa-arrow-down"></i> Explore Products</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-base font-semibold shadow-lg shadow-sky-500/25 w-full sm:w-auto whitespace-nowrap transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-comments"></i> Request a Quote</a>
+          <a href="#ecosystem" class="px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-base font-semibold border-2 border-white/60 hover:border-white text-white hover:bg-white hover:text-[#0F172A] transition-all duration-300 transform hover:-translate-y-0.5 backdrop-blur-sm w-full sm:w-auto whitespace-nowrap"><i class="fas fa-arrow-down"></i> Explore Products</a>
         </div>
       </div>
     </div>
@@ -433,7 +464,7 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Music Sync</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
       </div>
     </div>
@@ -471,11 +502,11 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Cloud Storage</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
         <div class="relative">
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-[#E2E8F0] dark:border-[#334155] group product-card">
-            <img src="assests/p2.jpg" alt="Smart Cameras" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700">
+            <img src="https://i.pinimg.com/originals/2f/1e/1c/2f1e1ca6ccfb556db42baedc19efbba3.png" alt="Smart Cameras" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700">
           </div>
           <div class="absolute -top-6 -left-6 w-24 h-24 bg-[#0EA5E9]/10 rounded-full blur-2xl pointer-events-none float-bubble-delay"></div>
           <div class="absolute bottom-6 right-6 bg-white dark:bg-[#1E293B] rounded-2xl p-4 shadow-xl border border-[#E2E8F0] dark:border-[#334155] flex items-center gap-3">
@@ -534,7 +565,7 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Battery Backup</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
       </div>
     </div>
@@ -572,7 +603,7 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Humidity</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
         <div class="relative">
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-[#E2E8F0] dark:border-[#334155] group product-card">
@@ -626,7 +657,7 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Offline Mode</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
       </div>
     </div>
@@ -664,7 +695,7 @@
             <span class="feature-pill"><i class="fas fa-check text-[#0EA5E9]"></i> Voice Control</span>
           </div>
 
-          <a href="contact.html" class="btn-primary-design px-8 py-3 rounded-full inline-flex items-center gap-2 text-sm shadow-lg"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
+          <a href="contact.html" class="btn-primary-design px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-shopping-cart"></i> Request a Quote</a>
         </div>
         <div class="relative">
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-[#E2E8F0] dark:border-[#334155] group product-card">
@@ -678,17 +709,17 @@
 
   <!-- ======== CTA BANNER ======== -->
   <section class="py-20 bg-[#0F172A] dark:bg-[#020617] relative overflow-hidden border-y border-[#334155]">
-    <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 opacity-15">
       <img src="assests/hero_products2.jpg" alt="Smart Home" class="w-full h-full object-cover">
     </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/90 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/95 to-[#0F172A]/80"></div>
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">Ready to Equip Your <br class="hidden sm:inline"/> Home with <span class="text-[#0EA5E9]">Premium Hardware?</span></h2>
-        <p class="text-[#CBD5E1] text-base md:text-lg mb-8 max-w-xl">Talk to our hardware specialists and get a personalized recommendation for your space — no obligation, just expert advice.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="contact.html" class="px-8 py-3 rounded-full inline-flex items-center justify-center gap-2 text-base font-semibold bg-[#0EA5E9] hover:bg-[#0369A1] text-white transition shadow-lg"><i class="fas fa-comments"></i> Request a Quote</a>
-          <a href="pricing.html" class="px-8 py-3 rounded-full inline-flex items-center justify-center gap-2 text-base font-semibold border-2 border-white text-white hover:bg-white hover:text-[#0F172A] transition"><i class="fas fa-tags"></i> View Pricing</a>
+        <p class="text-[#CBD5E1] text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">Talk to our hardware specialists and get a personalized recommendation for your space — no obligation, just expert advice.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+          <a href="contact.html" class="px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm sm:text-base font-semibold bg-[#0EA5E9] hover:bg-[#0284C7] text-white border-2 border-transparent shadow-lg shadow-sky-500/25 transition-all duration-300 transform hover:-translate-y-0.5"><i class="fas fa-comments"></i> Request a Quote</a>
+          <a href="pricing.html" class="px-8 py-3.5 rounded-full inline-flex items-center justify-center gap-2 text-sm sm:text-base font-semibold border-2 border-white/60 hover:border-white text-white hover:bg-white hover:text-[#0F172A] transition-all duration-300 transform hover:-translate-y-0.5 backdrop-blur-sm"><i class="fas fa-tags"></i> View Pricing</a>
         </div>
       </div>
     </div>
